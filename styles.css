@@ -1,11 +1,11 @@
 :root {
-  --paper: #f4f1ea;
-  --ink: #121212;
-  --mute: #5a5a5a;
-  --line: #d6d1c7;
-  --band: #121212;
-  --band-ink: #f4f1ea;
-  --mark: #b42318;
+  --paper: #f3e6cc;
+  --ink: #3a2718;
+  --mute: #7a624c;
+  --line: #d9cbb6;
+  --band: #f3e6cc;
+  --band-ink: #3a2718;
+  --mark: #b44a28;
 }
 
 * {
@@ -20,7 +20,7 @@ body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: "Iowan Old Style", Georgia, "Times New Roman", serif;
   line-height: 1.45;
 }
 
@@ -41,9 +41,10 @@ a {
 }
 
 .mast {
-  background: var(--band);
-  color: var(--band-ink);
+  background: var(--paper);
+  color: var(--ink);
   padding: 2.4rem 7vw 2.2rem;
+  border-bottom: 1px solid var(--line);
 }
 
 .kicker {
@@ -77,14 +78,14 @@ a {
   font-size: 0.72rem;
   letter-spacing: 0.12em;
   background: transparent;
-  color: var(--band-ink);
+  color: var(--ink);
   border: 1px solid transparent;
   padding: 0.2rem 0.45rem;
   cursor: pointer;
 }
 
 .lang-switch button[aria-pressed="true"] {
-  border-color: var(--band-ink);
+  border-color: var(--ink);
 }
 
 html[lang="es"] [data-lang="en"],
@@ -112,10 +113,11 @@ h1 {
 
 .total-n {
   display: block;
-  font-size: clamp(1.8rem, 5vw, 3rem);
-  line-height: 0.95;
+  font-size: clamp(2.4rem, 8vw, 5.2rem);
+  line-height: 0.92;
   letter-spacing: -0.03em;
   font-weight: 400;
+  color: var(--mark);
 }
 
 .total-cap,
@@ -469,8 +471,8 @@ th {
   font-size: 0.66rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  background: var(--band);
-  color: var(--band-ink);
+  background: #ead9b8;
+  color: var(--ink);
 }
 
 #flujos-body tr.is-new td {
