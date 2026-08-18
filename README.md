@@ -3,9 +3,9 @@
 Sitio: [veeduria-ayuda.vercel.app](https://veeduria-ayuda.vercel.app/)  
 Código: [github.com/eliospina/veeduria-ayuda](https://github.com/eliospina/veeduria-ayuda)
 
-Registro público, con fuente, de la ayuda anunciada a Colombia tras el sismo. Lo anunciado no es lo ejecutado.
+Registro público, con fuente, de la ayuda anunciada a Colombia tras el sismo.
 
-A public, sourced record of aid announced to Colombia after the earthquake. Announced is not disbursed.
+A public, sourced record of aid announced to Colombia after the earthquake.
 
 ```bash
 git clone https://github.com/eliospina/veeduria-ayuda.git
