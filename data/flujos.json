@@ -1,0 +1,434 @@
+{
+  "updated": "2026-08-18",
+  "flows": [
+    {
+      "id": "ofertas-agregado",
+      "origin": "Agregado gubernamental de ofertas internacionales",
+      "amount": "USD 1.300 millones — ofertas, no un solo giro",
+      "status": "Bolsa reportada por el Gobierno: mezcla créditos, donaciones y asistencia técnica. No es dinero ya ejecutado en territorio.",
+      "route": "Oferta → negociación / desembolso / especie — cada tramo debe verificarse aparte",
+      "territory": "—",
+      "executed": "—",
+      "source": {
+        "name": "Infobae, 12 ago 2026 (vicepresidencia)",
+        "url": "https://www.infobae.com/colombia/2026/08/12/gobierno-nacional-anuncio-que-le-han-recibido-ofertas-de-ayuda-internacional-por-us1300-millones-tras-el-terremoto-en-colombia-en-que-consiste/"
+      }
+    },
+    {
+      "id": "andi-empresas-unidas",
+      "origin": "ANDI — Empresas Unidas por Colombia",
+      "amount": "COP 201.637 millones (≈ USD 64 millones) — donación anunciada",
+      "status": "Anunciado · en fiducia",
+      "route": "Empresarios → fiducia gremial → comunidades afectadas",
+      "territory": "—",
+      "executed": "—",
+      "source": {
+        "name": "EFE, 15 ago 2026",
+        "url": "https://efe.com/mundo/2026-08-15/empresarios-donacion-terremoto-colombia/"
+      }
+    },
+    {
+      "id": "santo-domingo",
+      "origin": "Familia Santo Domingo (parte de la campaña ANDI, no es un total aparte)",
+      "amount": "COP 100.000 millones",
+      "status": "Anunciado",
+      "route": "Donante privado → campaña ANDI → fiducia",
+      "territory": "—",
+      "executed": "—",
+      "source": {
+        "name": "EFE, 15 ago 2026",
+        "url": "https://efe.com/mundo/2026-08-15/empresarios-donacion-terremoto-colombia/"
+      }
+    },
+    {
+      "id": "banco-mundial-catddo",
+      "origin": "Banco Mundial — crédito Cat DDO",
+      "amount": "USD 200 millones — crédito desembolsado (se paga; 20 años, gracia 5)",
+      "status": "Desembolsado 13 ago 2026. Hay hasta 250 millones adicionales no solicitados aún (total posible 450).",
+      "route": "Línea contingente de gestión del riesgo → Tesoro nacional → respuesta y reconstrucción",
+      "territory": "—",
+      "executed": "Desembolsado al Gobierno el 13 ago; entrega municipal: —",
+      "source": {
+        "name": "Grupo Banco Mundial, 14 ago 2026 · El Tiempo",
+        "url": "https://www.bancomundial.org/es/news/statement/2026/08/14/world-bank-group-statement-on-colombia-earthquake"
+      }
+    },
+    {
+      "id": "bid-credito",
+      "origin": "Grupo BID — financiamiento contingente",
+      "amount": "USD 300 millones — crédito / línea de emergencia, tope (no es donación)",
+      "status": "Línea activada (11 ago 2026). No es un giro automático.",
+      "route": "BID → Gobierno · financiamiento rápido para emergencia",
+      "territory": "—",
+      "executed": "—",
+      "source": {
+        "name": "EFE, 11 ago 2026",
+        "url": "https://es-us.noticias.yahoo.com/bid-activa-300-millones-d%C3%B3lares-201943675.html"
+      }
+    },
+    {
+      "id": "bid-donacion",
+      "origin": "Grupo BID — asistencia humanitaria",
+      "amount": "USD 500.000 — donación no reembolsable",
+      "status": "Anunciado (listos para aportar)",
+      "route": "Asistencia humanitaria y evaluación de daños",
+      "territory": "—",
+      "executed": "—",
+      "source": {
+        "name": "EFE, 11 ago 2026",
+        "url": "https://es-us.noticias.yahoo.com/bid-activa-300-millones-d%C3%B3lares-201943675.html"
+      }
+    },
+    {
+      "id": "caf",
+      "origin": "CAF — Banco de Desarrollo de América Latina",
+      "amount": "USD 500.000 — donación",
+      "status": "Anunciado (11 ago 2026)",
+      "route": "Fondos de Desarrollo Social y Humano de CAF → atención humanitaria",
+      "territory": "—",
+      "executed": "—",
+      "source": {
+        "name": "El Tiempo, 11 ago 2026",
+        "url": "https://www.eltiempo.com/economia/sectores/caf-dona-500-000-dolares-a-colombia-para-atender-la-emergencia-tras-terremoto-3577656"
+      }
+    },
+    {
+      "id": "onu-cerf",
+      "origin": "ONU — Fondo Central para la Acción en Casos de Emergencia (CERF)",
+      "amount": "USD 5 millones — asignación de emergencia",
+      "status": "Asignado; implementación en curso al 13 ago 2026",
+      "route": "CERF → socios humanitarios → intervenciones vitales en zonas rurales de difícil acceso",
+      "territory": "—",
+      "executed": "—",
+      "source": {
+        "name": "OCHA, 13 ago 2026",
+        "url": "https://www.unocha.org/publications/report/colombia/colombia-flash-update-005-update-impact-earthquake-colombia-august-13-2026"
+      }
+    },
+    {
+      "id": "estados-unidos",
+      "origin": "Estados Unidos",
+      "amount": "USD 26,5 millones — donación humanitaria anunciada (15,5 + 11 adicionales)",
+      "status": "Anunciado por el Departamento de Estado (total al 15 ago 2026)",
+      "route": "Alimentos, salud, protección, refugio y evaluaciones · socios humanitarios; también equipos de búsqueda (Fairfax y Los Ángeles)",
+      "territory": "—",
+      "executed": "Movilizado mediante socios; entrega municipal: —",
+      "source": {
+        "name": "Anadolu / Departamento de Estado, 15 ago 2026",
+        "url": "https://www.aa.com.tr/en/americas/us-announces-additional-11m-in-aid-to-colombia-for-quake-relief/4027890"
+      }
+    },
+    {
+      "id": "emiratos",
+      "origin": "Emiratos Árabes Unidos",
+      "amount": "USD 10 millones — donación anunciada",
+      "status": "Anunciado (13 ago 2026)",
+      "route": "Agencia de Ayuda de EAU · insumos médicos, alimentos y refugio",
+      "territory": "—",
+      "executed": "—",
+      "source": {
+        "name": "The National / WAM, 13 ago 2026",
+        "url": "https://www.thenationalnews.com/news/uae/2026/08/13/president-sheikh-mohamed-directs-10-million-in-humanitarian-aid-to-colombian-earthquake-relief-efforts/"
+      }
+    },
+    {
+      "id": "italia",
+      "origin": "Italia — Ministerio de Asuntos Exteriores / AICS",
+      "amount": "EUR 4,5 millones — donación anunciada",
+      "status": "Autorizado (14 ago 2026)",
+      "route": "1,5 millones vía Cruz Roja, FAO y PMA · 3 millones vía Agencia Italiana de Cooperación (resiliencia comunitaria)",
+      "territory": "—",
+      "executed": "—",
+      "source": {
+        "name": "EFE / swissinfo, 14 ago 2026",
+        "url": "https://www.swissinfo.ch/spa/italia-activa-paquetes-de-ayuda-humanitaria-a-colombia-por-valor-de-4%2c5-millones-de-euros/91900578"
+      }
+    },
+    {
+      "id": "union-europea",
+      "origin": "Comisión Europea (ayuda humanitaria de emergencia)",
+      "amount": "EUR 2,1 millones — donación anunciada",
+      "status": "Anunciado (12 ago 2026)",
+      "route": "Socios en terreno: salud, agua, refugio, alimentos, efectivo",
+      "territory": "—",
+      "executed": "EUR 100.000 reasignados para 2.500 familias en Chocó y Valle; entrega municipal: —",
+      "source": {
+        "name": "Comisión Europea, 12 ago 2026",
+        "url": "https://civil-protection-humanitarian-aid.ec.europa.eu/news-stories/news/eu-provides-eur21-million-emergency-humanitarian-assistance-colombia-following-earthquake-2026-08-12_en"
+      }
+    },
+    {
+      "id": "espana",
+      "origin": "España",
+      "amount": "EUR 1 millón — donación anunciada",
+      "status": "Movilizado (14 ago 2026)",
+      "route": "500.000 Cruz Roja · 300.000 compra local · 150.000 OPS · 50.000 Fundación Reina Sofía (medicamentos)",
+      "territory": "—",
+      "executed": "Movilizado desde Bogotá; entrega municipal: —",
+      "source": {
+        "name": "El Español / EFE, 14 ago 2026",
+        "url": "https://www.elespanol.com/mundo/america/20260814/espana-moviliza-millon-euros-ayuda-humanitaria-afectados-terremoto-colombia/1003744352762_0.html"
+      }
+    },
+    {
+      "id": "reino-unido",
+      "origin": "Reino Unido",
+      "amount": "GBP 680.000 (≈ COP 3.000 millones) — donación anunciada",
+      "status": "Anunciado (17 ago 2026)",
+      "route": "Cruz Roja Colombiana y equipo humanitario de la ONU · refugio, atención médica, agua limpia y saneamiento",
+      "territory": "—",
+      "executed": "—",
+      "source": {
+        "name": "Infobae, 17 ago 2026",
+        "url": "https://www.infobae.com/colombia/2026/08/17/reino-unido-y-japon-se-unen-al-apoyo-humanitario-en-colombia-tras-el-terremoto/"
+      }
+    },
+    {
+      "id": "china",
+      "origin": "China",
+      "amount": "USD 1 millón + CNY 15 millones; además 7.000 mantas, 1.900 carpas, 15 vehículos potabilizadores y 200 lámparas",
+      "status": "Oferta financiera del 13 ago; cargamento anunciado el 17 ago 2026",
+      "route": "Ayuda financiera e insumos de emergencia → coordinación nacional",
+      "territory": "—",
+      "executed": "—",
+      "source": {
+        "name": "El Tiempo / Cancillería, 17 ago 2026",
+        "url": "https://www.eltiempo.com/politica/gobierno/colombia-ha-recibido-mas-de-220-toneladas-de-ayuda-humanitaria-y-144-integrantes-de-equipos-internacionales-tras-el-terremoto-informo-la-cancilleria-3578924"
+      }
+    },
+    {
+      "id": "noruega",
+      "origin": "Noruega",
+      "amount": "NOK 10 millones (≈ USD 1 millón) — donación anunciada",
+      "status": "Anunciado",
+      "route": "Salud, agua, albergue temporal · a través de socios humanitarios",
+      "territory": "—",
+      "executed": "—",
+      "source": {
+        "name": "EFE, 14 ago 2026",
+        "url": "https://www.infobae.com/america/agencias/2026/08/14/noruega-y-suecia-destinaran-15-millones-de-dolares-a-ayudar-a-colombia-tras-el-terremoto/"
+      }
+    },
+    {
+      "id": "suecia",
+      "origin": "Suecia",
+      "amount": "SEK 5 millones (≈ USD 522.000) + 150 tiendas y 360 mantas",
+      "status": "Anunciado",
+      "route": "Dinero vía ACNUR · material vía Mecanismo de Protección Civil de la UE",
+      "territory": "—",
+      "executed": "—",
+      "source": {
+        "name": "EFE, 14 ago 2026 · Europa Press, 17 ago 2026",
+        "url": "https://www.infobae.com/america/agencias/2026/08/14/noruega-y-suecia-destinaran-15-millones-de-dolares-a-ayudar-a-colombia-tras-el-terremoto/"
+      }
+    },
+    {
+      "id": "alemania",
+      "origin": "Alemania",
+      "amount": "3.000 kits de cocina y 2.500 filtros de agua — en especie (sin caja publicada)",
+      "status": "Enviado / canalizado (17 ago 2026)",
+      "route": "Mecanismo de Protección Civil de la UE",
+      "territory": "—",
+      "executed": "—",
+      "source": {
+        "name": "Europa Press / Comisión Europea, 17 ago 2026",
+        "url": "https://www.europapress.es/internacional/noticia-bruselas-coordina-entrega-ayuda-paises-ue-colombia-terremoto-20260817173438.html"
+      }
+    },
+    {
+      "id": "luxemburgo",
+      "origin": "Luxemburgo",
+      "amount": "75 carpas familiares + 4 multipropósito — en especie",
+      "status": "Anunciado (17 ago 2026)",
+      "route": "Mecanismo de Protección Civil de la UE",
+      "territory": "—",
+      "executed": "—",
+      "source": {
+        "name": "El Tiempo / Cancillería, 17 ago 2026",
+        "url": "https://www.eltiempo.com/politica/gobierno/colombia-ha-recibido-mas-de-220-toneladas-de-ayuda-humanitaria-y-144-integrantes-de-equipos-internacionales-tras-el-terremoto-informo-la-cancilleria-3578924"
+      }
+    },
+    {
+      "id": "ayuda-bilateral-recibida",
+      "origin": "El Salvador · México · Chile · Perú — agregado, no sumar otra vez",
+      "amount": "222,5 toneladas recibidas en Colombia",
+      "status": "Recibido en el país al 17 ago 2026 (100 + 58,5 + 50 + 14 toneladas)",
+      "route": "Países donantes → ingreso a Colombia → distribución pendiente de trazabilidad municipal",
+      "territory": "—",
+      "executed": "Recibido en Colombia; entrega municipal del total: —",
+      "source": {
+        "name": "El Tiempo / Cancillería, 17 ago 2026",
+        "url": "https://www.eltiempo.com/politica/gobierno/colombia-ha-recibido-mas-de-220-toneladas-de-ayuda-humanitaria-y-144-integrantes-de-equipos-internacionales-tras-el-terremoto-informo-la-cancilleria-3578924"
+      }
+    },
+    {
+      "id": "el-salvador",
+      "origin": "El Salvador",
+      "amount": "100 toneladas en dos aviones (alimentos, kits, medicamentos) — en especie",
+      "status": "Enviado; primer vuelo recibido en Cali (12 ago 2026)",
+      "route": "Gobierno de El Salvador → Cali → distribución",
+      "territory": "Cali (punto de ingreso)",
+      "executed": "Llegada a Cali reportada; entrega final a hogares o municipios: —",
+      "source": {
+        "name": "Infobae / Cancillería, 12 ago 2026",
+        "url": "https://www.infobae.com/el-salvador/2026/08/12/el-salvador-envio-el-segundo-avion-completando-100-toneladas-de-ayuda-a-colombia-tras-el-sismo/"
+      }
+    },
+    {
+      "id": "india",
+      "origin": "India",
+      "amount": "20 toneladas de insumos médicos — en especie (sin caja publicada)",
+      "status": "Enviado / anunciado",
+      "route": "Suministros médicos",
+      "territory": "—",
+      "executed": "—",
+      "source": {
+        "name": "Infobae, 14 ago 2026",
+        "url": "https://www.infobae.com/colombia/2026/08/14/aumenta-la-ayuda-internacional-a-colombia-tras-el-terremoto-de-74-india-envia-20-toneladas-y-noruega-suecia-y-espana-anuncian-nuevos-recursos/"
+      }
+    },
+    {
+      "id": "peru",
+      "origin": "Perú",
+      "amount": "14 toneladas recibidas + personal especializado — en especie",
+      "status": "Recibido en Colombia al 17 ago 2026",
+      "route": "Perú → ingreso al país → distribución",
+      "territory": "—",
+      "executed": "Recibido en Colombia; entrega municipal: —",
+      "source": {
+        "name": "El Tiempo / Cancillería, 17 ago 2026",
+        "url": "https://www.eltiempo.com/politica/gobierno/colombia-ha-recibido-mas-de-220-toneladas-de-ayuda-humanitaria-y-144-integrantes-de-equipos-internacionales-tras-el-terremoto-informo-la-cancilleria-3578924"
+      }
+    },
+    {
+      "id": "ecuador",
+      "origin": "Ecuador",
+      "amount": "47 rescatistas, perros y equipos del Cuerpo de Bomberos de Quito — en especie",
+      "status": "Anunciado (vicepresidencia de Colombia)",
+      "route": "Personal y equipos de búsqueda y rescate",
+      "territory": "—",
+      "executed": "—",
+      "source": {
+        "name": "Infobae, 12 ago 2026",
+        "url": "https://www.infobae.com/colombia/2026/08/12/gobierno-nacional-anuncio-que-le-han-recibido-ofertas-de-ayuda-internacional-por-us1300-millones-tras-el-terremoto-en-colombia-en-que-consiste/"
+      }
+    },
+    {
+      "id": "mexico",
+      "origin": "México",
+      "amount": "58,5 toneladas — alimentos, higiene, medicamentos y suministros médicos",
+      "status": "Recibido en Colombia al 17 ago 2026",
+      "route": "México → ingreso al país → distribución",
+      "territory": "—",
+      "executed": "Recibido en Colombia; entrega municipal: —",
+      "source": {
+        "name": "El Tiempo / Cancillería, 17 ago 2026",
+        "url": "https://www.eltiempo.com/politica/gobierno/colombia-ha-recibido-mas-de-220-toneladas-de-ayuda-humanitaria-y-144-integrantes-de-equipos-internacionales-tras-el-terremoto-informo-la-cancilleria-3578924"
+      }
+    },
+    {
+      "id": "chile-recibido",
+      "origin": "Chile",
+      "amount": "50 toneladas — alimentos, higiene, medicamentos y suministros médicos",
+      "status": "Recibido en Colombia al 17 ago 2026",
+      "route": "Chile → ingreso al país → distribución",
+      "territory": "—",
+      "executed": "Recibido en Colombia; entrega municipal del total: —",
+      "source": {
+        "name": "El Tiempo / Cancillería, 17 ago 2026",
+        "url": "https://www.eltiempo.com/politica/gobierno/colombia-ha-recibido-mas-de-220-toneladas-de-ayuda-humanitaria-y-144-integrantes-de-equipos-internacionales-tras-el-terremoto-informo-la-cancilleria-3578924"
+      }
+    },
+    {
+      "id": "chile-pereira",
+      "origin": "Chile — cargamento con llegada municipal verificada",
+      "amount": "320 kits de alimentación · 200 de aseo · 346 de higiene · 27.000 unidades de medicamentos",
+      "status": "Llegó a Pereira (15 ago 2026)",
+      "route": "Avión de Chile → Pereira",
+      "territory": "Pereira",
+      "executed": "Llegada municipal verificada; entrega a hogares: —",
+      "source": {
+        "name": "DW / EFE, 15 ago 2026",
+        "url": "https://www.dw.com/es/ayuda-comienza-a-llegar-a-zonas-alejadas-en-colombia/a-78386025"
+      }
+    },
+    {
+      "id": "paraguay",
+      "origin": "Paraguay",
+      "amount": "≈ 52 toneladas — agua, alimentos, higiene e insumos médicos",
+      "status": "Anunciado (17 ago 2026)",
+      "route": "Ayuda bilateral → ingreso al país → distribución",
+      "territory": "—",
+      "executed": "—",
+      "source": {
+        "name": "El Tiempo / Cancillería, 17 ago 2026",
+        "url": "https://www.eltiempo.com/politica/gobierno/colombia-ha-recibido-mas-de-220-toneladas-de-ayuda-humanitaria-y-144-integrantes-de-equipos-internacionales-tras-el-terremoto-informo-la-cancilleria-3578924"
+      }
+    },
+    {
+      "id": "guatemala",
+      "origin": "Guatemala",
+      "amount": "≈ 30 toneladas — 1.600 kits de alimentos y 3.000 kits de aseo familiar",
+      "status": "Anunciado (17 ago 2026)",
+      "route": "Ayuda bilateral → ingreso al país → distribución",
+      "territory": "—",
+      "executed": "—",
+      "source": {
+        "name": "El Tiempo / Cancillería, 17 ago 2026",
+        "url": "https://www.eltiempo.com/politica/gobierno/colombia-ha-recibido-mas-de-220-toneladas-de-ayuda-humanitaria-y-144-integrantes-de-equipos-internacionales-tras-el-terremoto-informo-la-cancilleria-3578924"
+      }
+    },
+    {
+      "id": "santa-sede",
+      "origin": "Santa Sede",
+      "amount": "EUR 100.000 — donación anunciada",
+      "status": "Anunciado (17 ago 2026)",
+      "route": "Santa Sede → Cáritas Colombiana",
+      "territory": "—",
+      "executed": "—",
+      "source": {
+        "name": "El Tiempo / Cancillería, 17 ago 2026",
+        "url": "https://www.eltiempo.com/politica/gobierno/colombia-ha-recibido-mas-de-220-toneladas-de-ayuda-humanitaria-y-144-integrantes-de-equipos-internacionales-tras-el-terremoto-informo-la-cancilleria-3578924"
+      }
+    },
+    {
+      "id": "suiza",
+      "origin": "Suiza",
+      "amount": "CHF 1 millón — donación anunciada",
+      "status": "Anunciado (17 ago 2026)",
+      "route": "PMA · Norwegian Refugee Council · Pastoral Social",
+      "territory": "—",
+      "executed": "—",
+      "source": {
+        "name": "El Tiempo / Cancillería, 17 ago 2026",
+        "url": "https://www.eltiempo.com/politica/gobierno/colombia-ha-recibido-mas-de-220-toneladas-de-ayuda-humanitaria-y-144-integrantes-de-equipos-internacionales-tras-el-terremoto-informo-la-cancilleria-3578924"
+      }
+    },
+    {
+      "id": "corea",
+      "origin": "Corea",
+      "amount": "USD 1 millón + USD 20.000 de KOICA",
+      "status": "Anunciado (17 ago 2026)",
+      "route": "Asistencia humanitaria · KOICA → Banco de Alimentos",
+      "territory": "—",
+      "executed": "—",
+      "source": {
+        "name": "El Tiempo / Cancillería, 17 ago 2026",
+        "url": "https://www.eltiempo.com/politica/gobierno/colombia-ha-recibido-mas-de-220-toneladas-de-ayuda-humanitaria-y-144-integrantes-de-equipos-internacionales-tras-el-terremoto-informo-la-cancilleria-3578924"
+      }
+    },
+    {
+      "id": "singapur",
+      "origin": "Singapur",
+      "amount": "USD 50.000 — donación anunciada",
+      "status": "Anunciado (17 ago 2026)",
+      "route": "Singapur → Cruz Roja",
+      "territory": "—",
+      "executed": "—",
+      "source": {
+        "name": "El Tiempo / Cancillería, 17 ago 2026",
+        "url": "https://www.eltiempo.com/politica/gobierno/colombia-ha-recibido-mas-de-220-toneladas-de-ayuda-humanitaria-y-144-integrantes-de-equipos-internacionales-tras-el-terremoto-informo-la-cancilleria-3578924"
+      }
+    }
+  ]
+}
