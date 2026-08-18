@@ -35,7 +35,7 @@ let lastCheckAt = null;
 let lastFlowsStamp = "";
 let lastFlowIds = new Set();
 let ledgerUpdatedLabel = "";
-let pulsoEventCount = 0;
+let ledgerFlowCount = 0;
 let pulsoTimer = null;
 let clockTimer = null;
 
@@ -133,12 +133,29 @@ function renderPulsoEvents(events) {
   }
 }
 
+function originCell(flow) {
+  const td = document.createElement("td");
+  const name = document.createElement("div");
+  name.textContent = displayValue(flow.origin);
+  td.append(name);
+  if (flow.status && flow.status.trim() && flow.status.trim() !== "—") {
+    const st = document.createElement("div");
+    st.className = "sub";
+    st.textContent = displayValue(flow.status);
+    td.append(st);
+  }
+  return td;
+}
+
 function renderFlowRow(flow, isNew) {
   const tr = document.createElement("tr");
-  if (isNew) tr.className = "is-new";
+  if (isNew) tr.classList.add("is-new");
+  if (["ofertas-agregado", "ayuda-bilateral-recibida", "santo-domingo"].includes(flow.id)) {
+    tr.classList.add("is-note");
+  }
   tr.dataset.id = flow.id;
   tr.append(
-    cell(flow.origin),
+    originCell(flow),
     cell(flow.amount),
     cell(flow.route),
     cell(flow.territory),
@@ -148,15 +165,22 @@ function renderFlowRow(flow, isNew) {
   return tr;
 }
 
+function namesDeliveryPlace(flow) {
+  const t = (flow.territory || "").trim();
+  if (!t || t === "—") return false;
+  if (/punto de ingreso|punto de entrada/i.test(t)) return false;
+  return true;
+}
+
 function paintHueco(flows) {
   const line = document.getElementById("hueco-linea");
   if (!line || !Array.isArray(flows)) return;
   const n = flows.length;
-  const noMuni = flows.filter((flow) => !flow.territory || flow.territory.trim() === "—").length;
-  const noExec = flows.filter((flow) => !flow.executed || flow.executed.trim() === "—").length;
+  const named = flows.filter(namesDeliveryPlace);
+  const noMuni = n - named.length;
   line.textContent = isEn()
-    ? `Of ${n} sourced rows, ${noMuni} still name no municipality. ${noExec} have no verified execution.`
-    : `De ${n} líneas con fuente, ${noMuni} aún no nombran municipio. ${noExec} no tienen ejecución verificada.`;
+    ? `Of ${n} sourced rows, ${noMuni} name no municipality of delivery. None certify delivery to households. Pereira: aircraft arrival verified.`
+    : `De ${n} líneas con fuente, ${noMuni} no nombran municipio de entrega. Ninguna certifica entrega a hogares. Pereira: llegada del avión verificada.`;
 }
 
 async function loadFlows(options = {}) {
@@ -167,6 +191,7 @@ async function loadFlows(options = {}) {
   paintHueco(data.flows || []);
   paintTotals(data.flows || []);
   window.LEDGER_FLOWS = data.flows || [];
+  ledgerFlowCount = (data.flows || []).length;
   const ids = new Set((data.flows || []).map((flow) => flow.id));
   const stamp = JSON.stringify(data.flows);
   if (!options.force && stamp === lastFlowsStamp && lastFlowIds.size) return data;
@@ -194,23 +219,17 @@ function setPulsoStatus(text, live) {
 
 function tickClock() {
   if (!pulsoClockEl || !lastCheckAt) return;
-  const ledger = ledgerUpdatedLabel
+  const when = /^\d{4}-\d{2}-\d{2}$/.test(ledgerUpdatedLabel)
+    ? eventWhen(ledgerUpdatedLabel)
+    : ledgerUpdatedLabel;
+  const ledger = when
     ? isEn()
-      ? `Figures with a source as of ${ledgerUpdatedLabel}.`
-      : `Cifras con fuente al ${ledgerUpdatedLabel}.`
+      ? `Figures with a source as of ${when}.`
+      : `Cifras con fuente al ${when}.`
     : "";
-  let novedad;
-  if (pulsoEventCount === 0) {
-    novedad = isEn()
-      ? "The ledger contains no verified disbursements."
-      : "El tablero no contiene desembolsos verificados.";
-  } else if (pulsoEventCount === 1) {
-    novedad = isEn() ? "1 record in the ledger." : "1 registro en el tablero.";
-  } else {
-    novedad = isEn()
-      ? `${pulsoEventCount} records in the ledger.`
-      : `${pulsoEventCount} registros en el tablero.`;
-  }
+  const novedad = isEn()
+    ? `${ledgerFlowCount} rows in the ledger.`
+    : `${ledgerFlowCount} líneas en el tablero.`;
   const read = isEn() ? "Read" : "Leído";
   pulsoClockEl.textContent = `${read} ${agoLabel(lastCheckAt)} (${formatBogota(lastCheckAt)}). ${ledger} ${novedad}`.trim();
 }
@@ -220,7 +239,6 @@ async function verifyAid() {
     const [pulso, ledger] = await Promise.all([loadPulso(), loadFlows()]);
     lastCheckAt = new Date();
     const events = pulso.events || [];
-    pulsoEventCount = events.length;
     ledgerUpdatedLabel = pulso.ledgerUpdated || ledger?.updated || "";
     renderPulsoEvents(events);
     setPulsoStatus(
@@ -282,7 +300,7 @@ if (ayudaForm) {
       kind,
       origin: String(data.get("origin") || "").trim(),
       amount: String(data.get("amount") || "").trim() || "—",
-      territory: String(data.get("territory") || "").trim(),
+      territory: String(data.get("territory") || "").trim() || "—",
       note: String(data.get("note") || "").trim(),
       source: url
         ? { name: "Aporte ciudadano", url }

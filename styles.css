@@ -112,9 +112,9 @@ h1 {
 
 .total-n {
   display: block;
-  font-size: clamp(3.2rem, 11vw, 7rem);
-  line-height: 0.92;
-  letter-spacing: -0.04em;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
   font-weight: 400;
 }
 
@@ -129,11 +129,19 @@ h1 {
 }
 
 .sums {
-  margin-top: 0.7rem;
+  list-style: none;
+  margin: 0.9rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.28rem;
+}
+
+.sums li:first-child {
+  opacity: 0.75;
 }
 
 .chat {
-  margin: 2rem 0 0;
+  margin: 1.2rem 0 1.4rem;
   max-width: 40rem;
   border-top: 1px solid var(--line);
   padding-top: 1.2rem;
@@ -190,6 +198,16 @@ h1 {
   font-size: 0.86rem;
   margin: 1.4rem 0 0;
   max-width: 42rem;
+}
+
+.tweet-line [id^="share-copy"] {
+  white-space: pre-wrap;
+}
+
+.form-help {
+  margin: 0;
+  color: var(--mute);
+  font-size: 0.8rem;
 }
 
 .tweet-line button {
@@ -419,6 +437,11 @@ a.ghost {
   font-family: ui-monospace, Menlo, monospace;
 }
 
+.pulso-note {
+  margin-top: 0.2rem;
+  color: var(--mute);
+}
+
 .table-wrap {
   overflow-x: auto;
   margin: 1rem 0 0.5rem;
@@ -452,6 +475,17 @@ th {
 
 #flujos-body tr.is-new td {
   background: #f3e6e4;
+}
+
+#flujos-body tr.is-note td {
+  background: #f7f4ee;
+}
+
+#flujos-body .sub {
+  margin-top: 0.28rem;
+  color: var(--mute);
+  font-size: 0.68rem;
+  line-height: 1.35;
 }
 
 .table-legend,
