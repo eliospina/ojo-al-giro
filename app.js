@@ -165,6 +165,8 @@ async function loadFlows(options = {}) {
   const res = await fetch(`data/flujos.json?t=${Date.now()}`, { cache: "no-store" });
   const data = await res.json();
   paintHueco(data.flows || []);
+  paintTotals(data.flows || []);
+  window.LEDGER_FLOWS = data.flows || [];
   const ids = new Set((data.flows || []).map((flow) => flow.id));
   const stamp = JSON.stringify(data.flows);
   if (!options.force && stamp === lastFlowsStamp && lastFlowIds.size) return data;

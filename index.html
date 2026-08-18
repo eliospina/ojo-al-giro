@@ -56,6 +56,14 @@
         <span data-lang="es">Ayuda anunciada a Colombia tras el sismo. Con fuente.</span>
         <span data-lang="en">Aid announced to Colombia after the earthquake. Sourced.</span>
       </p>
+      <p class="total">
+        <span class="total-n" id="total-n">—</span>
+        <span class="total-cap">
+          <span data-lang="es">millones USD · ofertas reportadas · no es un giro</span>
+          <span data-lang="en">million USD · reported offers · not a transfer</span>
+        </span>
+      </p>
+      <p class="sums" id="sums"></p>
     </header>
 
     <main>
@@ -116,6 +124,21 @@
       </div>
       <p class="table-legend">— = sin fuente / no source</p>
 
+      <section class="chat" id="chat">
+        <h2>
+          <span data-lang="es">Preguntar</span>
+          <span data-lang="en">Ask</span>
+        </h2>
+        <div id="chat-log" class="chat-log"></div>
+        <form id="chat-form">
+          <input id="chat-q" name="q" required autocomplete="off" />
+          <button type="submit">
+            <span data-lang="es">Enviar</span>
+            <span data-lang="en">Send</span>
+          </button>
+        </form>
+      </section>
+
       <p class="tweet-line">
         <span id="share-copy-es" data-lang="es">Veeduría de la ayuda tras el sismo. https://veeduria-ayuda.vercel.app/ @infopresidencia @UNGRD @CancilleriaCol @CGR_Colombia</span>
         <span id="share-copy-en" data-lang="en">Aid oversight after the earthquake. https://veeduria-ayuda.vercel.app/?lang=en @infopresidencia @UNGRD @CancilleriaCol @CGR_Colombia</span>
@@ -174,6 +197,8 @@
       </p>
     </footer>
     <script src="lang.js"></script>
+    <script src="totals.js"></script>
     <script src="app.js"></script>
+    <script src="chat.js"></script>
   </body>
 </html>
