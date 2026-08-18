@@ -1,0 +1,71 @@
+{
+  "intervalSeconds": 60,
+  "ledgerUpdated": "2026-08-18",
+  "events": [
+    {
+      "id": "evt-2026-08-13-cerf",
+      "at": "2026-08-13",
+      "kind": "anuncio",
+      "origin": "ONU · CERF",
+      "amount": "USD 5 millones asignados",
+      "territory": "—",
+      "note": "OCHA reporta que la implementación avanzaba para intervenciones vitales en zonas rurales de difícil acceso; no publica destino municipal ni entrega final.",
+      "source": {
+        "name": "OCHA, 13 ago 2026",
+        "url": "https://www.unocha.org/publications/report/colombia/colombia-flash-update-005-update-impact-earthquake-colombia-august-13-2026"
+      }
+    },
+    {
+      "id": "evt-2026-08-15-chile-pereira",
+      "at": "2026-08-15",
+      "kind": "especie",
+      "origin": "Chile",
+      "amount": "320 kits de alimentación · 200 de aseo · 346 de higiene · 27.000 unidades de medicamentos",
+      "territory": "Pereira",
+      "note": "La fuente verifica la llegada del avión y este cargamento a Pereira; no acredita la entrega posterior a hogares.",
+      "source": {
+        "name": "DW / EFE, 15 ago 2026",
+        "url": "https://www.dw.com/es/ayuda-comienza-a-llegar-a-zonas-alejadas-en-colombia/a-78386025"
+      }
+    },
+    {
+      "id": "evt-2026-08-17-uk",
+      "at": "2026-08-17",
+      "kind": "anuncio",
+      "origin": "Reino Unido",
+      "amount": "GBP 680.000 (≈ COP 3.000 millones)",
+      "territory": "—",
+      "note": "Canal anunciado: Cruz Roja Colombiana y equipo humanitario de la ONU. La fuente no identifica municipio ni acredita desembolso o entrega municipal.",
+      "source": {
+        "name": "Infobae, 17 ago 2026",
+        "url": "https://www.infobae.com/colombia/2026/08/17/reino-unido-y-japon-se-unen-al-apoyo-humanitario-en-colombia-tras-el-terremoto/"
+      }
+    },
+    {
+      "id": "evt-2026-08-17-recibido-pais",
+      "at": "2026-08-17",
+      "kind": "especie",
+      "origin": "El Salvador · México · Chile · Perú",
+      "amount": "222,5 toneladas recibidas en Colombia",
+      "territory": "—",
+      "note": "100 + 58,5 + 50 + 14 toneladas. Recibido en el país no equivale a entregado en un municipio; el balance no desglosa el destino municipal.",
+      "source": {
+        "name": "El Tiempo / Cancillería, 17 ago 2026",
+        "url": "https://www.eltiempo.com/politica/gobierno/colombia-ha-recibido-mas-de-220-toneladas-de-ayuda-humanitaria-y-144-integrantes-de-equipos-internacionales-tras-el-terremoto-informo-la-cancilleria-3578924"
+      }
+    },
+    {
+      "id": "evt-2026-08-17-nuevos-aportes",
+      "at": "2026-08-17",
+      "kind": "anuncio",
+      "origin": "Santa Sede · Suiza · Corea · Singapur",
+      "amount": "EUR 100.000 · CHF 1 millón · USD 1,02 millones · USD 50.000",
+      "territory": "—",
+      "note": "Canales anunciados: Cáritas, PMA/NRC/Pastoral Social, asistencia coreana/KOICA y Cruz Roja. Ningún destino municipal aparece en la fuente.",
+      "source": {
+        "name": "El Tiempo / Cancillería, 17 ago 2026",
+        "url": "https://www.eltiempo.com/politica/gobierno/colombia-ha-recibido-mas-de-220-toneladas-de-ayuda-humanitaria-y-144-integrantes-de-equipos-internacionales-tras-el-terremoto-informo-la-cancilleria-3578924"
+      }
+    }
+  ]
+}

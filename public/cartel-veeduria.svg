@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img">
+  <rect width="1200" height="630" fill="#121212"/>
+  <rect x="0" y="0" width="12" height="630" fill="#b42318"/>
+  <text x="72" y="88" fill="#f4f1ea" font-family="Menlo, Courier, monospace" font-size="22" letter-spacing="4">SISMO 10 AGO 2026 · COLOMBIA</text>
+  <text x="72" y="250" fill="#f4f1ea" font-family="Georgia, Times, serif" font-size="92">Veedur&#237;a</text>
+  <text x="72" y="340" fill="#f4f1ea" font-family="Georgia, Times, serif" font-size="48">Seguimiento a los recursos</text>
+  <line x1="72" y1="390" x2="420" y2="390" stroke="#b42318" stroke-width="3"/>
+  <text x="72" y="460" fill="#f4f1ea" font-family="Menlo, Courier, monospace" font-size="26">Lo anunciado no es lo ejecutado.</text>
+  <text x="72" y="560" fill="#c8c4bb" font-family="Menlo, Courier, monospace" font-size="22">Hospitales · agua · alimentos · refugio</text>
+</svg>
