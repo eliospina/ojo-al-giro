@@ -6,12 +6,12 @@
     <title>Veeduría de la ayuda</title>
     <meta
       name="description"
-      content="Ofertas no son giro. Registro público, con fuente, de la ayuda anunciada a Colombia tras el sismo."
+      content="Hay gente esperando hospital, agua, comida y techo. Registro de la ayuda anunciada tras el sismo. Oferta no es giro."
     />
     <meta property="og:title" content="Veeduría de la ayuda" />
     <meta
       property="og:description"
-      content="Ofertas no son giro. Registro público con fuente."
+      content="Hay gente esperando. Oferta no es giro. Registro con fuente."
     />
     <meta property="og:locale" content="es_CO" />
     <meta property="og:locale:alternate" content="en_US" />
@@ -25,7 +25,7 @@
     <meta name="twitter:title" content="Veeduría de la ayuda" />
     <meta
       name="twitter:description"
-      content="Ofertas no son giro. Registro público con fuente."
+      content="Hay gente esperando. Oferta no es giro. Registro con fuente."
     />
     <meta
       name="twitter:image"
@@ -53,17 +53,17 @@
       </div>
       <h1>
         <span data-lang="es">Veeduría de la ayuda</span>
-        <span data-lang="en">Aid oversight</span>
+        <span data-lang="en">Watching the aid</span>
       </h1>
       <p class="lead">
-        <span data-lang="es">Ayuda anunciada a Colombia tras el sismo. Con fuente. Lo anunciado no es lo ejecutado.</span>
-        <span data-lang="en">Aid announced to Colombia after the earthquake. Sourced. Announced is not executed.</span>
+        <span data-lang="es">Hay gente esperando hospital, agua, comida y techo. Aquí se sigue la ayuda que se anunció. Con fuente. Lo anunciado no es lo que ya llegó.</span>
+        <span data-lang="en">People are waiting for hospitals, water, food and shelter. This page follows the aid that was announced. With a source. Announced is not what has arrived.</span>
       </p>
       <p class="total">
         <span class="total-n" id="total-n">—</span>
         <span class="total-cap">
-          <span data-lang="es">millones USD · ofertas reportadas por el Gobierno · no es un giro · no se suma con lo de abajo</span>
-          <span data-lang="en">million USD · offers reported by the Government · not a transfer · not added to the lines below</span>
+          <span data-lang="es">millones USD en ofertas. No es dinero ya en los pueblos.</span>
+          <span data-lang="en">million USD in offers. It is not money already in the towns.</span>
         </span>
       </p>
       <ul class="sums" id="sums"></ul>
@@ -72,8 +72,8 @@
     <main>
       <ul class="keys">
         <li>
-          <span data-lang="es">Anunciado no es ejecutado.</span>
-          <span data-lang="en">Announced is not executed.</span>
+          <span data-lang="es">Anunciado no es lo que llegó.</span>
+          <span data-lang="en">Announced is not what arrived.</span>
         </li>
         <li>
           <span data-lang="es">Crédito no es donación.</span>
@@ -90,17 +90,18 @@
       </ul>
 
       <p class="stat" id="hueco-linea"></p>
-      <p id="pulso" class="pulso" aria-live="polite">
-        <span class="pulso-dot" aria-hidden="true"></span>
-        <span id="pulso-status"></span>
+      <p class="plain">
+        <span data-lang="es">Se sigue porque hay gente esperando. Sin fuente, no entra cifra.</span>
+        <span data-lang="en">This is followed because people are waiting. No source, no figure.</span>
       </p>
+      <p id="pulso-status" class="pulso-clock" hidden></p>
       <p id="pulso-clock" class="pulso-clock"></p>
       <ul id="pulso-events" class="pulso-events"></ul>
 
       <section class="chat" id="chat">
         <h2>
-          <span data-lang="es">Preguntar</span>
-          <span data-lang="en">Ask</span>
+          <span data-lang="es">¿Llegó?</span>
+          <span data-lang="en">Did it arrive?</span>
         </h2>
         <div id="chat-log" class="chat-log"></div>
         <form id="chat-form">
@@ -129,12 +130,12 @@
                 <span data-lang="en">Route</span>
               </th>
               <th scope="col">
-                <span data-lang="es">Territorio</span>
-                <span data-lang="en">Territory</span>
+                <span data-lang="es">Municipio</span>
+                <span data-lang="en">Municipality</span>
               </th>
               <th scope="col">
-                <span data-lang="es">Ejecutado</span>
-                <span data-lang="en">Executed</span>
+                <span data-lang="es">¿Llegó?</span>
+                <span data-lang="en">Arrived?</span>
               </th>
               <th scope="col">
                 <span data-lang="es">Fuente</span>
@@ -146,15 +147,15 @@
         </table>
       </div>
       <p class="table-legend">
-        <span data-lang="es">— = la fuente no nombra ese dato</span>
-        <span data-lang="en">— = the source does not name that fact. The table remains in Spanish.</span>
+        <span data-lang="es">— = la fuente aún no dice ese dato</span>
+        <span data-lang="en">— = the source does not yet name that fact. The table remains in Spanish.</span>
       </p>
 
       <p class="tweet-line">
-        <span id="share-copy-es" data-lang="es">Los 1.300 millones USD son ofertas, no un giro. Casi ninguna línea nombra municipio de entrega.
+        <span id="share-copy-es" data-lang="es">Hay gente esperando hospital, agua, comida y techo. Los 1.300 millones USD son ofertas, no un giro.
 https://veeduria-ayuda.vercel.app/
 @infopresidencia @UNGRD @CancilleriaCol @CGR_Colombia</span>
-        <span id="share-copy-en" data-lang="en">The USD 1.3 billion are offers, not a transfer. Almost no row names a municipality of delivery.
+        <span id="share-copy-en" data-lang="en">People are waiting for hospitals, water, food and shelter. The USD 1.3 billion are offers, not a transfer.
 https://veeduria-ayuda.vercel.app/?lang=en
 @infopresidencia @UNGRD @CancilleriaCol @CGR_Colombia</span>
         <button type="button" id="copy-btn">
@@ -166,12 +167,12 @@ https://veeduria-ayuda.vercel.app/?lang=en
 
       <form class="civic-form" id="form-ayuda">
         <p>
-          <span data-lang="es">Aportar fuente o testimonio</span>
-          <span data-lang="en">Submit a source or testimony</span>
+          <span data-lang="es">Si vive ahí o tiene una fuente</span>
+          <span data-lang="en">If you live there or have a source</span>
         </p>
         <p class="form-help">
-          <span data-lang="es">Copia un JSON. No se envía. Para publicarlo: pull request en GitHub.</span>
-          <span data-lang="en">Copies JSON. It is not sent. To publish it: a pull request on GitHub.</span>
+          <span data-lang="es">Se copia una nota para pegarla. Esta página no recauda ni envía sola.</span>
+          <span data-lang="en">This copies a note to paste. This page does not collect funds or send by itself.</span>
         </p>
         <label>
           <select name="kind" required>
@@ -190,7 +191,7 @@ https://veeduria-ayuda.vercel.app/?lang=en
           <input name="amount" placeholder="USD / COP / —" />
         </label>
         <label>
-          <input name="territory" placeholder="Territorio / Territory / —" />
+          <input name="territory" placeholder="Municipio / —" />
         </label>
         <label>
           <input name="url" type="url" placeholder="https://" />
@@ -199,8 +200,8 @@ https://veeduria-ayuda.vercel.app/?lang=en
           <textarea name="note" rows="2" placeholder="Nota / Note"></textarea>
         </label>
         <button type="submit">
-          <span data-lang="es">Copiar registro</span>
-          <span data-lang="en">Copy record</span>
+          <span data-lang="es">Copiar nota</span>
+          <span data-lang="en">Copy note</span>
         </button>
         <pre class="civic-out" id="ayuda-out" hidden></pre>
         <p class="copied" id="ayuda-status" role="status"></p>
@@ -211,8 +212,8 @@ https://veeduria-ayuda.vercel.app/?lang=en
       <p>
         <a href="https://github.com/eliospina/veeduria-ayuda">GitHub</a>
         ·
-        <span data-lang="es">No administra fondos. Sin fuente, —.</span>
-        <span data-lang="en">Does not administer funds. No source, —.</span>
+        <span data-lang="es">No administra fondos. No los pide. Informa, porque hay gente esperando. Sin fuente, —.</span>
+        <span data-lang="en">Does not administer funds. Does not ask for them. It reports, because people are waiting. No source, —.</span>
       </p>
     </footer>
     <script src="lang.js"></script>

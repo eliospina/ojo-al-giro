@@ -26,18 +26,14 @@ function cell(value, href) {
   return td;
 }
 
-const pulsoEl = document.getElementById("pulso");
 const pulsoStatusEl = document.getElementById("pulso-status");
 const pulsoClockEl = document.getElementById("pulso-clock");
 const pulsoEventsEl = document.getElementById("pulso-events");
 
-let lastCheckAt = null;
 let lastFlowsStamp = "";
 let lastFlowIds = new Set();
 let ledgerUpdatedLabel = "";
-let ledgerFlowCount = 0;
 let pulsoTimer = null;
-let clockTimer = null;
 
 function isEn() {
   return document.documentElement.lang === "en";
@@ -66,17 +62,6 @@ function eventWhen(at) {
     }).format(new Date(`${at}T12:00:00-05:00`));
   }
   return formatBogota(new Date(at));
-}
-
-function agoLabel(from) {
-  if (!from) return "";
-  const sec = Math.max(0, Math.round((Date.now() - from.getTime()) / 1000));
-  if (isEn()) {
-    if (sec < 60) return `${sec} s ago`;
-    return `${Math.floor(sec / 60)} min ago`;
-  }
-  if (sec < 60) return `hace ${sec} s`;
-  return `hace ${Math.floor(sec / 60)} min`;
 }
 
 function kindLabel(kind) {
@@ -165,22 +150,13 @@ function renderFlowRow(flow, isNew) {
   return tr;
 }
 
-function namesDeliveryPlace(flow) {
-  const t = (flow.territory || "").trim();
-  if (!t || t === "—") return false;
-  if (/punto de ingreso|punto de entrada/i.test(t)) return false;
-  return true;
-}
-
 function paintHueco(flows) {
   const line = document.getElementById("hueco-linea");
   if (!line || !Array.isArray(flows)) return;
   const n = flows.length;
-  const named = flows.filter(namesDeliveryPlace);
-  const noMuni = n - named.length;
   line.textContent = isEn()
-    ? `Of ${n} sourced rows, ${noMuni} name no municipality of delivery. None certify delivery to households. Pereira: aircraft arrival verified.`
-    : `De ${n} líneas con fuente, ${noMuni} no nombran municipio de entrega. Ninguna certifica entrega a hogares. Pereira: llegada del avión verificada.`;
+    ? `Almost none of the ${n} sourced figures name the municipality where people are waiting. None certify delivery to homes. Pereira: an aircraft arrival is verified.`
+    : `Casi ninguna de las ${n} cifras con fuente nombra el municipio donde la gente espera. Ninguna certifica entrega a las casas. Pereira: sí se verificó la llegada de un avión.`;
 }
 
 async function loadFlows(options = {}) {
@@ -191,7 +167,6 @@ async function loadFlows(options = {}) {
   paintHueco(data.flows || []);
   paintTotals(data.flows || []);
   window.LEDGER_FLOWS = data.flows || [];
-  ledgerFlowCount = (data.flows || []).length;
   const ids = new Set((data.flows || []).map((flow) => flow.id));
   const stamp = JSON.stringify(data.flows);
   if (!options.force && stamp === lastFlowsStamp && lastFlowIds.size) return data;
@@ -212,41 +187,30 @@ async function loadPulso() {
 }
 
 function setPulsoStatus(text, live) {
-  if (pulsoStatusEl) pulsoStatusEl.textContent = text;
-  pulsoEl?.classList.toggle("is-live", live);
-  pulsoEl?.classList.toggle("is-stale", !live);
+  if (!pulsoStatusEl) return;
+  pulsoStatusEl.hidden = !text;
+  pulsoStatusEl.textContent = text || "";
 }
 
 function tickClock() {
-  if (!pulsoClockEl || !lastCheckAt) return;
+  if (!pulsoClockEl) return;
   const when = /^\d{4}-\d{2}-\d{2}$/.test(ledgerUpdatedLabel)
     ? eventWhen(ledgerUpdatedLabel)
     : ledgerUpdatedLabel;
-  const ledger = when
+  pulsoClockEl.textContent = when
     ? isEn()
       ? `Figures with a source as of ${when}.`
       : `Cifras con fuente al ${when}.`
     : "";
-  const novedad = isEn()
-    ? `${ledgerFlowCount} rows in the ledger.`
-    : `${ledgerFlowCount} líneas en el tablero.`;
-  const read = isEn() ? "Read" : "Leído";
-  pulsoClockEl.textContent = `${read} ${agoLabel(lastCheckAt)} (${formatBogota(lastCheckAt)}). ${ledger} ${novedad}`.trim();
 }
 
 async function verifyAid() {
   try {
     const [pulso, ledger] = await Promise.all([loadPulso(), loadFlows()]);
-    lastCheckAt = new Date();
     const events = pulso.events || [];
     ledgerUpdatedLabel = pulso.ledgerUpdated || ledger?.updated || "";
     renderPulsoEvents(events);
-    setPulsoStatus(
-      isEn()
-        ? "Aid to Colombia. Record reread every 60 s. No source, no figure."
-        : "Ayuda a Colombia. Lectura del registro cada 60 s. Sin fuente, no entra cifra.",
-      true,
-    );
+    setPulsoStatus("", true);
     tickClock();
   } catch {
     setPulsoStatus(
@@ -255,18 +219,13 @@ async function verifyAid() {
         : "No se pudo leer el registro. No se muestra ninguna cifra sin fuente.",
       false,
     );
-    if (pulsoClockEl && lastCheckAt) {
-      pulsoClockEl.textContent = `Última lectura válida ${agoLabel(lastCheckAt)}.`;
-    }
   }
 }
 
 function startPulso() {
   verifyAid();
   if (pulsoTimer) clearInterval(pulsoTimer);
-  if (clockTimer) clearInterval(clockTimer);
   pulsoTimer = setInterval(verifyAid, 60 * 1000);
-  clockTimer = setInterval(tickClock, 1000);
   document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "visible") verifyAid();
   });
@@ -290,7 +249,7 @@ if (ayudaForm) {
     if (needsUrl && !url) {
       ayudaStatus.textContent = isEn()
         ? "Without a URL, no figure is entered. Testimony may go without a URL; an announcement may not."
-        : "Sin URL no entra cifra. El testigo puede ir sin URL; el anuncio no.";
+        : "Sin URL no entra cifra. Un testimonio puede ir sin URL; un anuncio, no.";
       return;
     }
     const day = new Date().toISOString().slice(0, 10);
@@ -312,12 +271,12 @@ if (ayudaForm) {
     try {
       await navigator.clipboard.writeText(text);
       ayudaStatus.textContent = isEn()
-        ? "Record copied. It is proposed in data/pulso.json. This record does not imply or certify a transfer."
-        : "Registro copiado. Se propone en data/pulso.json. Este registro no implica ni certifica un giro.";
+        ? "Note copied. It does not certify that aid arrived."
+        : "Nota copiada. No certifica que la ayuda haya llegado.";
     } catch {
       ayudaStatus.textContent = isEn()
-        ? "Copy the record below."
-        : "Copia el registro de abajo.";
+        ? "Copy the note below."
+        : "Copia la nota de abajo.";
     }
   });
 }

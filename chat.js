@@ -43,8 +43,8 @@ function scoreFlow(flow, q, words) {
 function chatReply(question) {
   const q = fold(question).trim();
   const flows = window.LEDGER_FLOWS || [];
-  if (!q) return isEn() ? "Ask a country, a town or the total." : "Pregunte un país, un municipio o el total.";
-  if (!flows.length) return isEn() ? "The ledger is not loaded yet." : "El registro aún no está leído.";
+  if (!q) return isEn() ? "Ask for a country or a town." : "Pregunte por un país o por un municipio.";
+  if (!flows.length) return isEn() ? "The record is not loaded yet." : "Aún no se ha podido leer.";
 
   const words = q.split(/\s+/).filter((w) => w.length > 2 && !STOP_WORD.test(w));
   const scored = flows
@@ -58,13 +58,13 @@ function chatReply(question) {
     const n = document.getElementById("total-n")?.textContent || "—";
     const s = sumsText();
     return isEn()
-      ? `${n} million USD in reported offers. Not a transfer.\n${s}`
-      : `${n} millones USD en ofertas reportadas. No es un giro.\n${s}`;
+      ? `${n} million USD in offers. That is not money already in the towns.\n${s}`
+      : `${n} millones USD en ofertas. No es dinero ya en los pueblos.\n${s}`;
   }
 
   const pick = (specific.length ? specific : scored).slice(0, 3);
   if (!pick.length) {
-    return isEn() ? "Not in this ledger. —" : "No está en este registro. —";
+    return isEn() ? "It is not in this record. —" : "Aquí no aparece. —";
   }
 
   return pick
@@ -88,8 +88,8 @@ function addChat(role, text) {
 
 function welcomeChat() {
   return isEn()
-    ? "Ask Chile, Pereira or the total. I answer only from this ledger."
-    : "Pregunte Chile, Pereira o el total. Respondo solo con este registro.";
+    ? "Ask about Chile, Pereira or the total. I only answer with what is written here."
+    : "Pregunte por Chile, Pereira o el total. Solo respondo con lo que está escrito aquí.";
 }
 
 function setChatPlaceholder() {
