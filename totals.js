@@ -115,7 +115,7 @@ function paintTotals(flows) {
 
   const parts = isEn()
     ? [
-        "Line items, not added to the 1,300:",
+        "Apart from that offer bag:",
         `ANDI announced ≈ ${formatMoney("USD", usdAndi)} (not a transfer)`,
         `International donations announced ${formatMoney("USD", usdGift)}`,
         `Credit disbursed to the Government ${formatMoney("USD", usdCreditOut)}`,
@@ -124,10 +124,10 @@ function paintTotals(flows) {
           .filter(Boolean)
           .join(" · "),
         cnyGift ? `${formatMoney("CNY", cnyGift)} (China, not converted)` : null,
-        tonLabel ? `${tonLabel} t received in the country · municipal delivery: —` : null,
+        tonLabel ? `${tonLabel} t received in the country · to the towns: —` : null,
       ]
     : [
-        "Por líneas, sin sumar al 1.300:",
+        "Aparte de esa bolsa de ofertas:",
         `ANDI anunciado ≈ ${formatMoney("USD", usdAndi)} (no es giro)`,
         `Donaciones internacionales anunciadas ${formatMoney("USD", usdGift)}`,
         `Crédito desembolsado al Gobierno ${formatMoney("USD", usdCreditOut)}`,
@@ -136,7 +136,7 @@ function paintTotals(flows) {
           .filter(Boolean)
           .join(" · "),
         cnyGift ? `${formatMoney("CNY", cnyGift)} (China, sin convertir)` : null,
-        tonLabel ? `${tonLabel} t recibidas en el país · entrega municipal: —` : null,
+        tonLabel ? `${tonLabel} t recibidas en el país · a los pueblos: —` : null,
       ];
 
   if (!sumsEl) return;
