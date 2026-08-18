@@ -1,4 +1,18 @@
 {
   "framework": null,
-  "outputDirectory": "."
+  "outputDirectory": ".",
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "veeduria-ayuda.vercel.app" }],
+      "destination": "https://ojo-al-giro.vercel.app/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "la-espera.vercel.app" }],
+      "destination": "https://ojo-al-giro.vercel.app/:path*",
+      "permanent": true
+    }
+  ]
 }

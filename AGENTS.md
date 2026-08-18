@@ -36,7 +36,7 @@ Antes de abrir PR: `node scripts/validar-flujos.mjs` y `node --test scripts/tota
 2. Si no hay cifra nueva con URL, **no hacer commit**. Cerrar.
 3. Si hay, añadir una fila al registro de flujos, con origen, monto, ruta, municipio o —, ¿llegó? o —, fuente con URL.
 4. Correr el validador.
-5. Abrir un **pull request**. No empujar a main. No desplegar a producción. Elizabeth revisa cuando pueda.
+5. Abrir un **pull request**. No empujar a main. No desplegar a producción salvo orden de Elizabeth. Elizabeth revisa cuando pueda.
 6. Un párrafo en el PR: qué se añadió y el enlace. Nada más.
 
 Si duda, no publique.
