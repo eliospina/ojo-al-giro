@@ -3,25 +3,21 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Veeduría de la ayuda — Aid oversight</title>
+    <title>Veeduría de la ayuda</title>
     <meta
       name="description"
-      content="Registro público, con fuente, de la ayuda anunciada a Colombia tras el sismo del 10 de agosto de 2026. Lo anunciado no es lo ejecutado. Para Presidencia, organismos internacionales y ciudadanía."
+      content="Ayuda anunciada a Colombia tras el sismo. Con fuente. Lo anunciado no es lo ejecutado."
     />
     <meta property="og:title" content="Veeduría de la ayuda" />
     <meta
       property="og:description"
-      content="Registro público con fuente. Lo anunciado no es lo ejecutado. Presidencia, organismos internacionales y ciudadanía contrastan el mismo tablero."
+      content="Registro público con fuente. Lo anunciado no es lo ejecutado."
     />
     <meta property="og:locale" content="es_CO" />
     <meta property="og:locale:alternate" content="en_US" />
     <meta
       property="og:image"
       content="https://veeduria-ayuda.vercel.app/public/cartel-veeduria.png"
-    />
-    <meta
-      property="og:image:alt"
-      content="Cartel de Veeduría de la ayuda: seguimiento a los recursos del sismo; lo anunciado no es lo ejecutado."
     />
     <meta property="og:url" content="https://veeduria-ayuda.vercel.app/" />
     <meta property="og:type" content="website" />
@@ -35,13 +31,7 @@
       name="twitter:image"
       content="https://veeduria-ayuda.vercel.app/public/cartel-veeduria.png"
     />
-    <meta
-      name="twitter:image:alt"
-      content="Cartel de Veeduría de la ayuda: seguimiento a los recursos del sismo; lo anunciado no es lo ejecutado."
-    />
     <link rel="canonical" href="https://veeduria-ayuda.vercel.app/" />
-    <link rel="alternate" hreflang="es" href="https://veeduria-ayuda.vercel.app/" />
-    <link rel="alternate" hreflang="en" href="https://veeduria-ayuda.vercel.app/?lang=en" />
     <link rel="stylesheet" href="styles.css" />
     <script>
       if (/[?&]lang=en(?:&|$)/.test(location.search)) {
@@ -50,489 +40,147 @@
     </script>
   </head>
   <body>
-    <a class="skip" href="#tablero">
-      <span data-lang="es">Saltar al tablero</span>
-      <span data-lang="en">Skip to the ledger</span>
-    </a>
     <header class="mast">
       <div class="mast-top">
-        <p class="kicker">
-          <span data-lang="es">Colombia · 10 de agosto de 2026</span>
-          <span data-lang="en">Colombia · 10 August 2026</span>
-        </p>
-        <p class="lang-switch" role="group" aria-label="Language">
+        <p class="kicker">Colombia · 10.08.2026</p>
+        <p class="lang-switch" role="group" aria-label="Idioma">
           <button type="button" data-lang-set="es" aria-pressed="true">ES</button>
           <button type="button" data-lang-set="en" aria-pressed="false">EN</button>
         </p>
       </div>
       <h1>
         <span data-lang="es">Veeduría de la ayuda</span>
-        <span data-lang="en">Citizen oversight of the aid</span>
+        <span data-lang="en">Aid oversight</span>
       </h1>
       <p class="lead">
         <span data-lang="es"
-          >Registro público, con fuente, de la ayuda anunciada a Colombia tras
-          el sismo. Se publica para que la Presidencia de la República, los
-          organismos internacionales y la ciudadanía contrasten el mismo
-          tablero. Lo anunciado no es lo ejecutado.</span
+          >Ayuda anunciada a Colombia tras el sismo. Con fuente. Lo anunciado
+          no es lo ejecutado.</span
         >
         <span data-lang="en"
-          >A public, sourced record of aid announced to Colombia after the
-          earthquake. Published so the Presidency, international agencies and
-          the public can check the same ledger. Announced is not
-          disbursed.</span
+          >Aid announced to Colombia after the earthquake. Sourced. Announced
+          is not disbursed.</span
         >
       </p>
     </header>
 
     <main>
-      <section id="para-que">
-        <h2>
-          <span data-lang="es">Qué es</span>
-          <span data-lang="en">What this is</span>
-        </h2>
+      <ul class="keys">
+        <li>
+          <span data-lang="es">Lo anunciado no es lo ejecutado.</span>
+          <span data-lang="en">Announced is not executed.</span>
+        </li>
+        <li>
+          <span data-lang="es">Crédito no es donación.</span>
+          <span data-lang="en">Credit is not a donation.</span>
+        </li>
+        <li>
+          <span data-lang="es">Oferta no es giro.</span>
+          <span data-lang="en">An offer is not a transfer.</span>
+        </li>
+        <li>
+          <span data-lang="es">En especie no es caja.</span>
+          <span data-lang="en">In-kind is not cash.</span>
+        </li>
+      </ul>
+
+      <p class="stat" id="hueco-linea"></p>
+      <p id="pulso" class="pulso" aria-live="polite">
+        <span class="pulso-dot" aria-hidden="true"></span>
+        <span id="pulso-status"></span>
+      </p>
+      <p id="pulso-clock" class="pulso-clock"></p>
+
+      <div class="table-wrap" id="tablero">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">
+                <span data-lang="es">Origen</span>
+                <span data-lang="en">Origin</span>
+              </th>
+              <th scope="col">
+                <span data-lang="es">Monto</span>
+                <span data-lang="en">Amount</span>
+              </th>
+              <th scope="col">
+                <span data-lang="es">Ruta</span>
+                <span data-lang="en">Route</span>
+              </th>
+              <th scope="col">
+                <span data-lang="es">Territorio</span>
+                <span data-lang="en">Territory</span>
+              </th>
+              <th scope="col">
+                <span data-lang="es">Ejecutado</span>
+                <span data-lang="en">Executed</span>
+              </th>
+              <th scope="col">
+                <span data-lang="es">Fuente</span>
+                <span data-lang="en">Source</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody id="flujos-body"></tbody>
+        </table>
+      </div>
+      <p class="table-legend">— = sin fuente / no source</p>
+
+      <p class="tweet-line">
+        <span id="share-copy-es" data-lang="es">Veeduría de la ayuda tras el sismo. Lo anunciado no es lo ejecutado. https://veeduria-ayuda.vercel.app/ @infopresidencia @UNGRD @CancilleriaCol @CGR_Colombia</span>
+        <span id="share-copy-en" data-lang="en">Aid oversight after the earthquake. Announced is not disbursed. https://veeduria-ayuda.vercel.app/?lang=en @infopresidencia @UNGRD @CancilleriaCol @CGR_Colombia</span>
+        <button type="button" id="copy-btn">
+          <span data-lang="es">Copiar para X</span>
+          <span data-lang="en">Copy for X</span>
+        </button>
+        <span class="status" id="copy-status" role="status"></span>
+      </p>
+
+      <form class="civic-form" id="form-ayuda">
         <p>
-          <span data-lang="es"
-            >La emergencia no es solo reconstrucción. Hay hospitales, agua,
-            alimentos, medicamentos, refugio y escuelas. Este tablero sigue la
-            ayuda anunciada a Colombia tras el sismo del 10 de agosto de
-            2026.</span
-          >
-          <span data-lang="en"
-            >The emergency is not reconstruction alone. It includes hospitals,
-            water, food, medicines, shelter and schools. This ledger follows
-            aid announced to Colombia after the 10 August 2026
-            earthquake.</span
-          >
+          <span data-lang="es">Aportar fuente o testimonio</span>
+          <span data-lang="en">Submit a source or testimony</span>
         </p>
-        <p class="plain">
-          <span data-lang="es"
-            >No recibe fondos, no los administra y no los solicita. Informa.
-            Quien lea verifica la fuente original.</span
-          >
-          <span data-lang="en"
-            >It does not receive, administer or solicit funds. It reports.
-            Readers must verify the original source.</span
-          >
-        </p>
-        <ul class="needs">
-          <li>
-            <span data-lang="es">Salud y hospitales</span>
-            <span data-lang="en">Health and hospitals</span>
-          </li>
-          <li>
-            <span data-lang="es">Agua</span>
-            <span data-lang="en">Water</span>
-          </li>
-          <li>
-            <span data-lang="es">Alimentos</span>
-            <span data-lang="en">Food</span>
-          </li>
-          <li>
-            <span data-lang="es">Medicamentos</span>
-            <span data-lang="en">Medicines</span>
-          </li>
-          <li>
-            <span data-lang="es">Refugio</span>
-            <span data-lang="en">Shelter</span>
-          </li>
-          <li>
-            <span data-lang="es">Escuela</span>
-            <span data-lang="en">Schools</span>
-          </li>
-          <li>
-            <span data-lang="es">Reconstrucción</span>
-            <span data-lang="en">Reconstruction</span>
-          </li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>
-          <span data-lang="es">Cómo se lee</span>
-          <span data-lang="en">How to read it</span>
-        </h2>
-        <ul class="keys">
-          <li>
-            <span data-lang="es">Lo anunciado no es lo ejecutado.</span>
-            <span data-lang="en">Announced is not executed.</span>
-          </li>
-          <li>
-            <span data-lang="es">Crédito no es donación.</span>
-            <span data-lang="en">Credit is not a donation.</span>
-          </li>
-          <li>
-            <span data-lang="es">Oferta no es giro.</span>
-            <span data-lang="en">An offer is not a transfer.</span>
-          </li>
-          <li>
-            <span data-lang="es">En especie no es caja.</span>
-            <span data-lang="en">In-kind aid is not cash.</span>
-          </li>
-        </ul>
-        <p class="plain">
-          <span data-lang="es"
-            >Falta verificar el último tramo: qué parte de lo anunciado se
-            desembolsó y qué parte de lo desembolsado se entregó en cada
-            municipio. Si la fuente no identifica un tramo, la celda va en
-            —.</span
-          >
-          <span data-lang="en"
-            >The last mile is unverified: how much of what was announced was
-            disbursed, and how much of what was disbursed was delivered in each
-            municipality. If a source does not identify a stage, the cell is
-            —.</span
-          >
-        </p>
-      </section>
-
-      <section id="en-comun">
-        <h2>
-          <span data-lang="es">A quién se dirige</span>
-          <span data-lang="en">Who it is for</span>
-        </h2>
-        <div class="split">
-          <article>
-            <h3>
-              <span data-lang="es">Presidencia y organismos</span>
-              <span data-lang="en">Presidency and agencies</span>
-            </h3>
-            <p>
-              <span data-lang="es"
-                >Un registro común, con URL pública. Las instituciones pueden
-                corregirlo o completarlo con una fuente. No es un comunicado
-                oficial.</span
-              >
-              <span data-lang="en"
-                >A shared record, with a public URL. Institutions may correct
-                or complete it with a source. This is not an official
-                communiqué.</span
-              >
-            </p>
-            <ul class="orgs">
-              <li>
-                Presidencia
-                <span class="handle">@infopresidencia</span>
-                ·
-                <a href="https://www.presidencia.gov.co/" target="_blank" rel="noreferrer">sitio</a>
-              </li>
-              <li>
-                UNGRD
-                <span class="handle">@UNGRD</span>
-                ·
-                <a href="https://portal.gestiondelriesgo.gov.co/" target="_blank" rel="noreferrer">sitio</a>
-              </li>
-              <li>
-                Cancillería
-                <span class="handle">@CancilleriaCol</span>
-                ·
-                <a href="https://www.cancilleria.gov.co/" target="_blank" rel="noreferrer">sitio</a>
-              </li>
-              <li>
-                Contraloría
-                <span class="handle">@CGR_Colombia</span>
-                ·
-                <a href="https://www.contraloria.gov.co/" target="_blank" rel="noreferrer">sitio</a>
-              </li>
-              <li>
-                OCHA FTS
-                ·
-                <a href="https://fts.unocha.org/plans/1500/clusters" target="_blank" rel="noreferrer">FTS</a>
-              </li>
-            </ul>
-          </article>
-          <article>
-            <h3>
-              <span data-lang="es">Ciudadanía</span>
-              <span data-lang="en">The public</span>
-            </h3>
-            <p>
-              <span data-lang="es"
-                >Quien habita un municipio puede aportar una fuente, dar
-                testimonio del territorio o disputar una cifra. Los rumores no
-                entran. No se vota sobre los recursos: se verifica.</span
-              >
-              <span data-lang="en"
-                >Anyone in an affected municipality may submit a source, give
-                testimony or dispute a figure. Rumour is not entered. Aid is
-                not put to a vote. It is verified.</span
-              >
-            </p>
-            <p class="plain">
-              <a href="#registro">
-                <span data-lang="es">Dejar un registro</span>
-                <span data-lang="en">Submit a record</span>
-              </a>
-              ·
-              <a href="#tablero">
-                <span data-lang="es">Leer el tablero</span>
-                <span data-lang="en">Read the ledger</span>
-              </a>
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section id="x">
-        <h2>
-          <span data-lang="es">Para X</span>
-          <span data-lang="en">For X</span>
-        </h2>
-        <p class="plain">
-          <span data-lang="es"
-            >Copia y etiqueta. Este tablero no acusa y no certifica
-            desembolsos.</span
-          >
-          <span data-lang="en"
-            >Copy and tag. This ledger does not accuse and does not certify
-            disbursements.</span
-          >
-        </p>
-        <div class="tweet">
-          <pre id="share-copy-es" data-lang="es">Veeduría ciudadana de la ayuda tras el sismo. Registro público con fuente. Lo anunciado no es lo ejecutado.
-
-https://veeduria-ayuda.vercel.app/
-
-@infopresidencia @UNGRD @CancilleriaCol @CGR_Colombia</pre>
-          <pre id="share-copy-en" data-lang="en">Citizen oversight of aid after the earthquake. Public sourced record. Announced is not disbursed.
-
-https://veeduria-ayuda.vercel.app/?lang=en
-
-@infopresidencia @UNGRD @CancilleriaCol @CGR_Colombia</pre>
-          <div class="actions">
-            <button type="button" id="copy-btn">
-              <span data-lang="es">Copiar</span>
-              <span data-lang="en">Copy</span>
-            </button>
-            <a
-              class="btn ghost"
-              data-lang="es"
-              href="https://x.com/intent/tweet?text=Veedur%C3%ADa%20ciudadana%20de%20la%20ayuda%20tras%20el%20sismo.%20Registro%20p%C3%BAblico%20con%20fuente.%20Lo%20anunciado%20no%20es%20lo%20ejecutado.%0A%0Ahttps%3A%2F%2Fveeduria-ayuda.vercel.app%2F%0A%0A%40infopresidencia%20%40UNGRD%20%40CancilleriaCol%20%40CGR_Colombia"
-              target="_blank"
-              rel="noreferrer"
-              >Abrir en X</a
-            >
-            <a
-              class="btn ghost"
-              data-lang="en"
-              href="https://x.com/intent/tweet?text=Citizen%20oversight%20of%20aid%20after%20the%20earthquake.%20Public%20sourced%20record.%20Announced%20is%20not%20disbursed.%0A%0Ahttps%3A%2F%2Fveeduria-ayuda.vercel.app%2F%3Flang%3Den%0A%0A%40infopresidencia%20%40UNGRD%20%40CancilleriaCol%20%40CGR_Colombia"
-              target="_blank"
-              rel="noreferrer"
-              >Open in X</a
-            >
-          </div>
-          <p class="status" id="copy-status" role="status"></p>
-        </div>
-      </section>
-
-      <section id="tablero">
-        <h2>
-          <span data-lang="es">El tablero</span>
-          <span data-lang="en">The ledger</span>
-        </h2>
-        <p class="wall">
-          <span data-lang="es"
-            >Lectura 18 ago 2026. Prensa y comunicados con URL. Destino
-            municipal concreto verificado en la fuente: cargamento chileno a
-            Pereira. El resto del tramo a hogares, en —.</span
-          >
-          <span data-lang="en"
-            >As of 18 Aug 2026. Press and communiqués with URLs. Municipality
-            of arrival verified in the source: Chilean cargo to Pereira. Delivery
-            to households for the rest: —.</span
-          >
-        </p>
-        <p class="stat" id="hueco-linea">
-          <span data-lang="es">Leyendo el registro…</span>
-          <span data-lang="en">Reading the record…</span>
-        </p>
-        <p class="path">
-          <span data-lang="es">Donante → Gobierno, fiducia u organismo → territorio afectado</span>
-          <span data-lang="en">Donor → Government, trust or agency → affected territory</span>
-        </p>
-        <p id="pulso" class="pulso" aria-live="polite">
-          <span class="pulso-dot" aria-hidden="true"></span>
-          <span id="pulso-status"></span>
-        </p>
-        <p id="pulso-clock" class="pulso-clock"></p>
-        <ol id="pulso-events" class="pulso-events"></ol>
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col">
-                  <span data-lang="es">Origen</span>
-                  <span data-lang="en">Origin</span>
-                </th>
-                <th scope="col">
-                  <span data-lang="es">Monto</span>
-                  <span data-lang="en">Amount</span>
-                </th>
-                <th scope="col">
-                  <span data-lang="es">Ruta</span>
-                  <span data-lang="en">Route</span>
-                </th>
-                <th scope="col">
-                  <span data-lang="es">Territorio</span>
-                  <span data-lang="en">Territory</span>
-                </th>
-                <th scope="col">
-                  <span data-lang="es">Ejecutado</span>
-                  <span data-lang="en">Executed</span>
-                </th>
-                <th scope="col">
-                  <span data-lang="es">Fuente</span>
-                  <span data-lang="en">Source</span>
-                </th>
-              </tr>
-            </thead>
-            <tbody id="flujos-body"></tbody>
-          </table>
-        </div>
-        <p class="table-legend">
-          <span data-lang="es">— = sin dato con fuente pública verificada</span>
-          <span data-lang="en">— = no figure with a verified public source</span>
-        </p>
-        <ul class="source-map">
-          <li>
-            <a href="https://fts.unocha.org/plans/1500/clusters" target="_blank" rel="noreferrer">OCHA FTS</a>
-            —
-            <span data-lang="es">financiación humanitaria por clúster, no por municipio.</span>
-            <span data-lang="en">humanitarian funding by cluster, not by municipality.</span>
-          </li>
-          <li>
-            <a href="https://www.unocha.org/publications/report/colombia/colombia-flash-update-005-update-impact-earthquake-colombia-august-13-2026" target="_blank" rel="noreferrer">OCHA Colombia</a>
-            —
-            <span data-lang="es">personas afectadas y brechas de atención; no es un registro de ejecución.</span>
-            <span data-lang="en">people affected and response gaps; not an execution ledger.</span>
-          </li>
-          <li>
-            <a href="https://portal.gestiondelriesgo.gov.co/paginas/contratacion-entidad.aspx" target="_blank" rel="noreferrer">UNGRD</a>
-            —
-            <span data-lang="es">página de procesos contractuales de la entidad.</span>
-            <span data-lang="en">the entity’s procurement page.</span>
-          </li>
-          <li>
-            <a href="https://www.infobae.com/colombia/2026/08/17/jorge-eliecer-laverde-nuevo-contralor-anuncia-unidad-especial-para-vigilar-recursos-de-reconstruccion-tras-el-terremoto/" target="_blank" rel="noreferrer">Contraloría</a>
-            —
-            <span data-lang="es">unidad de auditoría anunciada. Aún no es tablero ciudadano.</span>
-            <span data-lang="en">an audit unit has been announced. It is not yet a public ledger.</span>
-          </li>
-        </ul>
-        <p class="disclaimer">
-          <span data-lang="es"
-            >Esta es una veeduría cívica, no una ventanilla. No recibe fondos, no
-            los administra ni los solicita. Informa; no regula, acusa ni
-            certifica desembolsos. Toda cifra debe verificarse en la fuente
-            original.</span
-          >
-          <span data-lang="en"
-            >This is civic oversight, not a service window. It does not receive,
-            administer or solicit funds. It reports; it does not regulate, accuse
-            or certify disbursements. Every figure must be checked against the
-            original source.</span
-          >
-        </p>
-      </section>
-
-      <section id="registro">
-        <h2>
-          <span data-lang="es">Dejar un registro</span>
-          <span data-lang="en">Submit a record</span>
-        </h2>
-        <p>
-          <span data-lang="es"
-            >Quien habita un municipio puede aportar una fuente, dar testimonio o
-            disputar una cifra.</span
-          >
-          <span data-lang="en"
-            >Anyone living in a municipality may submit a source, give testimony
-            or dispute a figure.</span
-          >
-        </p>
-        <ol class="steps">
-          <li>
-            <span data-lang="es">Traer una fuente — URL pública, monto, territorio.</span>
-            <span data-lang="en">Submit a source — public URL, amount, territory.</span>
-          </li>
-          <li>
-            <span data-lang="es">Testigo — en mi municipio llegó o no llegó. Lugar, fecha.</span>
-            <span data-lang="en">Testimony — it arrived, or it did not. Place, date.</span>
-          </li>
-          <li>
-            <span data-lang="es">Disputar — esta cifra es crédito, especie u oferta, no caja.</span>
-            <span data-lang="en">Dispute — this figure is credit, in-kind or an offer, not cash.</span>
-          </li>
-        </ol>
-        <form class="civic-form" id="form-ayuda">
-          <label>
-            <span data-lang="es">Tipo de registro</span>
-            <span data-lang="en">Record type</span>
-            <select name="kind" required>
-              <option value="anuncio" data-es="Traer fuente · anuncio" data-en="Source · announcement">Traer fuente · anuncio</option>
-              <option value="desembolso" data-es="Traer fuente · desembolso" data-en="Source · disbursement">Traer fuente · desembolso</option>
-              <option value="testigo" data-es="Testigo de territorio" data-en="Territory testimony">Testigo de territorio</option>
-              <option value="disputa" data-es="Disputar una cifra" data-en="Dispute a figure">Disputar una cifra</option>
-              <option value="credito" data-es="Marcar como crédito" data-en="Mark as credit">Marcar como crédito</option>
-              <option value="especie" data-es="Marcar como especie" data-en="Mark as in-kind">Marcar como especie</option>
-            </select>
-          </label>
-          <label>
-            <span data-lang="es">Origen o lugar</span>
-            <span data-lang="en">Origin or place</span>
-            <input name="origin" required placeholder="—" />
-          </label>
-          <label>
-            <span data-lang="es">Monto (solo con URL pública; de lo contrario, —)</span>
-            <span data-lang="en">Amount (only with a public URL; otherwise —)</span>
-            <input name="amount" placeholder="USD … / COP … / —" />
-          </label>
-          <label>
-            <span data-lang="es">Territorio</span>
-            <span data-lang="en">Territory</span>
-            <input name="territory" required placeholder="—" />
-          </label>
-          <label>
-            <span data-lang="es">Fuente (URL)</span>
-            <span data-lang="en">Source (URL)</span>
-            <input name="url" type="url" placeholder="https://" />
-          </label>
-          <label>
-            <span data-lang="es">Nota</span>
-            <span data-lang="en">Note</span>
-            <textarea name="note" rows="3"></textarea>
-          </label>
-          <button type="submit" id="ayuda-btn">
-            <span data-lang="es">Copiar el registro</span>
-            <span data-lang="en">Copy the record</span>
-          </button>
-        </form>
+        <label>
+          <select name="kind" required>
+            <option value="anuncio" data-es="Anuncio" data-en="Announcement">Anuncio</option>
+            <option value="desembolso" data-es="Desembolso" data-en="Disbursement">Desembolso</option>
+            <option value="testigo" data-es="Testigo" data-en="Testimony">Testigo</option>
+            <option value="disputa" data-es="Disputa" data-en="Dispute">Disputa</option>
+            <option value="credito" data-es="Crédito" data-en="Credit">Crédito</option>
+            <option value="especie" data-es="Especie" data-en="In-kind">Especie</option>
+          </select>
+        </label>
+        <label>
+          <input name="origin" required placeholder="Origen / Origin" />
+        </label>
+        <label>
+          <input name="amount" placeholder="USD / COP / —" />
+        </label>
+        <label>
+          <input name="territory" required placeholder="Territorio / Territory" />
+        </label>
+        <label>
+          <input name="url" type="url" placeholder="https://" />
+        </label>
+        <label>
+          <textarea name="note" rows="2" placeholder="Nota / Note"></textarea>
+        </label>
+        <button type="submit">
+          <span data-lang="es">Copiar registro</span>
+          <span data-lang="en">Copy record</span>
+        </button>
         <pre class="civic-out" id="ayuda-out" hidden></pre>
         <p class="copied" id="ayuda-status" role="status"></p>
-        <p class="plain">
-          <span data-lang="es"
-            >El registro se propone en el archivo <code>data/pulso.json</code> del
-            <a href="https://github.com/eliospina/veeduria-ayuda">repositorio</a>
-            mediante un pull request.</span
-          >
-          <span data-lang="en"
-            >The record is proposed in <code>data/pulso.json</code> of the
-            <a href="https://github.com/eliospina/veeduria-ayuda">repository</a>
-            as a pull request.</span
-          >
-        </p>
-      </section>
+      </form>
     </main>
 
     <footer>
       <p>
-        <span data-lang="es">Código abierto</span>
-        <span data-lang="en">Open source</span>
-        ·
         <a href="https://github.com/eliospina/veeduria-ayuda">GitHub</a>
-        · 2026 ·
-        <span data-lang="es">no administra fondos</span>
-        <span data-lang="en">does not administer funds</span>
+        ·
+        <span data-lang="es">No administra fondos. Sin fuente, —.</span>
+        <span data-lang="en">Does not administer funds. No source, —.</span>
       </p>
     </footer>
     <script src="lang.js"></script>

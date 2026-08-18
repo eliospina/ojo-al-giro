@@ -109,7 +109,7 @@ function renderPulsoEvents(events) {
     when.textContent = eventWhen(event.at);
     const body = document.createElement("div");
     body.append(
-      `${kindLabel(event.kind)} · ${event.origin || "Origen no nombrado"} · ${displayValue(event.amount)} · ${displayValue(event.territory)}`,
+      `${kindLabel(event.kind)} · ${event.origin || (isEn() ? "Origin unnamed" : "Origen no nombrado")} · ${displayValue(event.amount)} · ${displayValue(event.territory)}`,
     );
     if (event.note) {
       const note = document.createElement("div");
