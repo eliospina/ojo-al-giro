@@ -26,7 +26,7 @@ No administra fondos. No los pide. No acusa. No certifica que la ayuda haya lleg
 
 ## Voz y diseño
 
-Papel `#f3e6cc`, tinta `#3a2718`, óxido `#b44a28`. No volver al negro de tablero ni al afiche en versalitas. Texto corto. Español primero. El chat pregunta ¿Llegó? y solo responde con el registro.
+Papel `#fbf7f0`, tinta `#1f1712`, marca `#c23018`. No volver al negro de tablero, al afiche en versalitas ni al manila sucio. Texto corto. Español primero. El chat pregunta ¿Llegó? y solo responde con el registro.
 
 Antes de abrir PR: `node scripts/validar-flujos.mjs` y `node --test scripts/totals.test.mjs`.
 

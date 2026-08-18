@@ -31,6 +31,7 @@
       name="twitter:image"
       content="https://ojo-al-giro.vercel.app/public/cartel-veeduria.png"
     />
+    <meta name="theme-color" content="#c23018" />
     <link rel="canonical" href="https://ojo-al-giro.vercel.app/" />
     <link rel="stylesheet" href="styles.css" />
     <script>
@@ -40,6 +41,10 @@
     </script>
   </head>
   <body>
+    <a class="skip" href="#contenido">
+      <span data-lang="es">Saltar al registro</span>
+      <span data-lang="en">Skip to the record</span>
+    </a>
     <header class="mast">
       <div class="mast-top">
         <p class="kicker">
@@ -51,25 +56,29 @@
           <button type="button" data-lang-set="en" aria-pressed="false">EN</button>
         </p>
       </div>
-      <h1>
-        <span data-lang="es">Ojo al Giro</span>
-        <span data-lang="en">Ojo al Giro</span>
-      </h1>
-      <p class="lead">
-        <span data-lang="es">Hay gente esperando hospital, agua, comida y techo. Aquí se sigue la ayuda que se anunció. Con fuente.</span>
-        <span data-lang="en">People are waiting for hospitals, water, food and shelter. This page follows the aid that was announced. With a source.</span>
-      </p>
-      <p class="total">
-        <span class="total-n" id="total-n">—</span>
-        <span class="total-cap">
-          <span data-lang="es">millones USD en ofertas. No es dinero ya en los pueblos.</span>
-          <span data-lang="en">million USD in offers. It is not money already in the towns.</span>
-        </span>
-      </p>
+      <div class="mast-grid">
+        <div>
+          <h1>
+            <span data-lang="es">Ojo al Giro</span>
+            <span data-lang="en">Ojo al Giro</span>
+          </h1>
+          <p class="lead">
+            <span data-lang="es">Hay gente esperando hospital, agua, comida y techo. Aquí se sigue la ayuda que se anunció. Con fuente.</span>
+            <span data-lang="en">People are waiting for hospitals, water, food and shelter. This page follows the aid that was announced. With a source.</span>
+          </p>
+        </div>
+        <p class="total">
+          <span class="total-n" id="total-n">—</span>
+          <span class="total-cap">
+            <span data-lang="es">millones USD en ofertas. No es dinero ya en los pueblos.</span>
+            <span data-lang="en">million USD in offers. It is not money already in the towns.</span>
+          </span>
+        </p>
+      </div>
       <ul class="sums" id="sums"></ul>
     </header>
 
-    <main>
+    <main id="contenido">
       <ul class="keys">
         <li>
           <span data-lang="es">Crédito no es donación.</span>
