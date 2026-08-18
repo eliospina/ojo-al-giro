@@ -1,4 +1,4 @@
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 
 const data = JSON.parse(
   readFileSync(new URL("../data/flujos.json", import.meta.url), "utf8"),
@@ -73,6 +73,26 @@ for (const f of flows) {
     ok(!/\bUSD\b/.test(f.amount), "R7", f.id, "GBP/CHF no se convierten a USD");
   }
 }
+
+const html = readFileSync(new URL("../index.html", import.meta.url), "utf8");
+ok(
+  !/lo anunciado no es lo|anunciado no es lo que|announced is not what/i.test(html),
+  "R9",
+  "index.html",
+  "el eslogan prohibido no entra al HTML",
+);
+ok(
+  existsSync(new URL("../public/cartel-veeduria.png", import.meta.url)),
+  "R10",
+  "public/cartel-veeduria.png",
+  "falta el PNG del cartel",
+);
+ok(
+  /og:image[^>]+cartel-veeduria\.png/.test(html),
+  "R10",
+  "index.html",
+  "og:image debe apuntar al cartel",
+);
 
 if (errores.length) {
   for (const e of errores) console.error(` ${e}`);

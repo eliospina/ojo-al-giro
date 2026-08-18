@@ -5,6 +5,8 @@ Código: [github.com/eliospina/ojo-al-giro](https://github.com/eliospina/ojo-al-
 
 Registro público, con fuente, de la ayuda anunciada a Colombia tras el sismo. Oferta no es giro.
 
+**¿Por qué «Ojo al Giro»?** Porque eso se vigila: si la oferta se vuelve giro.
+
 ```bash
 git clone https://github.com/eliospina/ojo-al-giro.git
 cd ojo-al-giro
