@@ -6,12 +6,12 @@
     <title>Veeduría de la ayuda</title>
     <meta
       name="description"
-      content="Ayuda anunciada a Colombia tras el sismo. Con fuente."
+      content="Ofertas no son giro. Registro público, con fuente, de la ayuda anunciada a Colombia tras el sismo."
     />
     <meta property="og:title" content="Veeduría de la ayuda" />
     <meta
       property="og:description"
-      content="Registro público con fuente."
+      content="Ofertas no son giro. Registro público con fuente."
     />
     <meta property="og:locale" content="es_CO" />
     <meta property="og:locale:alternate" content="en_US" />
@@ -25,7 +25,7 @@
     <meta name="twitter:title" content="Veeduría de la ayuda" />
     <meta
       name="twitter:description"
-      content="Registro público con fuente."
+      content="Ofertas no son giro. Registro público con fuente."
     />
     <meta
       name="twitter:image"
@@ -42,7 +42,10 @@
   <body>
     <header class="mast">
       <div class="mast-top">
-        <p class="kicker">Colombia · 10.08.2026</p>
+        <p class="kicker">
+          <span data-lang="es">Colombia · sismo 10 ago 2026</span>
+          <span data-lang="en">Colombia · quake 10 Aug 2026</span>
+        </p>
         <p class="lang-switch" role="group" aria-label="Idioma">
           <button type="button" data-lang-set="es" aria-pressed="true">ES</button>
           <button type="button" data-lang-set="en" aria-pressed="false">EN</button>
@@ -53,21 +56,25 @@
         <span data-lang="en">Aid oversight</span>
       </h1>
       <p class="lead">
-        <span data-lang="es">Ayuda anunciada a Colombia tras el sismo. Con fuente.</span>
-        <span data-lang="en">Aid announced to Colombia after the earthquake. Sourced.</span>
+        <span data-lang="es">Ayuda anunciada a Colombia tras el sismo. Con fuente. Lo anunciado no es lo ejecutado.</span>
+        <span data-lang="en">Aid announced to Colombia after the earthquake. Sourced. Announced is not executed.</span>
       </p>
       <p class="total">
         <span class="total-n" id="total-n">—</span>
         <span class="total-cap">
-          <span data-lang="es">millones USD · ofertas reportadas · no es un giro</span>
-          <span data-lang="en">million USD · reported offers · not a transfer</span>
+          <span data-lang="es">millones USD · ofertas reportadas por el Gobierno · no es un giro · no se suma con lo de abajo</span>
+          <span data-lang="en">million USD · offers reported by the Government · not a transfer · not added to the lines below</span>
         </span>
       </p>
-      <p class="sums" id="sums"></p>
+      <ul class="sums" id="sums"></ul>
     </header>
 
     <main>
       <ul class="keys">
+        <li>
+          <span data-lang="es">Anunciado no es ejecutado.</span>
+          <span data-lang="en">Announced is not executed.</span>
+        </li>
         <li>
           <span data-lang="es">Crédito no es donación.</span>
           <span data-lang="en">Credit is not a donation.</span>
@@ -88,6 +95,22 @@
         <span id="pulso-status"></span>
       </p>
       <p id="pulso-clock" class="pulso-clock"></p>
+      <ul id="pulso-events" class="pulso-events"></ul>
+
+      <section class="chat" id="chat">
+        <h2>
+          <span data-lang="es">Preguntar</span>
+          <span data-lang="en">Ask</span>
+        </h2>
+        <div id="chat-log" class="chat-log"></div>
+        <form id="chat-form">
+          <input id="chat-q" name="q" required autocomplete="off" />
+          <button type="submit">
+            <span data-lang="es">Enviar</span>
+            <span data-lang="en">Send</span>
+          </button>
+        </form>
+      </section>
 
       <div class="table-wrap" id="tablero">
         <table>
@@ -122,26 +145,18 @@
           <tbody id="flujos-body"></tbody>
         </table>
       </div>
-      <p class="table-legend">— = sin fuente / no source</p>
-
-      <section class="chat" id="chat">
-        <h2>
-          <span data-lang="es">Preguntar</span>
-          <span data-lang="en">Ask</span>
-        </h2>
-        <div id="chat-log" class="chat-log"></div>
-        <form id="chat-form">
-          <input id="chat-q" name="q" required autocomplete="off" />
-          <button type="submit">
-            <span data-lang="es">Enviar</span>
-            <span data-lang="en">Send</span>
-          </button>
-        </form>
-      </section>
+      <p class="table-legend">
+        <span data-lang="es">— = la fuente no nombra ese dato</span>
+        <span data-lang="en">— = the source does not name that fact. The table remains in Spanish.</span>
+      </p>
 
       <p class="tweet-line">
-        <span id="share-copy-es" data-lang="es">Veeduría de la ayuda tras el sismo. https://veeduria-ayuda.vercel.app/ @infopresidencia @UNGRD @CancilleriaCol @CGR_Colombia</span>
-        <span id="share-copy-en" data-lang="en">Aid oversight after the earthquake. https://veeduria-ayuda.vercel.app/?lang=en @infopresidencia @UNGRD @CancilleriaCol @CGR_Colombia</span>
+        <span id="share-copy-es" data-lang="es">Los 1.300 millones USD son ofertas, no un giro. Casi ninguna línea nombra municipio de entrega.
+https://veeduria-ayuda.vercel.app/
+@infopresidencia @UNGRD @CancilleriaCol @CGR_Colombia</span>
+        <span id="share-copy-en" data-lang="en">The USD 1.3 billion are offers, not a transfer. Almost no row names a municipality of delivery.
+https://veeduria-ayuda.vercel.app/?lang=en
+@infopresidencia @UNGRD @CancilleriaCol @CGR_Colombia</span>
         <button type="button" id="copy-btn">
           <span data-lang="es">Copiar para X</span>
           <span data-lang="en">Copy for X</span>
@@ -153,6 +168,10 @@
         <p>
           <span data-lang="es">Aportar fuente o testimonio</span>
           <span data-lang="en">Submit a source or testimony</span>
+        </p>
+        <p class="form-help">
+          <span data-lang="es">Copia un JSON. No se envía. Para publicarlo: pull request en GitHub.</span>
+          <span data-lang="en">Copies JSON. It is not sent. To publish it: a pull request on GitHub.</span>
         </p>
         <label>
           <select name="kind" required>
@@ -171,7 +190,7 @@
           <input name="amount" placeholder="USD / COP / —" />
         </label>
         <label>
-          <input name="territory" required placeholder="Territorio / Territory" />
+          <input name="territory" placeholder="Territorio / Territory / —" />
         </label>
         <label>
           <input name="url" type="url" placeholder="https://" />
