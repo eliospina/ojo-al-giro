@@ -1,14 +1,15 @@
 ---
-description: Brief permanente de la veeduría — no alargar, no inventar, no salirse del registro
+description: Brief permanente de Ojo al Giro — no alargar, no inventar, no salirse del registro
 alwaysApply: true
 ---
 
 Proyecto voluntario, sin financiación. Cambios mínimos o ninguno.
 
-Este repo es la veeduría de la ayuda (https://veeduria-ayuda.vercel.app/). Solo el registro de ayuda: no traer material de otros proyectos.
+Este repo es Ojo al Giro (https://ojo-al-giro.vercel.app/). Solo el registro de ayuda: no traer material de otros proyectos. No es una veeduría institucional.
 
 Sin URL no entra cifra. Oferta no es giro. Crédito no es donación. En especie no es caja. El 1.300 no se suma con las líneas. Santo Domingo es parte de ANDI. 222,5 t es agregado. Pereira es llegada municipal, no a hogares.
 
 No pedir plata. No acusar. No inventar víctimas. No rediseñar. No volver al negro ni al afiche. Papel, tinta, óxido.
 
+Antes de PR: `node scripts/validar-flujos.mjs` y `node --test scripts/totals.test.mjs`.
 Si corre solo: PR, nunca main. Si no hay fuente nueva, no hay commit.
