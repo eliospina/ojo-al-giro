@@ -43,7 +43,7 @@ function scoreFlow(flow, q, words) {
 function chatReply(question) {
   const q = fold(question).trim();
   const flows = window.LEDGER_FLOWS || [];
-  if (!q) return isEn() ? "Ask for a country or a town." : "Pregunte por un país o por un municipio.";
+  if (!q) return isEn() ? "Which town? Which country?" : "¿A qué municipio? ¿De qué país?";
   if (!flows.length) return isEn() ? "The record is not loaded yet." : "Aún no se ha podido leer.";
 
   const words = q.split(/\s+/).filter((w) => w.length > 2 && !STOP_WORD.test(w));
@@ -69,9 +69,16 @@ function chatReply(question) {
 
   return pick
     .map(({ flow }) => {
-      const src = flow.source?.url ? flow.source.url : "";
-      const line = `${flow.origin}: ${flow.amount}. ${flow.executed || "—"}.`;
-      return src ? `${line} ${src}` : line;
+      const arrived = typeof displayValue === "function" ? displayValue(flow.executed) : flow.executed || "—";
+      const src = flow.source?.name || "";
+      if (isEn()) {
+        return src
+          ? `${flow.origin}\n${flow.amount}\nDid it arrive? ${arrived}\n${src}`
+          : `${flow.origin}\n${flow.amount}\nDid it arrive? ${arrived}`;
+      }
+      return src
+        ? `${flow.origin}\n${flow.amount}\n¿Llegó? ${arrived}\n${src}`
+        : `${flow.origin}\n${flow.amount}\n¿Llegó? ${arrived}`;
     })
     .join("\n\n");
 }
@@ -88,13 +95,13 @@ function addChat(role, text) {
 
 function welcomeChat() {
   return isEn()
-    ? "Ask about Chile, Pereira or the total. I only answer with what is written here."
-    : "Pregunte por Chile, Pereira o el total. Solo respondo con lo que está escrito aquí.";
+    ? "Did it reach Pereira? Did Chile’s aid arrive? If it is not written here, —."
+    : "¿Llegó a Pereira? ¿Llegó lo de Chile? Si no está escrito aquí, —.";
 }
 
 function setChatPlaceholder() {
   const input = document.getElementById("chat-q");
-  if (input) input.placeholder = isEn() ? "Chile, Pereira, total…" : "Chile, Pereira, total…";
+  if (input) input.placeholder = isEn() ? "Pereira, Chile…" : "Pereira, Chile…";
 }
 
 const chatForm = document.getElementById("chat-form");
