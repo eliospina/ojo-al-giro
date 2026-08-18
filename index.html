@@ -6,7 +6,7 @@
     <title>Veeduría de la ayuda — seguimiento a los recursos</title>
     <meta
       name="description"
-      content="Tablero cívico de la ayuda al sismo. Hospitales, agua, alimentos, refugio: no solo construcción. Lo anunciado no es lo ejecutado. Sin fuente, la cifra va en —."
+      content="Tablero cívico de la ayuda tras el sismo. Hospitales, agua, alimentos, refugio: no solo construcción. Lo anunciado no es lo ejecutado. Sin fuente, la cifra va en —."
     />
     <meta property="og:title" content="Veeduría de la ayuda" />
     <meta
@@ -16,6 +16,10 @@
     <meta
       property="og:image"
       content="https://veeduria-ayuda.vercel.app/public/cartel-veeduria.png"
+    />
+    <meta
+      property="og:image:alt"
+      content="Cartel de Veeduría de la ayuda: seguimiento a los recursos del sismo; lo anunciado no es lo ejecutado."
     />
     <meta property="og:url" content="https://veeduria-ayuda.vercel.app/" />
     <meta property="og:type" content="website" />
@@ -29,6 +33,10 @@
       name="twitter:image"
       content="https://veeduria-ayuda.vercel.app/public/cartel-veeduria.png"
     />
+    <meta
+      name="twitter:image:alt"
+      content="Cartel de Veeduría de la ayuda: seguimiento a los recursos del sismo; lo anunciado no es lo ejecutado."
+    />
     <link rel="canonical" href="https://veeduria-ayuda.vercel.app/" />
     <link rel="stylesheet" href="styles.css" />
   </head>
@@ -39,7 +47,7 @@
       <h1>Seguimiento a los recursos.</h1>
       <p class="lead">
         La misma información, a la vista: instituciones y ciudadanía leen un
-        solo tablero. La ayuda del sismo no es solo construcción.
+        solo tablero. La ayuda tras el sismo no es solo construcción.
       </p>
     </header>
 
@@ -48,7 +56,7 @@
         <h2>Qué es</h2>
         <p>
           Los hospitales, el agua, los alimentos, los medicamentos y el
-          refugio también son necesidad. Este tablero sigue la ayuda
+          refugio también son necesidades. Este tablero sigue la ayuda
           anunciada a Colombia después del sismo del 10 de agosto de 2026.
         </p>
         <p class="plain">
@@ -75,9 +83,9 @@
           <li>En especie no es caja.</li>
         </ul>
         <p class="plain">
-          El hueco es el último tramo: de lo anunciado a lo desembolsado, y de
-          lo desembolsado a lo entregado en el municipio. Si la fuente no
-          nombra ese tramo, la celda va en —.
+          Falta verificar el último tramo: qué parte de lo anunciado se
+          desembolsó y qué parte de lo desembolsado se entregó en cada
+          municipio. Si la fuente no identifica un tramo, la celda va en —.
         </p>
       </section>
 
@@ -87,8 +95,9 @@
           <article>
             <h3>Instituciones</h3>
             <p>
-              Un libro común, con URL. Pueden corregir o completar con fuente.
-              No es un comunicado oficial.
+              Un registro común, con URL pública. Las instituciones pueden
+              corregirlo o completarlo con una fuente. No es un comunicado
+              oficial.
             </p>
             <ul class="orgs">
               <li>
@@ -125,9 +134,9 @@
           <article>
             <h3>Ciudadanía</h3>
             <p>
-              Veeduría: traer una fuente, ser testigo del territorio o
-              disputar una cifra. Un rumor no entra. No se vota la plata: se
-              verifica.
+              La ciudadanía puede aportar una fuente, dar testimonio del
+              territorio o disputar una cifra. Los rumores no entran. No se
+              vota sobre los recursos: se verifica la información.
             </p>
             <p class="plain">
               <a href="#registro">Dejar un registro</a>
@@ -144,7 +153,7 @@
           Copia y etiqueta. Este tablero no acusa y no certifica desembolsos.
         </p>
         <div class="tweet">
-          <pre id="share-copy">Seguimiento cívico a la ayuda del sismo. Hospitales, agua, alimentos, refugio: no solo construcción. Lo anunciado no es lo ejecutado.
+          <pre id="share-copy">Seguimiento cívico a la ayuda tras el sismo. Hospitales, agua, alimentos, refugio: no solo construcción. Lo anunciado no es lo ejecutado.
 
 https://veeduria-ayuda.vercel.app/
 
@@ -153,7 +162,7 @@ https://veeduria-ayuda.vercel.app/
             <button type="button" id="copy-btn">Copiar</button>
             <a
               class="btn ghost"
-              href="https://x.com/intent/tweet?text=Seguimiento%20c%C3%ADvico%20a%20la%20ayuda%20del%20sismo.%20Hospitales%2C%20agua%2C%20alimentos%2C%20refugio%3A%20no%20solo%20construcci%C3%B3n.%20Lo%20anunciado%20no%20es%20lo%20ejecutado.%0A%0Ahttps%3A%2F%2Fveeduria-ayuda.vercel.app%2F%0A%0A%40infopresidencia%20%40UNGRD%20%40CancilleriaCol%20%40CGR_Colombia"
+              href="https://x.com/intent/tweet?text=Seguimiento%20c%C3%ADvico%20a%20la%20ayuda%20tras%20el%20sismo.%20Hospitales%2C%20agua%2C%20alimentos%2C%20refugio%3A%20no%20solo%20construcci%C3%B3n.%20Lo%20anunciado%20no%20es%20lo%20ejecutado.%0A%0Ahttps%3A%2F%2Fveeduria-ayuda.vercel.app%2F%0A%0A%40infopresidencia%20%40UNGRD%20%40CancilleriaCol%20%40CGR_Colombia"
               target="_blank"
               rel="noreferrer"
               >Abrir en X</a
@@ -170,13 +179,13 @@ https://veeduria-ayuda.vercel.app/
           municipal concreto verificado en la fuente: cargamento chileno a
           Pereira. El resto del tramo a hogares, en —.
         </p>
-        <p class="stat" id="hueco-linea">Leyendo el libro…</p>
+        <p class="stat" id="hueco-linea">Leyendo el registro…</p>
         <p class="path">Donante → Gobierno, fiducia u organismo → territorio afectado</p>
         <p id="pulso" class="pulso" aria-live="polite">
           <span class="pulso-dot" aria-hidden="true"></span>
           <span id="pulso-status">Veeduría de la ayuda. Sin fuente, no entra cifra.</span>
         </p>
-        <p id="pulso-clock" class="pulso-clock">Aún no se ha leído el caudal.</p>
+        <p id="pulso-clock" class="pulso-clock">Aún no se ha leído el registro.</p>
         <ol id="pulso-events" class="pulso-events"></ol>
         <div class="table-wrap">
           <table>
@@ -197,15 +206,15 @@ https://veeduria-ayuda.vercel.app/
         <ul class="source-map">
           <li>
             <a href="https://fts.unocha.org/plans/1500/clusters" target="_blank" rel="noreferrer">OCHA FTS</a>
-            — plata humanitaria por clúster, no por municipio.
+            — financiación humanitaria por clúster, no por municipio.
           </li>
           <li>
             <a href="https://www.unocha.org/publications/report/colombia/colombia-flash-update-005-update-impact-earthquake-colombia-august-13-2026" target="_blank" rel="noreferrer">OCHA Colombia</a>
-            — afectados y huecos, no libro de ejecución.
+            — personas afectadas y brechas de atención; no es un registro de ejecución.
           </li>
           <li>
-            <a href="https://portal.gestiondelriesgo.gov.co/paginas/contratacion-entidad.aspx" target="_blank" rel="noreferrer">UNGRD · SECOP</a>
-            — contratos de la Subcuenta Sismo 2026.
+            <a href="https://portal.gestiondelriesgo.gov.co/paginas/contratacion-entidad.aspx" target="_blank" rel="noreferrer">UNGRD · contratación</a>
+            — página de procesos contractuales de la entidad.
           </li>
           <li>
             <a href="https://www.infobae.com/colombia/2026/08/17/jorge-eliecer-laverde-nuevo-contralor-anuncia-unidad-especial-para-vigilar-recursos-de-reconstruccion-tras-el-terremoto/" target="_blank" rel="noreferrer">Contraloría</a>
@@ -213,17 +222,18 @@ https://veeduria-ayuda.vercel.app/
           </li>
         </ul>
         <p class="disclaimer">
-          Observatorio cívico, no ventanilla. No somos donantes, ni operadores,
-          ni beneficiarios de estos fondos. Esta página informa; no regula, no
-          acusa y no certifica desembolsos. Toda cifra debe verificarse ante
-          su fuente original.
+          Esta es una veeduría cívica, no una ventanilla. No recibe fondos, no
+          los administra ni los solicita. Informa; no regula, acusa ni
+          certifica desembolsos. Toda cifra debe verificarse en la fuente
+          original.
         </p>
       </section>
 
       <section id="registro">
         <h2>Dejar un registro</h2>
         <p>
-          Quien habita el municipio puede traer fuente, testigo o disputa.
+          Quien habita un municipio puede aportar una fuente, dar testimonio o
+          disputar una cifra.
         </p>
         <ol class="steps">
           <li>Traer una fuente — URL pública, monto, territorio.</li>
@@ -232,7 +242,7 @@ https://veeduria-ayuda.vercel.app/
         </ol>
         <form class="civic-form" id="form-ayuda">
           <label>
-            Oficio
+            Tipo de registro
             <select name="kind" required>
               <option value="anuncio">Traer fuente · anuncio</option>
               <option value="desembolso">Traer fuente · desembolso</option>
@@ -247,7 +257,7 @@ https://veeduria-ayuda.vercel.app/
             <input name="origin" required placeholder="Donante, municipio, hospital, acopio" />
           </label>
           <label>
-            Monto (si aplica)
+            Monto (solo con URL pública; de lo contrario, —)
             <input name="amount" placeholder="USD … / COP … / —" />
           </label>
           <label>
@@ -260,16 +270,16 @@ https://veeduria-ayuda.vercel.app/
           </label>
           <label>
             Nota
-            <textarea name="note" rows="3" placeholder="Qué dice la fuente, o qué viste. Sin acusar nombres."></textarea>
+            <textarea name="note" rows="3" placeholder="Resume lo que dice la fuente o lo que viste. Evita acusaciones."></textarea>
           </label>
           <button type="submit" id="ayuda-btn">Copiar el registro</button>
         </form>
         <pre class="civic-out" id="ayuda-out" hidden></pre>
         <p class="copied" id="ayuda-status" role="status"></p>
         <p class="plain">
-          El registro se pega en
-          <a href="https://github.com/eliospina/veeduria-ayuda">el repositorio</a>,
-          archivo <code>data/pulso.json</code>, como pull request.
+          El registro se propone en el archivo <code>data/pulso.json</code> del
+          <a href="https://github.com/eliospina/veeduria-ayuda">repositorio</a>
+          mediante un pull request.
         </p>
       </section>
     </main>

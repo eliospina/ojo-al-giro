@@ -175,9 +175,11 @@ function tickClock() {
   if (!pulsoClockEl || !lastCheckAt) return;
   const ledger = ledgerUpdatedLabel ? `Cifras con fuente al ${ledgerUpdatedLabel}.` : "";
   const novedad =
-    pulsoEventCount > 0
-      ? `${pulsoEventCount} registro(s) en el pulso.`
-      : "Este minuto: sin nuevo desembolso verificado.";
+    pulsoEventCount === 0
+      ? "El tablero no contiene desembolsos verificados."
+      : pulsoEventCount === 1
+        ? "1 registro en el tablero."
+        : `${pulsoEventCount} registros en el tablero.`;
   pulsoClockEl.textContent = `Leído ${agoLabel(lastCheckAt)} (${formatBogota(lastCheckAt)}). ${ledger} ${novedad}`.trim();
 }
 
@@ -190,12 +192,12 @@ async function verifyAid() {
     ledgerUpdatedLabel = pulso.ledgerUpdated || ledger?.updated || "";
     renderPulsoEvents(events);
     setPulsoStatus(
-      "Ayuda a Colombia. Verificación cada 60 s. Sin fuente, no entra cifra.",
+      "Ayuda a Colombia. Lectura del registro cada 60 s. Sin fuente, no entra cifra.",
       true,
     );
     tickClock();
   } catch {
-    setPulsoStatus("No se pudo leer el caudal. No se inventa cifra.", false);
+    setPulsoStatus("No se pudo leer el registro. No se muestra ninguna cifra sin fuente.", false);
     if (pulsoClockEl && lastCheckAt) {
       pulsoClockEl.textContent = `Última lectura válida ${agoLabel(lastCheckAt)}.`;
     }
@@ -249,7 +251,7 @@ if (ayudaForm) {
     try {
       await navigator.clipboard.writeText(text);
       ayudaStatus.textContent =
-        "Registro copiado. Se pega en data/pulso.json. No gira un peso.";
+        "Registro copiado. Se propone en data/pulso.json. Este registro no implica ni certifica un giro.";
     } catch {
       ayudaStatus.textContent = "Copia el registro de abajo.";
     }
