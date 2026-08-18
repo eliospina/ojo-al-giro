@@ -1,16 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
-  <rect width="1200" height="630" fill="#f3e6cc"/>
-  <rect x="56" y="44" width="1088" height="4" fill="#3a2718"/>
-  <rect x="56" y="54" width="1088" height="1.5" fill="#3a2718"/>
-  <text x="56" y="94" font-family="Georgia" font-size="21" letter-spacing="2" fill="#3a2718">Gaceta cívica</text>
-  <text x="1144" y="94" text-anchor="end" font-family="Georgia" font-size="21" letter-spacing="2" fill="#3a2718">Colombia · sismo 10 ago 2026</text>
-  <text x="600" y="222" text-anchor="middle" font-family="Georgia" font-weight="bold" font-size="92" fill="#3a2718">Ojo al Giro</text>
-  <rect x="470" y="258" width="110" height="1.5" fill="#3a2718"/>
-  <rect x="620" y="258" width="110" height="1.5" fill="#3a2718"/>
-  <rect x="595" y="253" width="11" height="11" transform="rotate(45 600.5 258.5)" fill="#b44a28"/>
-  <text x="600" y="330" text-anchor="middle" font-family="Georgia" font-style="italic" font-size="32" fill="#3a2718">Hay gente esperando hospital, agua, comida y techo.</text>
-  <text x="600" y="476" text-anchor="middle" font-family="Georgia" font-weight="bold" font-size="72" fill="#b44a28">1.300 millones USD</text>
-  <text x="600" y="530" text-anchor="middle" font-family="Georgia" font-size="24" letter-spacing="2" fill="#3a2718">· ofertas, no un giro</text>
-  <rect x="56" y="572" width="1088" height="1.5" fill="#3a2718"/>
-  <rect x="56" y="580" width="1088" height="4" fill="#3a2718"/>
+  <rect width="1200" height="630" fill="#fffdf8"/>
+  <rect width="1200" height="18" fill="#c23018"/>
+  <text x="72" y="88" fill="#6b5e52" font-family="Georgia" font-size="22">Colombia · sismo 10 ago 2026</text>
+  <text x="68" y="250" fill="#c23018" font-family="Georgia" font-size="76">Ojo al Giro</text>
+  <text x="72" y="330" fill="#1f1712" font-family="Georgia" font-size="28">Hay gente esperando</text>
+  <text x="72" y="374" fill="#1f1712" font-family="Georgia" font-size="28">hospital, agua, comida y techo.</text>
+  <rect x="72" y="410" width="180" height="3" fill="#c23018"/>
+  <line x1="620" y1="140" x2="620" y2="560" stroke="#e4d9cc" stroke-width="1"/>
+  <text x="1128" y="300" text-anchor="end" fill="#c23018" font-family="Georgia" font-size="128">1.300</text>
+  <text x="1128" y="352" text-anchor="end" fill="#6b5e52" font-family="Georgia" font-size="22">millones USD</text>
+  <text x="1128" y="388" text-anchor="end" fill="#6b5e52" font-family="Georgia" font-size="22">ofertas, no un giro</text>
 </svg>
