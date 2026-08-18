@@ -1,17 +1,17 @@
-# Veeduría de la ayuda — brief del agente
+# Ojo al Giro — brief del agente
 
 Elizabeth hace esto de forma voluntaria y busca empleo. No abrir rediseños ni sesiones largas. Un cambio pequeño con fuente, o nada.
 
-Sitio: https://veeduria-ayuda.vercel.app/
-Repo: este. GitHub: eliospina/veeduria-ayuda. Rama: main.
+Sitio: https://ojo-al-giro.vercel.app/
+Repo: este. GitHub: eliospina/ojo-al-giro. Rama: main.
 
 Hay otro proyecto, la ciudad (ciudad-resiliente, el óvalo). **No se toca.** No mezclar musgo, óvalo, nave ni costos de célula con este registro.
 
 ## Qué es
 
-Gaceta cívica. Gente esperando hospital, agua, comida y techo. Se sigue la ayuda anunciada tras el sismo del 10 ago 2026. Con fuente.
+Gaceta cívica. Gente esperando hospital, agua, comida y techo. Se sigue la ayuda anunciada tras el sismo del 10 ago 2026. Con fuente. El nombre recuerda que oferta no es giro.
 
-No administra fondos. No los pide. No acusa. No certifica que la ayuda haya llegado a las casas. No inventa víctimas, municipios ni cifras.
+No administra fondos. No los pide. No acusa. No certifica que la ayuda haya llegado a las casas. No inventa víctimas, municipios ni cifras. No es una veeduría institucional.
 
 ## Cifras
 
@@ -28,12 +28,15 @@ No administra fondos. No los pide. No acusa. No certifica que la ayuda haya lleg
 
 Papel `#f3e6cc`, tinta `#3a2718`, óxido `#b44a28`. No volver al negro de tablero ni al afiche en versalitas. Texto corto. Español primero. El chat pregunta ¿Llegó? y solo responde con el registro.
 
+Antes de abrir PR: `node scripts/validar-flujos.mjs` y `node --test scripts/totals.test.mjs`.
+
 ## Trabajo diario (si corre solo)
 
 1. Buscar anuncios nuevos en fuentes públicas ya usadas (Cancillería, OCHA, EFE, El Tiempo, Infobae, bancos, gobiernos).
 2. Si no hay cifra nueva con URL, **no hacer commit**. Cerrar.
 3. Si hay, añadir una fila al registro de flujos, con origen, monto, ruta, municipio o —, ¿llegó? o —, fuente con URL.
-4. Abrir un **pull request**. No empujar a main. No desplegar a producción. Elizabeth revisa cuando pueda.
-5. Un párrafo en el PR: qué se añadió y el enlace. Nada más.
+4. Correr el validador.
+5. Abrir un **pull request**. No empujar a main. No desplegar a producción. Elizabeth revisa cuando pueda.
+6. Un párrafo en el PR: qué se añadió y el enlace. Nada más.
 
 Si duda, no publique.
