@@ -54,17 +54,55 @@ a {
   text-transform: uppercase;
 }
 
+.mast-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  margin: 0 0 0.85rem;
+}
+
+.mast-top .kicker {
+  margin: 0;
+}
+
+.lang-switch {
+  margin: 0;
+  display: flex;
+  gap: 0.2rem;
+}
+
+.lang-switch button {
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  background: transparent;
+  color: var(--band-ink);
+  border: 1px solid transparent;
+  padding: 0.2rem 0.45rem;
+  cursor: pointer;
+}
+
+.lang-switch button[aria-pressed="true"] {
+  border-color: var(--band-ink);
+}
+
+html[lang="es"] [data-lang="en"],
+html[lang="en"] [data-lang="es"] {
+  display: none !important;
+}
+
 h1 {
   margin: 0 0 0.7rem;
   font-weight: 400;
   font-size: clamp(2rem, 5vw, 3.4rem);
   line-height: 1.05;
-  max-width: 18ch;
+  max-width: 22ch;
 }
 
 .lead {
   margin: 0;
-  max-width: 34rem;
+  max-width: 42rem;
   font-size: 1.15rem;
 }
 
