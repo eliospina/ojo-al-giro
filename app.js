@@ -27,95 +27,13 @@ function cell(value, href) {
 }
 
 const pulsoStatusEl = document.getElementById("pulso-status");
-const pulsoClockEl = document.getElementById("pulso-clock");
-const pulsoEventsEl = document.getElementById("pulso-events");
 
 let lastFlowsStamp = "";
 let lastFlowIds = new Set();
-let ledgerUpdatedLabel = "";
 let pulsoTimer = null;
 
 function isEn() {
   return document.documentElement.lang === "en";
-}
-
-function formatBogota(date) {
-  return new Intl.DateTimeFormat(isEn() ? "en-GB" : "es-CO", {
-    timeZone: "America/Bogota",
-    day: "numeric",
-    month: "short",
-    hour: "2-digit",
-    minute: "2-digit",
-    second: "2-digit",
-  }).format(date);
-}
-
-function eventWhen(at) {
-  if (!at) return "";
-  const locale = isEn() ? "en-GB" : "es-CO";
-  if (/^\d{4}-\d{2}-\d{2}$/.test(at)) {
-    return new Intl.DateTimeFormat(locale, {
-      timeZone: "America/Bogota",
-      day: "numeric",
-      month: "short",
-      year: "numeric",
-    }).format(new Date(`${at}T12:00:00-05:00`));
-  }
-  return formatBogota(new Date(at));
-}
-
-function kindLabel(kind) {
-  if (isEn()) {
-    if (kind === "desembolso") return "Disbursement";
-    if (kind === "credito") return "Credit";
-    if (kind === "especie") return "In-kind";
-    if (kind === "anuncio") return "Announcement";
-    if (kind === "testigo") return "Testimony";
-    if (kind === "disputa") return "Dispute";
-    return kind || "Record";
-  }
-  if (kind === "desembolso") return "Desembolso";
-  if (kind === "credito") return "Crédito";
-  if (kind === "especie") return "En especie";
-  if (kind === "anuncio") return "Anuncio";
-  if (kind === "testigo") return "Testigo";
-  if (kind === "disputa") return "Disputa";
-  return kind || "Registro";
-}
-
-function renderPulsoEvents(events) {
-  if (!pulsoEventsEl) return;
-  pulsoEventsEl.replaceChildren();
-  const rows = Array.isArray(events) ? [...events].reverse().slice(0, 8) : [];
-  for (const event of rows) {
-    const li = document.createElement("li");
-    const when = document.createElement("div");
-    when.className = "when";
-    when.textContent = eventWhen(event.at);
-    const body = document.createElement("div");
-    body.append(
-      `${kindLabel(event.kind)} · ${event.origin || (isEn() ? "Origin unnamed" : "Origen no nombrado")} · ${displayValue(event.amount)} · ${displayValue(event.territory)}`,
-    );
-    if (event.note) {
-      const note = document.createElement("div");
-      note.className = "pulso-note";
-      note.textContent = event.note;
-      body.append(note);
-    }
-    if (event.source?.url) {
-      const a = document.createElement("a");
-      a.href = event.source.url;
-      a.target = "_blank";
-      a.rel = "noreferrer";
-      a.textContent = event.source.name || "Fuente";
-      body.append(" · ");
-      body.append(a);
-    } else if (event.source?.name) {
-      body.append(` · ${event.source.name}`);
-    }
-    li.append(when, body);
-    pulsoEventsEl.append(li);
-  }
 }
 
 function originCell(flow) {
@@ -181,43 +99,21 @@ async function loadFlows(options = {}) {
   return data;
 }
 
-async function loadPulso() {
-  const res = await fetch(`data/pulso.json?t=${Date.now()}`, { cache: "no-store" });
-  return res.json();
-}
-
-function setPulsoStatus(text, live) {
+function setPulsoStatus(text) {
   if (!pulsoStatusEl) return;
   pulsoStatusEl.hidden = !text;
   pulsoStatusEl.textContent = text || "";
 }
 
-function tickClock() {
-  if (!pulsoClockEl) return;
-  const when = /^\d{4}-\d{2}-\d{2}$/.test(ledgerUpdatedLabel)
-    ? eventWhen(ledgerUpdatedLabel)
-    : ledgerUpdatedLabel;
-  pulsoClockEl.textContent = when
-    ? isEn()
-      ? `Figures with a source as of ${when}.`
-      : `Cifras con fuente al ${when}.`
-    : "";
-}
-
 async function verifyAid() {
   try {
-    const [pulso, ledger] = await Promise.all([loadPulso(), loadFlows()]);
-    const events = pulso.events || [];
-    ledgerUpdatedLabel = pulso.ledgerUpdated || ledger?.updated || "";
-    renderPulsoEvents(events);
-    setPulsoStatus("", true);
-    tickClock();
+    await loadFlows();
+    setPulsoStatus("");
   } catch {
     setPulsoStatus(
       isEn()
         ? "The record could not be read. No figure is shown without a source."
         : "No se pudo leer el registro. No se muestra ninguna cifra sin fuente.",
-      false,
     );
   }
 }
@@ -252,20 +148,14 @@ if (ayudaForm) {
         : "Sin URL no entra cifra. Un testimonio puede ir sin URL; un anuncio, no.";
       return;
     }
-    const day = new Date().toISOString().slice(0, 10);
-    const record = {
-      id: `evt-${day}-${kind}`,
-      at: day,
-      kind,
-      origin: String(data.get("origin") || "").trim(),
-      amount: String(data.get("amount") || "").trim() || "—",
-      territory: String(data.get("territory") || "").trim() || "—",
-      note: String(data.get("note") || "").trim(),
-      source: url
-        ? { name: "Aporte ciudadano", url }
-        : { name: "Testigo de territorio — no certifica desembolso" },
-    };
-    const text = `${JSON.stringify(record, null, 2)}\n`;
+    const kindLabel = ayudaForm.querySelector("[name=kind]")?.selectedOptions?.[0]?.textContent || kind;
+    const origin = String(data.get("origin") || "").trim();
+    const amount = String(data.get("amount") || "").trim() || "—";
+    const territory = String(data.get("territory") || "").trim() || "—";
+    const note = String(data.get("note") || "").trim();
+    const text = isEn()
+      ? `Did it arrive?\n${kindLabel}\nFrom: ${origin}\nAmount: ${amount}\nMunicipality: ${territory}${note ? `\nNote: ${note}` : ""}\nSource: ${url || "—"}\nThis note does not certify that the aid arrived.\n`
+      : `¿Llegó?\n${kindLabel}\nOrigen: ${origin}\nMonto: ${amount}\nMunicipio: ${territory}${note ? `\nNota: ${note}` : ""}\nFuente: ${url || "—"}\nEsta nota no certifica que la ayuda haya llegado.\n`;
     ayudaOut.hidden = false;
     ayudaOut.textContent = text;
     try {
