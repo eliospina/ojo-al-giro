@@ -1,6 +1,6 @@
 {
   "intervalSeconds": 60,
-  "ledgerUpdated": "2026-08-18",
+  "ledgerUpdated": "2026-08-19",
   "events": [
     {
       "id": "evt-2026-08-13-cerf",
@@ -65,6 +65,19 @@
       "source": {
         "name": "El Tiempo / Cancillería, 17 ago 2026",
         "url": "https://www.eltiempo.com/politica/gobierno/colombia-ha-recibido-mas-de-220-toneladas-de-ayuda-humanitaria-y-144-integrantes-de-equipos-internacionales-tras-el-terremoto-informo-la-cancilleria-3578924"
+      }
+    },
+    {
+      "id": "evt-2026-08-18-china-dorado",
+      "at": "2026-08-18",
+      "kind": "especie",
+      "origin": "China",
+      "amount": "77,6 toneladas recibidas en El Dorado, Bogotá",
+      "territory": "Valle del Cauca (destino anunciado)",
+      "note": "UNGRD reporta la llegada al aeropuerto y el envío anunciado al Valle. No acredita entrega a hogares. No se suma a las 222,5 t de El Salvador, México, Chile y Perú.",
+      "source": {
+        "name": "EFE / UNGRD, 18 ago 2026",
+        "url": "https://www.infobae.com/america/agencias/2026/08/19/el-gobierno-colombiano-recibe-776-toneladas-de-ayuda-donada-por-china-por-el-terremoto/"
       }
     }
   ]

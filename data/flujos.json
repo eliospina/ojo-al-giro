@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-18",
+  "updated": "2026-08-19",
   "flows": [
     {
       "id": "ofertas-agregado",
@@ -184,16 +184,42 @@
       }
     },
     {
+      "id": "japon",
+      "origin": "Japón — JICA",
+      "amount": "200 carpas y 1.200 cobijas, más potabilizadores y recipientes — en especie (sin caja publicada)",
+      "status": "Anunciado (17 ago 2026)",
+      "route": "Ministerio de Asuntos Exteriores de Japón → JICA → Colombia",
+      "territory": "—",
+      "executed": "—",
+      "source": {
+        "name": "Kyodo / Mainichi, 17 ago 2026",
+        "url": "https://mainichi.jp/english/articles/20260817/p2g/00m/0na/032000c"
+      }
+    },
+    {
       "id": "china",
       "origin": "China",
-      "amount": "USD 1 millón + CNY 15 millones; además 7.000 mantas, 1.900 carpas, 15 vehículos potabilizadores y 200 lámparas",
-      "status": "Oferta financiera del 13 ago; cargamento anunciado el 17 ago 2026",
-      "route": "Ayuda financiera e insumos de emergencia → coordinación nacional",
+      "amount": "USD 1 millón + CNY 15 millones",
+      "status": "Oferta financiera del 13 ago 2026. El avión de insumos se registra aparte.",
+      "route": "Ayuda financiera → coordinación nacional",
       "territory": "—",
       "executed": "—",
       "source": {
         "name": "El Tiempo / Cancillería, 17 ago 2026",
         "url": "https://www.eltiempo.com/politica/gobierno/colombia-ha-recibido-mas-de-220-toneladas-de-ayuda-humanitaria-y-144-integrantes-de-equipos-internacionales-tras-el-terremoto-informo-la-cancilleria-3578924"
+      }
+    },
+    {
+      "id": "china-dorado",
+      "origin": "China — cargamento con llegada al país verificada",
+      "amount": "77,6 toneladas — 7.000 mantas, 1.900 carpas, 15 plantas de agua, 20 generadores, 200 lámparas solares — en especie",
+      "status": "Recibido en El Dorado, Bogotá (18 ago 2026)",
+      "route": "China → UNGRD, El Dorado → Valle del Cauca (destino anunciado)",
+      "territory": "Valle del Cauca (destino anunciado)",
+      "executed": "Llegada a Bogotá reportada; entrega a hogares: —",
+      "source": {
+        "name": "EFE / UNGRD, 18 ago 2026",
+        "url": "https://www.infobae.com/america/agencias/2026/08/19/el-gobierno-colombiano-recibe-776-toneladas-de-ayuda-donada-por-china-por-el-terremoto/"
       }
     },
     {
@@ -298,6 +324,19 @@
       "source": {
         "name": "El Tiempo / Cancillería, 17 ago 2026",
         "url": "https://www.eltiempo.com/politica/gobierno/colombia-ha-recibido-mas-de-220-toneladas-de-ayuda-humanitaria-y-144-integrantes-de-equipos-internacionales-tras-el-terremoto-informo-la-cancilleria-3578924"
+      }
+    },
+    {
+      "id": "israel",
+      "origin": "Israel — misión de búsqueda y rescate",
+      "amount": "82 rescatistas e ingenieros — en especie (sin caja publicada)",
+      "status": "Llegó a Cali (14 ago 2026)",
+      "route": "Israel → Cali",
+      "territory": "Cali",
+      "executed": "Llegada municipal verificada; no es entrega de víveres a hogares",
+      "source": {
+        "name": "El Universal, 15 ago 2026",
+        "url": "https://www.eluniversal.com.co/mundo/2026/08/15/82-rescatistas-israelies-se-despliegan-en-cali-para-atender-la-emergencia/"
       }
     },
     {
