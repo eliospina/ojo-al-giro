@@ -250,25 +250,10 @@ h1 {
   max-width: 38rem;
 }
 
-.tweet-line {
-  font-family: system-ui, sans-serif;
-  font-size: 0.86rem;
-  margin: 1.6rem 0 0;
-  max-width: 42rem;
-}
-
-.tweet-line [id^="share-copy"] {
-  white-space: pre-wrap;
-}
-
 .form-help {
   margin: 0;
   color: var(--mute);
   font-size: 0.8rem;
-}
-
-.tweet-line button {
-  margin-left: 0.5rem;
 }
 
 main {
@@ -578,13 +563,10 @@ th {
   padding-left: 1.2rem;
 }
 
-.civic-form {
-  display: grid;
-  gap: 0.7rem;
-  max-width: 28rem;
-  margin: 1.4rem 0 0.6rem;
-  font-family: system-ui, sans-serif;
-  font-size: 0.86rem;
+.civic-form h2 {
+  margin: 0;
+  font-size: 1.45rem;
+  color: var(--mark);
 }
 
 .civic-form input,

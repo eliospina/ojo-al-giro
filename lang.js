@@ -24,15 +24,3 @@ applyLang(start);
 document.querySelectorAll("[data-lang-set]").forEach((btn) => {
   btn.addEventListener("click", () => applyLang(btn.dataset.langSet));
 });
-
-const copyBtn = document.getElementById("copy-btn");
-const copyStatus = document.getElementById("copy-status");
-if (copyBtn && copyStatus) {
-  copyBtn.addEventListener("click", async () => {
-    const id = currentLang() === "en" ? "share-copy-en" : "share-copy-es";
-    const raw = document.getElementById(id)?.textContent || "";
-    const text = raw.replace(/[ \t]+\n/g, "\n").replace(/\n[ \t]+/g, "\n").trim();
-    await navigator.clipboard.writeText(text);
-    copyStatus.textContent = currentLang() === "en" ? "Copied. Paste it on X." : "Copiado. Pégalo en X.";
-  });
-}

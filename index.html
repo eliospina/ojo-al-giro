@@ -154,58 +154,50 @@
         <span data-lang="en">— = the source does not yet name that fact. The table remains in Spanish.</span>
       </p>
 
-      <p class="tweet-line">
-        <span id="share-copy-es" data-lang="es">Hay gente esperando hospital, agua, comida y techo. Los 1.300 millones USD son ofertas, no un giro.
-https://ojo-al-giro.vercel.app/
-@infopresidencia @UNGRD @CancilleriaCol @CGR_Colombia</span>
-        <span id="share-copy-en" data-lang="en">People are waiting for hospitals, water, food and shelter. The USD 1.3 billion are offers, not a transfer.
-https://ojo-al-giro.vercel.app/?lang=en
-@infopresidencia @UNGRD @CancilleriaCol @CGR_Colombia</span>
-        <button type="button" id="copy-btn">
-          <span data-lang="es">Copiar para X</span>
-          <span data-lang="en">Copy for X</span>
-        </button>
-        <span class="status" id="copy-status" role="status"></span>
-      </p>
-
       <form class="civic-form" id="form-ayuda">
-        <p>
-          <span data-lang="es">Si vive ahí o tiene una fuente</span>
-          <span data-lang="en">If you live there or have a source</span>
-        </p>
+        <h2>
+          <span data-lang="es">Si vive ahí</span>
+          <span data-lang="en">If you live there</span>
+        </h2>
         <p class="form-help">
-          <span data-lang="es">Se copia una nota para pegarla. Esta página no recauda ni envía sola.</span>
-          <span data-lang="en">This copies a note to paste. This page does not collect funds or send by itself.</span>
+          <span data-lang="es">Este registro es de quien espera y de quien tiene fuente. No hay que pedir permiso. Un anuncio pide enlace; un testimonio, no. Nadie certifica aquí que la ayuda haya llegado a las casas. Esta página no recauda.</span>
+          <span data-lang="en">This record belongs to those who wait and those who have a source. No permission needed. An announcement needs a link; testimony does not. Nobody here certifies that aid reached homes. This page does not collect funds.</span>
         </p>
         <label>
           <select name="kind" required>
-            <option value="anuncio" data-es="Anuncio" data-en="Announcement">Anuncio</option>
-            <option value="desembolso" data-es="Desembolso" data-en="Disbursement">Desembolso</option>
-            <option value="testigo" data-es="Testigo" data-en="Testimony">Testigo</option>
-            <option value="disputa" data-es="Disputa" data-en="Dispute">Disputa</option>
-            <option value="credito" data-es="Crédito" data-en="Credit">Crédito</option>
-            <option value="especie" data-es="Especie" data-en="In-kind">Especie</option>
+            <option value="testigo" data-es="Yo estaba ahí" data-en="I was there">Yo estaba ahí</option>
+            <option value="anuncio" data-es="Vi un anuncio" data-en="I saw an announcement">Vi un anuncio</option>
+            <option value="desembolso" data-es="Vi que giraron" data-en="I saw a transfer">Vi que giraron</option>
+            <option value="especie" data-es="Vi comida, carpas u otra especie" data-en="I saw food, tents or other in-kind aid">Vi comida, carpas u otra especie</option>
+            <option value="disputa" data-es="No cuadra con lo que vi" data-en="It does not match what I saw">No cuadra con lo que vi</option>
+            <option value="credito" data-es="Es un crédito, no un regalo" data-en="It is credit, not a gift">Es un crédito, no un regalo</option>
           </select>
         </label>
         <label>
-          <input name="origin" required placeholder="Origen / Origin" />
+          <input name="origin" required placeholder="Quién anunció o de dónde vino" />
         </label>
         <label>
-          <input name="amount" placeholder="USD / COP / —" />
+          <input name="amount" placeholder="Cuánto, o —" />
         </label>
         <label>
-          <input name="territory" placeholder="Municipio / —" />
+          <input name="territory" placeholder="Municipio" />
         </label>
         <label>
-          <input name="url" type="url" placeholder="https://" />
+          <input name="url" type="url" placeholder="Enlace de la fuente, si hay" />
         </label>
         <label>
-          <textarea name="note" rows="2" placeholder="Nota / Note"></textarea>
+          <textarea name="note" rows="2" placeholder="Lo que vio"></textarea>
         </label>
-        <button type="submit">
-          <span data-lang="es">Copiar nota</span>
-          <span data-lang="en">Copy note</span>
-        </button>
+        <div class="actions">
+          <button type="submit">
+            <span data-lang="es">Copiar aviso</span>
+            <span data-lang="en">Copy notice</span>
+          </button>
+          <a class="ghost" id="aviso-publico" hidden href="https://github.com/eliospina/ojo-al-giro/issues/new">
+            <span data-lang="es">Dejarlo a la vista de todos</span>
+            <span data-lang="en">Post it in public view</span>
+          </a>
+        </div>
         <pre class="civic-out" id="ayuda-out" hidden></pre>
         <p class="copied" id="ayuda-status" role="status"></p>
       </form>
@@ -213,10 +205,12 @@ https://ojo-al-giro.vercel.app/?lang=en
 
     <footer>
       <p>
-        <a href="https://github.com/eliospina/ojo-al-giro">GitHub</a>
+        <a href="https://github.com/eliospina/ojo-al-giro">Código abierto</a>
         ·
-        <span data-lang="es">No administra fondos. No los pide. Informa, porque hay gente esperando. Sin fuente, —.</span>
-        <span data-lang="en">Does not administer funds. Does not ask for them. It reports, because people are waiting. No source, —.</span>
+        <a href="https://github.com/eliospina/ojo-al-giro/issues/new">Avisar una cifra</a>
+        ·
+        <span data-lang="es">Cualquiera lee las fuentes. Sin fuente, no entra. No administra fondos ni los pide.</span>
+        <span data-lang="en">Anyone can read the sources. No source, it does not go in. It does not administer or ask for funds.</span>
       </p>
     </footer>
     <script src="lang.js"></script>

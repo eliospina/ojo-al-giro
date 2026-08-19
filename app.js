@@ -158,15 +158,23 @@ if (ayudaForm) {
       : `¿Llegó?\n${kindLabel}\nOrigen: ${origin}\nMonto: ${amount}\nMunicipio: ${territory}${note ? `\nNota: ${note}` : ""}\nFuente: ${url || "—"}\nEsta nota no certifica que la ayuda haya llegado.\n`;
     ayudaOut.hidden = false;
     ayudaOut.textContent = text;
+    const aviso = document.getElementById("aviso-publico");
+    if (aviso) {
+      const issue = new URL("https://github.com/eliospina/ojo-al-giro/issues/new");
+      issue.searchParams.set("title", `${origin || "Aviso"} · ${territory}`);
+      issue.searchParams.set("body", text);
+      aviso.href = issue.href;
+      aviso.hidden = false;
+    }
     try {
       await navigator.clipboard.writeText(text);
       ayudaStatus.textContent = isEn()
-        ? "Note copied. It does not certify that aid arrived."
-        : "Nota copiada. No certifica que la ayuda haya llegado.";
+        ? "Notice copied. You can paste it anywhere, or post it in public view. It does not certify that aid arrived."
+        : "Aviso copiado. Puede pegarlo donde quiera, o dejarlo a la vista de todos. No certifica que la ayuda haya llegado.";
     } catch {
       ayudaStatus.textContent = isEn()
-        ? "Copy the note below."
-        : "Copia la nota de abajo.";
+        ? "Copy the notice below, or post it in public view."
+        : "Copie el aviso de abajo, o déjelo a la vista de todos.";
     }
   });
 }
