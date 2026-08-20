@@ -1,11 +1,11 @@
 # Ojo al Giro — brief del agente
 
-Elizabeth hace esto de forma voluntaria y busca empleo. No abrir rediseños ni sesiones largas. Un cambio pequeño con fuente, o nada.
+Proyecto voluntario, sin financiación ni equipo. No abrir rediseños ni sesiones largas. Un cambio pequeño con fuente, o nada.
 
 Sitio: https://ojo-al-giro.vercel.app/
 Repo: este. GitHub: eliospina/ojo-al-giro. Rama: main.
 
-Hay otro proyecto, la ciudad (ciudad-resiliente, el óvalo). **No se toca.** No mezclar musgo, óvalo, nave ni costos de célula con este registro.
+Este repo cubre solo el registro de ayuda. **No traer material, cifras ni vocabulario de otros proyectos.**
 
 ## Qué es
 
@@ -36,7 +36,7 @@ Antes de abrir PR: `node scripts/validar-flujos.mjs` y `node --test scripts/tota
 2. Si no hay cifra nueva con URL, **no hacer commit**. Cerrar.
 3. Si hay, añadir una fila al registro de flujos, con origen, monto, ruta, municipio o —, ¿llegó? o —, fuente con URL.
 4. Correr el validador.
-5. Abrir un **pull request**. No empujar a main. No desplegar a producción salvo orden de Elizabeth. Elizabeth revisa cuando pueda.
+5. Abrir un **pull request**. No empujar a main. No desplegar a producción salvo orden de quien mantiene el repo. La revisión llega cuando pueda.
 6. Un párrafo en el PR: qué se añadió y el enlace. Nada más.
 
 Si duda, no publique.
