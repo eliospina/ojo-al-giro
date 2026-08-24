@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-19",
+  "updated": "2026-08-24",
   "flows": [
     {
       "id": "ofertas-agregado",
@@ -285,6 +285,19 @@
       "source": {
         "name": "El Tiempo / Cancillería, 17 ago 2026",
         "url": "https://www.eltiempo.com/politica/gobierno/colombia-ha-recibido-mas-de-220-toneladas-de-ayuda-humanitaria-y-144-integrantes-de-equipos-internacionales-tras-el-terremoto-informo-la-cancilleria-3578924"
+      }
+    },
+    {
+      "id": "dian-ingreso-aduanero",
+      "origin": "DIAN — ingreso aduanero (otro corte; no se suma a las 222,5 t)",
+      "amount": "640 toneladas ingresadas a Colombia",
+      "status": "Ingreso por aeropuertos entre el 12 y el 18 ago 2026. Incluye envíos de varios países; no reemplaza ni se suma al agregado 222,5 t de El Salvador, México, Chile y Perú.",
+      "route": "Donantes internacionales → aduana aérea (Bogotá, Cali, Medellín, Pereira) → destino municipal: —",
+      "territory": "—",
+      "executed": "Ingreso al país reportado por la DIAN; entrega a hogares: —",
+      "source": {
+        "name": "Infobae / DIAN, 19 ago 2026",
+        "url": "https://www.infobae.com/colombia/2026/08/19/la-dian-informo-cuantas-toneladas-de-ayuda-internacional-recibio-colombia-hasta-ahora-para-los-afectados-por-el-terremoto-del-10-de-agosto/"
       }
     },
     {

@@ -1,0 +1,35 @@
+name: Rastrear fuentes
+
+on:
+  schedule:
+    - cron: "0 13 * * *"
+  workflow_dispatch:
+
+jobs:
+  rastrear:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Buscar URLs que el registro aún no cita
+        run: node scripts/rastrear-fuentes.mjs --out rastreo.md
+      - name: Abrir issue si hay URL nueva
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ ! -s rastreo.md ]; then
+            echo "Sin URLs nuevas."
+            exit 0
+          fi
+          hoy=$(date -u +%Y-%m-%d)
+          ya=$(gh issue list --state open --limit 30 --json title --jq "[.[] | select(.title | startswith(\"Fuentes para revisar · ${hoy}\"))] | length")
+          if [ "$ya" != "0" ]; then
+            echo "Ya hay un issue abierto de hoy."
+            exit 0
+          fi
+          gh issue create --title "Fuentes para revisar · $hoy" --body-file rastreo.md

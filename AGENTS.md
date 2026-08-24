@@ -18,7 +18,7 @@ No administra fondos. No los pide. No acusa. No certifica que la ayuda haya lleg
 - Sin URL, no entra cifra. Poner —.
 - Oferta no es giro. El 1.300 millones USD es bolsa de ofertas, no un desembolso. No sumarlo con las líneas.
 - Crédito no es donación. Banco Mundial 200 (desembolsado al Gobierno) y BID 300 (tope de línea) no se mezclan con donaciones.
-- En especie no es caja. 222,5 t es el agregado El Salvador + México + Chile + Perú: no volver a sumar país por país.
+- En especie no es caja. 222,5 t es el agregado El Salvador + México + Chile + Perú: no volver a sumar país por país. 640 t (DIAN, aduana 12-18 ago) es otro corte: no se suma a las 222,5.
 - Santo Domingo es parte de ANDI, no un total aparte.
 - Chile en Pereira: llegó el avión al municipio. No es entrega a hogares.
 - No inventar tasas de cambio. GBP y CHF se dejan en su moneda.
@@ -28,11 +28,13 @@ No administra fondos. No los pide. No acusa. No certifica que la ayuda haya lleg
 
 Papel `#fbf7f0`, tinta `#1f1712`, marca `#c23018`. No volver al negro de tablero, al afiche en versalitas ni al manila sucio. Texto corto. Español primero. El chat pregunta ¿Llegó? y solo responde con el registro.
 
-Antes de abrir PR: `node scripts/validar-flujos.mjs` y `node --test scripts/totals.test.mjs`.
+Antes de abrir PR: `node scripts/validar-flujos.mjs` y `node --test scripts/totals.test.mjs scripts/rastrear.test.mjs`.
+
+El job «Rastrear fuentes» mira un listado público cada día. Si hay una URL que el registro aún no cita, abre un issue. No escribe cifras ni toca `flujos.json`.
 
 ## Trabajo diario (si corre solo)
 
-1. Buscar anuncios nuevos en fuentes públicas ya usadas (Cancillería, OCHA, EFE, El Tiempo, Infobae, bancos, gobiernos).
+1. Buscar anuncios nuevos en fuentes públicas ya usadas (Cancillería, OCHA, EFE, El Tiempo, Infobae, bancos, gobiernos) y en issues «Fuentes para revisar».
 2. Si no hay cifra nueva con URL, **no hacer commit**. Cerrar.
 3. Si hay, añadir una fila al registro de flujos, con origen, monto, ruta, municipio o —, ¿llegó? o —, fuente con URL.
 4. Correr el validador.

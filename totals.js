@@ -2,6 +2,7 @@ const SKIP_MONEY = new Set([
   "ofertas-agregado",
   "santo-domingo",
   "ayuda-bilateral-recibida",
+  "dian-ingreso-aduanero",
   "el-salvador",
   "mexico",
   "chile-recibido",
@@ -112,6 +113,11 @@ function paintTotals(flows) {
   const tonLabel = Number.isFinite(tonN)
     ? new Intl.NumberFormat(loc, { maximumFractionDigits: 1 }).format(tonN)
     : "";
+  const dian = flows.find((f) => f.id === "dian-ingreso-aduanero");
+  const dianN = dian ? parseEsNum((dian.amount.match(/([0-9][0-9.,]*)\s*toneladas/) || [])[1]) : NaN;
+  const dianLabel = Number.isFinite(dianN)
+    ? new Intl.NumberFormat(loc, { maximumFractionDigits: 0 }).format(dianN)
+    : "";
 
   const parts = isEn()
     ? [
@@ -125,6 +131,7 @@ function paintTotals(flows) {
           .join(" · "),
         cnyGift ? `${formatMoney("CNY", cnyGift)} (China, not converted)` : null,
         tonLabel ? `${tonLabel} t received in the country · to the towns: —` : null,
+        dianLabel ? `${dianLabel} t entered customs 12–18 Aug (DIAN; not added to the 222.5) · to the towns: —` : null,
       ]
     : [
         "Aparte de esa bolsa de ofertas:",
@@ -137,6 +144,7 @@ function paintTotals(flows) {
           .join(" · "),
         cnyGift ? `${formatMoney("CNY", cnyGift)} (China, sin convertir)` : null,
         tonLabel ? `${tonLabel} t recibidas en el país · a los pueblos: —` : null,
+        dianLabel ? `${dianLabel} t ingresadas por aduana 12-18 ago (DIAN; no se suma a las 222,5) · a los pueblos: —` : null,
       ];
 
   if (!sumsEl) return;
