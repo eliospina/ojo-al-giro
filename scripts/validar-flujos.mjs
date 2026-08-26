@@ -75,6 +75,16 @@ if (dian) {
   ok(/hogares:\s*—/.test(dian.executed), "R4b", "dian-ingreso-aduanero", "la entrega a hogares debe quedar en «—»");
 }
 
+const can = porId("cancilleria-especie-25ago");
+ok(!!can, "R4c", "cancilleria-especie-25ago", "falta el corte Cancillería de 80 t");
+if (can) {
+  ok(Math.abs(parseTon(can.amount) - 80) < 0.05, "R4c", "cancilleria-especie-25ago", "debe conservar 80 toneladas");
+  const blob = `${can.origin} ${can.amount} ${can.status} ${can.route}`;
+  ok(/no se suma/i.test(blob), "R4c", "cancilleria-especie-25ago", "debe decir que no se suma a 222,5 ni a 640");
+  ok(/640/.test(blob) && /222[,.]5/.test(blob), "R4c", "cancilleria-especie-25ago", "debe nombrar 222,5 y 640 para no mezclar cortes");
+  ok(/hogares:\s*—/.test(can.executed), "R4c", "cancilleria-especie-25ago", "la entrega a hogares debe quedar en «—»");
+}
+
 const cp = porId("chile-pereira");
 ok(cp && /hogares:\s*—/.test(cp.executed), "R6", "chile-pereira", "la entrega a hogares debe quedar en «—»");
 

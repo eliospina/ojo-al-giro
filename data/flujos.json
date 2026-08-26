@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-24",
+  "updated": "2026-08-26",
   "flows": [
     {
       "id": "ofertas-agregado",
@@ -236,10 +236,23 @@
       }
     },
     {
+      "id": "cruz-roja-dref",
+      "origin": "Cruz Roja — Fondo DREF",
+      "amount": "CHF 1 millón — asignación de emergencia",
+      "status": "Asignado (Norad, 17 ago 2026). Canal: Cruz Roja Colombiana, unas 5.000 familias.",
+      "route": "DREF → Cruz Roja Colombiana → salud, agua, efectivo y albergue temporal",
+      "territory": "—",
+      "executed": "Asignado al movimiento; entrega a hogares: —",
+      "source": {
+        "name": "Norad, 17 ago 2026",
+        "url": "https://www.norad.no/en/news/news/2026/colombia-earthquake-nok-60-million-from-international-emergency-funds/"
+      }
+    },
+    {
       "id": "suecia",
       "origin": "Suecia",
       "amount": "SEK 5 millones (≈ USD 522.000) + 150 tiendas y 360 mantas",
-      "status": "Anunciado",
+      "status": "Anunciado. La especie en toneladas se registra aparte.",
       "route": "Dinero vía ACNUR · material vía Mecanismo de Protección Civil de la UE",
       "territory": "—",
       "executed": "—",
@@ -265,7 +278,7 @@
       "id": "luxemburgo",
       "origin": "Luxemburgo",
       "amount": "75 carpas familiares + 4 multipropósito — en especie",
-      "status": "Anunciado (17 ago 2026)",
+      "status": "Sigue previsto (Cancillería, 25 ago 2026); no da por recibido",
       "route": "Mecanismo de Protección Civil de la UE",
       "territory": "—",
       "executed": "—",
@@ -298,6 +311,58 @@
       "source": {
         "name": "Infobae / DIAN, 19 ago 2026",
         "url": "https://www.infobae.com/colombia/2026/08/19/la-dian-informo-cuantas-toneladas-de-ayuda-internacional-recibio-colombia-hasta-ahora-para-los-afectados-por-el-terremoto-del-10-de-agosto/"
+      }
+    },
+    {
+      "id": "cancilleria-especie-25ago",
+      "origin": "Cancillería — corte de especie 25 ago (otro corte; no se suma a las 222,5 t ni a las 640 t)",
+      "amount": "más de 80 toneladas recibidas en Colombia",
+      "status": "Recibido al 25 ago 2026. Desglose: Türkiye 20 · Brasil 19 · Suecia 14 · Ecuador más de 12 · Argentina 9,7 · Japón 5,6 · Israel 3. Alemania entra en kits, no en este peso. No reemplaza ni se suma a 222,5 t ni a 640 t.",
+      "route": "Aliados internacionales → Cancillería / ingreso al país → destino municipal: —",
+      "territory": "—",
+      "executed": "Ingreso al país reportado por Cancillería; entrega a hogares: —",
+      "source": {
+        "name": "teleSUR / Cancillería, 25 ago 2026",
+        "url": "https://www.telesurtv.net/colombia-80-toneladas-ayuda-emergencia/"
+      }
+    },
+    {
+      "id": "turkiye",
+      "origin": "Türkiye",
+      "amount": "20 toneladas — en especie",
+      "status": "Recibido en Colombia al 25 ago 2026",
+      "route": "Türkiye → ingreso a Colombia → distribución",
+      "territory": "—",
+      "executed": "Recibido en Colombia; entrega a hogares: —",
+      "source": {
+        "name": "teleSUR / Cancillería, 25 ago 2026",
+        "url": "https://www.telesurtv.net/colombia-80-toneladas-ayuda-emergencia/"
+      }
+    },
+    {
+      "id": "brasil",
+      "origin": "Brasil",
+      "amount": "19 toneladas de arroz — en especie",
+      "status": "Recibido en Colombia (Cancillería, 24-25 ago 2026)",
+      "route": "Brasil → ingreso a Colombia → atención a damnificados (municipio: —)",
+      "territory": "—",
+      "executed": "Recibido en Colombia; entrega a hogares: —",
+      "source": {
+        "name": "teleSUR / Cancillería, 25 ago 2026",
+        "url": "https://www.telesurtv.net/colombia-80-toneladas-ayuda-emergencia/"
+      }
+    },
+    {
+      "id": "argentina",
+      "origin": "Argentina",
+      "amount": "9,7 toneladas — en especie",
+      "status": "Recibido en Colombia al 25 ago 2026",
+      "route": "Argentina → ingreso a Colombia → distribución",
+      "territory": "—",
+      "executed": "Recibido en Colombia; entrega a hogares: —",
+      "source": {
+        "name": "teleSUR / Cancillería, 25 ago 2026",
+        "url": "https://www.telesurtv.net/colombia-80-toneladas-ayuda-emergencia/"
       }
     },
     {
@@ -353,16 +418,81 @@
       }
     },
     {
+      "id": "israel-insumos",
+      "origin": "Israel — insumos médicos (parte del corte Cancillería 25 ago)",
+      "amount": "3 toneladas de insumos médicos — en especie",
+      "status": "Recibido en Colombia al 25 ago 2026",
+      "route": "Israel → ingreso a Colombia → distribución",
+      "territory": "—",
+      "executed": "Recibido en Colombia; entrega a hogares: —",
+      "source": {
+        "name": "teleSUR / Cancillería, 25 ago 2026",
+        "url": "https://www.telesurtv.net/colombia-80-toneladas-ayuda-emergencia/"
+      }
+    },
+    {
+      "id": "israel-cali-2",
+      "origin": "Israel — segunda donación de insumos (MASHAV)",
+      "amount": "casi 7 toneladas de equipos y productos médicos — en especie",
+      "status": "Recibido en Cali (24 ago 2026). Otro desglose: no se suma a las 3 t del corte Cancillería ni a las 80 t.",
+      "route": "MASHAV / Ministerio de Salud de Israel → Cali",
+      "territory": "Cali",
+      "executed": "Vicepresidencia reporta recepción en Cali; entrega a hogares: —",
+      "source": {
+        "name": "Caracol Radio, 24 ago 2026",
+        "url": "https://caracol.com.co/2026/08/24/gobierno-colombiano-agradece-a-israel-por-ayuda-humanitaria-y-labor-de-sus-rescatistas-en-cali/"
+      }
+    },
+    {
       "id": "ecuador",
       "origin": "Ecuador",
       "amount": "47 rescatistas, perros y equipos del Cuerpo de Bomberos de Quito — en especie",
-      "status": "Anunciado (vicepresidencia de Colombia)",
+      "status": "Anunciado (vicepresidencia de Colombia). La especie en toneladas se registra aparte.",
       "route": "Personal y equipos de búsqueda y rescate",
       "territory": "—",
       "executed": "—",
       "source": {
         "name": "Infobae, 12 ago 2026",
         "url": "https://www.infobae.com/colombia/2026/08/12/gobierno-nacional-anuncio-que-le-han-recibido-ofertas-de-ayuda-internacional-por-us1300-millones-tras-el-terremoto-en-colombia-en-que-consiste/"
+      }
+    },
+    {
+      "id": "ecuador-especie",
+      "origin": "Ecuador — cargamento",
+      "amount": "más de 12 toneladas — en especie",
+      "status": "Recibido en Colombia al 25 ago 2026",
+      "route": "Ecuador → ingreso a Colombia → distribución",
+      "territory": "—",
+      "executed": "Recibido en Colombia; entrega a hogares: —",
+      "source": {
+        "name": "teleSUR / Cancillería, 25 ago 2026",
+        "url": "https://www.telesurtv.net/colombia-80-toneladas-ayuda-emergencia/"
+      }
+    },
+    {
+      "id": "suecia-especie",
+      "origin": "Suecia — cargamento",
+      "amount": "14 toneladas — en especie",
+      "status": "Recibido en Colombia al 25 ago 2026",
+      "route": "Suecia → ingreso a Colombia → distribución",
+      "territory": "—",
+      "executed": "Recibido en Colombia; entrega a hogares: —",
+      "source": {
+        "name": "teleSUR / Cancillería, 25 ago 2026",
+        "url": "https://www.telesurtv.net/colombia-80-toneladas-ayuda-emergencia/"
+      }
+    },
+    {
+      "id": "japon-recibido",
+      "origin": "Japón — cargamento con llegada al país",
+      "amount": "5,6 toneladas — en especie",
+      "status": "Recibido en Colombia al 25 ago 2026",
+      "route": "Japón → ingreso a Colombia → distribución",
+      "territory": "—",
+      "executed": "Recibido en Colombia; entrega a hogares: —",
+      "source": {
+        "name": "teleSUR / Cancillería, 25 ago 2026",
+        "url": "https://www.telesurtv.net/colombia-80-toneladas-ayuda-emergencia/"
       }
     },
     {

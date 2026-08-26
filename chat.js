@@ -1,4 +1,4 @@
-const AGGREGATE_IDS = new Set(["ofertas-agregado", "ayuda-bilateral-recibida", "dian-ingreso-aduanero"]);
+const AGGREGATE_IDS = new Set(["ofertas-agregado", "ayuda-bilateral-recibida", "dian-ingreso-aduanero", "cancilleria-especie-25ago"]);
 const STOP_WORD = /^(total|suma|cuanto|oferta|ofertas|ayuda|donacion|donaciones|millones|how|much|aggregate|giro|hay|the|for|and)$/;
 
 function fold(text) {

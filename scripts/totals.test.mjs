@@ -63,3 +63,10 @@ test("640 t DIAN es otro corte, no se suma a las 222,5", () => {
   assert.match(sums, /no se suma a las 222,5/);
   assert.doesNotMatch(sums, /862/);
 });
+
+test("80 t Cancillería 25 ago es otro corte, no se suma", () => {
+  const { sums } = runTotals(flows);
+  assert.match(sums, /80 t Cancillería 25 ago/);
+  assert.match(sums, /no se suma a 222,5 ni a 640/);
+  assert.doesNotMatch(sums, /720/);
+});
