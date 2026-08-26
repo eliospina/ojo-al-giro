@@ -8,6 +8,15 @@ const SKIP_MONEY = new Set([
   "chile-recibido",
   "peru",
   "chile-pereira",
+  "cancilleria-especie-25ago",
+  "turkiye",
+  "brasil",
+  "argentina",
+  "ecuador-especie",
+  "suecia-especie",
+  "japon-recibido",
+  "israel-insumos",
+  "israel-cali-2",
 ]);
 
 function parseEsNum(raw) {
@@ -118,6 +127,11 @@ function paintTotals(flows) {
   const dianLabel = Number.isFinite(dianN)
     ? new Intl.NumberFormat(loc, { maximumFractionDigits: 0 }).format(dianN)
     : "";
+  const can = flows.find((f) => f.id === "cancilleria-especie-25ago");
+  const canN = can ? parseEsNum((can.amount.match(/([0-9][0-9.,]*)\s*toneladas/) || [])[1]) : NaN;
+  const canLabel = Number.isFinite(canN)
+    ? new Intl.NumberFormat(loc, { maximumFractionDigits: 0 }).format(canN)
+    : "";
 
   const parts = isEn()
     ? [
@@ -132,6 +146,7 @@ function paintTotals(flows) {
         cnyGift ? `${formatMoney("CNY", cnyGift)} (China, not converted)` : null,
         tonLabel ? `${tonLabel} t received in the country · to the towns: —` : null,
         dianLabel ? `${dianLabel} t entered customs 12–18 Aug (DIAN; not added to the 222.5) · to the towns: —` : null,
+        canLabel ? `${canLabel} t Cancillería 25 Aug (another cut; not added to 222.5 or 640) · to the towns: —` : null,
       ]
     : [
         "Aparte de esa bolsa de ofertas:",
@@ -145,6 +160,7 @@ function paintTotals(flows) {
         cnyGift ? `${formatMoney("CNY", cnyGift)} (China, sin convertir)` : null,
         tonLabel ? `${tonLabel} t recibidas en el país · a los pueblos: —` : null,
         dianLabel ? `${dianLabel} t ingresadas por aduana 12-18 ago (DIAN; no se suma a las 222,5) · a los pueblos: —` : null,
+        canLabel ? `${canLabel} t Cancillería 25 ago (otro corte; no se suma a 222,5 ni a 640) · a los pueblos: —` : null,
       ];
 
   if (!sumsEl) return;

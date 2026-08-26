@@ -1,6 +1,6 @@
 {
   "intervalSeconds": 60,
-  "ledgerUpdated": "2026-08-24",
+  "ledgerUpdated": "2026-08-26",
   "events": [
     {
       "id": "evt-2026-08-13-cerf",
@@ -91,6 +91,45 @@
       "source": {
         "name": "Infobae / DIAN, 19 ago 2026",
         "url": "https://www.infobae.com/colombia/2026/08/19/la-dian-informo-cuantas-toneladas-de-ayuda-internacional-recibio-colombia-hasta-ahora-para-los-afectados-por-el-terremoto-del-10-de-agosto/"
+      }
+    },
+    {
+      "id": "evt-2026-08-23-choco-fase1",
+      "at": "2026-08-23",
+      "kind": "anuncio",
+      "origin": "Gobernación del Chocó",
+      "amount": "Primera fase de ayuda humanitaria de emergencia a municipios",
+      "territory": "Chocó",
+      "note": "La gobernadora reporta AHE a todos los municipios afectados; el despacho a familias lo dejan a alcaldías y JAC. No acredita entrega a cada casa.",
+      "source": {
+        "name": "Infobae, 23 ago 2026",
+        "url": "https://www.infobae.com/colombia/2026/08/24/choco-culmino-la-primera-fase-de-entrega-de-ayuda-humanitaria-a-los-damnificados-por-el-terremoto/"
+      }
+    },
+    {
+      "id": "evt-2026-08-24-israel-cali",
+      "at": "2026-08-24",
+      "kind": "especie",
+      "origin": "Israel — MASHAV",
+      "amount": "casi 7 toneladas de insumos médicos en Cali",
+      "territory": "Cali",
+      "note": "Segunda donación, según la vicepresidencia. No se suma a las 3 t del corte Cancillería del 25 ago ni acredita entrega a hogares.",
+      "source": {
+        "name": "Caracol Radio, 24 ago 2026",
+        "url": "https://caracol.com.co/2026/08/24/gobierno-colombiano-agradece-a-israel-por-ayuda-humanitaria-y-labor-de-sus-rescatistas-en-cali/"
+      }
+    },
+    {
+      "id": "evt-2026-08-25-cancilleria-80",
+      "at": "2026-08-25",
+      "kind": "especie",
+      "origin": "Cancillería — corte de especie",
+      "amount": "más de 80 toneladas recibidas",
+      "territory": "—",
+      "note": "Türkiye, Brasil, Suecia, Ecuador, Argentina, Japón e Israel. Otro corte: no se suma a las 222,5 t ni a las 640 t. No acredita entrega a hogares.",
+      "source": {
+        "name": "teleSUR / Cancillería, 25 ago 2026",
+        "url": "https://www.telesurtv.net/colombia-80-toneladas-ayuda-emergencia/"
       }
     }
   ]

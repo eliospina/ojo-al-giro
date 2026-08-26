@@ -18,7 +18,7 @@ No administra fondos. No los pide. No acusa. No certifica que la ayuda haya lleg
 - Sin URL, no entra cifra. Poner —.
 - Oferta no es giro. El 1.300 millones USD es bolsa de ofertas, no un desembolso. No sumarlo con las líneas.
 - Crédito no es donación. Banco Mundial 200 (desembolsado al Gobierno) y BID 300 (tope de línea) no se mezclan con donaciones.
-- En especie no es caja. 222,5 t es el agregado El Salvador + México + Chile + Perú: no volver a sumar país por país. 640 t (DIAN, aduana 12-18 ago) es otro corte: no se suma a las 222,5.
+- En especie no es caja. 222,5 t es el agregado El Salvador + México + Chile + Perú: no volver a sumar país por país. 640 t (DIAN, aduana 12-18 ago) es otro corte: no se suma a las 222,5. Más de 80 t (Cancillería, 25 ago) es otro corte: no se suma a las 222,5 ni a las 640.
 - Santo Domingo es parte de ANDI, no un total aparte.
 - Chile en Pereira: llegó el avión al municipio. No es entrega a hogares.
 - No inventar tasas de cambio. GBP y CHF se dejan en su moneda.
