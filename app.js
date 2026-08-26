@@ -53,7 +53,7 @@ function originCell(flow) {
 function renderFlowRow(flow, isNew) {
   const tr = document.createElement("tr");
   if (isNew) tr.classList.add("is-new");
-  if (["ofertas-agregado", "ayuda-bilateral-recibida", "santo-domingo"].includes(flow.id)) {
+  if (["ofertas-agregado", "ayuda-bilateral-recibida", "dian-ingreso-aduanero", "santo-domingo"].includes(flow.id)) {
     tr.classList.add("is-note");
   }
   tr.dataset.id = flow.id;

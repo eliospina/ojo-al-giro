@@ -14,4 +14,4 @@ jobs:
         with:
           node-version: "20"
       - run: node scripts/validar-flujos.mjs
-      - run: node --test scripts/totals.test.mjs
+      - run: node --test scripts/totals.test.mjs scripts/rastrear.test.mjs

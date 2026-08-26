@@ -65,6 +65,16 @@ if (agg) {
 const sd = porId("santo-domingo");
 ok(sd && /andi/i.test(sd.origin), "R5", "santo-domingo", "debe marcarse como parte de ANDI");
 
+const dian = porId("dian-ingreso-aduanero");
+ok(!!dian, "R4b", "dian-ingreso-aduanero", "falta el corte aduanero de 640 t");
+if (dian) {
+  ok(Math.abs(parseTon(dian.amount) - 640) < 0.05, "R4b", "dian-ingreso-aduanero", "debe conservar 640 toneladas");
+  const blob = `${dian.origin} ${dian.amount} ${dian.status} ${dian.route}`;
+  ok(/no se suma/i.test(blob), "R4b", "dian-ingreso-aduanero", "debe decir que no se suma a las 222,5 t");
+  ok(/222[,.]5/.test(blob), "R4b", "dian-ingreso-aduanero", "debe nombrar el agregado 222,5 para no mezclar cortes");
+  ok(/hogares:\s*—/.test(dian.executed), "R4b", "dian-ingreso-aduanero", "la entrega a hogares debe quedar en «—»");
+}
+
 const cp = porId("chile-pereira");
 ok(cp && /hogares:\s*—/.test(cp.executed), "R6", "chile-pereira", "la entrega a hogares debe quedar en «—»");
 

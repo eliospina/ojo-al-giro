@@ -56,3 +56,10 @@ test("toneladas recibidas, a los pueblos —", () => {
   assert.match(sums, /222,5 t recibidas/);
   assert.match(sums, /pueblos: —/);
 });
+
+test("640 t DIAN es otro corte, no se suma a las 222,5", () => {
+  const { sums } = runTotals(flows);
+  assert.match(sums, /640 t ingresadas/);
+  assert.match(sums, /no se suma a las 222,5/);
+  assert.doesNotMatch(sums, /862/);
+});

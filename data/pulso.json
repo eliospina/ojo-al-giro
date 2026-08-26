@@ -1,6 +1,6 @@
 {
   "intervalSeconds": 60,
-  "ledgerUpdated": "2026-08-19",
+  "ledgerUpdated": "2026-08-24",
   "events": [
     {
       "id": "evt-2026-08-13-cerf",
@@ -78,6 +78,19 @@
       "source": {
         "name": "EFE / UNGRD, 18 ago 2026",
         "url": "https://www.infobae.com/america/agencias/2026/08/19/el-gobierno-colombiano-recibe-776-toneladas-de-ayuda-donada-por-china-por-el-terremoto/"
+      }
+    },
+    {
+      "id": "evt-2026-08-19-dian-640",
+      "at": "2026-08-19",
+      "kind": "especie",
+      "origin": "DIAN — ingreso aduanero",
+      "amount": "640 toneladas ingresadas por aeropuertos",
+      "territory": "—",
+      "note": "Corte aduanero del 12 al 18 ago. No se suma a las 222,5 t de El Salvador, México, Chile y Perú ni acredita entrega a hogares.",
+      "source": {
+        "name": "Infobae / DIAN, 19 ago 2026",
+        "url": "https://www.infobae.com/colombia/2026/08/19/la-dian-informo-cuantas-toneladas-de-ayuda-internacional-recibio-colombia-hasta-ahora-para-los-afectados-por-el-terremoto-del-10-de-agosto/"
       }
     }
   ]
