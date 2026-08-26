@@ -40,8 +40,17 @@ for (const f of flows) {
 const bolsa = porId("ofertas-agregado");
 ok(!!bolsa, "R2", "ofertas-agregado", "falta la fila de la bolsa de ofertas");
 if (bolsa) {
-  ok(/oferta/i.test(`${bolsa.origin} ${bolsa.amount} ${bolsa.status}`), "R2", "ofertas-agregado", "debe decir que es oferta");
+  ok(/oferta|propuesta/i.test(`${bolsa.origin} ${bolsa.amount} ${bolsa.status}`), "R2", "ofertas-agregado", "debe decir que es oferta o propuesta");
   ok(/1\.300/.test(bolsa.amount), "R2", "ofertas-agregado", "debe conservar 1.300");
+  ok(/12 ago/.test(`${bolsa.origin} ${bolsa.status}`), "R2", "ofertas-agregado", "debe mostrar que es el corte del 12 ago");
+  ok(/no total actualizado/i.test(bolsa.amount), "R2", "ofertas-agregado", "no debe presentarse como total actualizado");
+}
+
+const privado = porId("sector-privado-agregado");
+ok(!!privado, "R2b", "sector-privado-agregado", "falta el agregado privado posterior");
+if (privado) {
+  ok(/2 billones/.test(privado.amount), "R2b", "sector-privado-agregado", "debe conservar el agregado de más de COP 2 billones");
+  ok(/no sumar|no se suma/i.test(`${privado.origin} ${privado.status}`), "R2b", "sector-privado-agregado", "debe evitar sumar otra vez los donantes incluidos");
 }
 
 for (const f of flows) {

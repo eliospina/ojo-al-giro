@@ -1,4 +1,10 @@
-const AGGREGATE_IDS = new Set(["ofertas-agregado", "ayuda-bilateral-recibida", "dian-ingreso-aduanero", "cancilleria-especie-25ago"]);
+const AGGREGATE_IDS = new Set([
+  "ofertas-agregado",
+  "sector-privado-agregado",
+  "ayuda-bilateral-recibida",
+  "dian-ingreso-aduanero",
+  "cancilleria-especie-25ago",
+]);
 const STOP_WORD = /^(total|suma|cuanto|oferta|ofertas|ayuda|donacion|donaciones|millones|how|much|aggregate|giro|hay|the|for|and)$/;
 
 function fold(text) {
@@ -55,11 +61,10 @@ function chatReply(question) {
   const specific = scored.filter(({ flow, hits }) => !AGGREGATE_IDS.has(flow.id) && hits >= 3);
   const wantsTotal = /(total|suma|\bcuanto\b|how much|aggregate|1\.?300|ofertas?)/.test(q);
   if (wantsTotal && !specific.length) {
-    const n = document.getElementById("total-n")?.textContent || "—";
     const s = sumsText();
     return isEn()
-      ? `${n} million USD in offers. That is not money already in the towns.\n${s}`
-      : `${n} millones USD en ofertas. No es dinero ya en los pueblos.\n${s}`;
+      ? `No consolidated, current total has been published.\n${s}`
+      : `No hay un total consolidado y actualizado publicado.\n${s}`;
   }
 
   const pick = (specific.length ? specific : scored).slice(0, 3);

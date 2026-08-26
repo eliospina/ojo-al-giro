@@ -16,7 +16,8 @@ No administra fondos. No los pide. No acusa. No certifica que la ayuda haya lleg
 ## Cifras
 
 - Sin URL, no entra cifra. Poner —.
-- Oferta no es giro. El 1.300 millones USD es bolsa de ofertas, no un desembolso. No sumarlo con las líneas.
+- No hay un total consolidado y actualizado publicado. Los USD 1.300 millones son propuestas multilaterales del corte 12 ago, no el total de toda la ayuda ni un desembolso. No sumarlo con las líneas.
+- Más de COP 2 billones es el agregado privado del corte 22 ago. Incluye ANDI y donantes nombrados por separado: no volver a sumarlos.
 - Crédito no es donación. Banco Mundial 200 (desembolsado al Gobierno) y BID 300 (tope de línea) no se mezclan con donaciones.
 - En especie no es caja. 222,5 t es el agregado El Salvador + México + Chile + Perú: no volver a sumar país por país. 640 t (DIAN, aduana 12-18 ago) es otro corte: no se suma a las 222,5. Más de 80 t (Cancillería, 25 ago) es otro corte: no se suma a las 222,5 ni a las 640.
 - Santo Domingo es parte de ANDI, no un total aparte.

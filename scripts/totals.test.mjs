@@ -36,10 +36,11 @@ function runTotals(list) {
   return { n: nEl.textContent, sums: items.join(" · ") };
 }
 
-test("el 1.300 es la bolsa de ofertas", () => {
+test("no presenta el 1.300 como total actualizado", () => {
   const { n, sums } = runTotals(flows);
-  assert.equal(n, "1.300");
-  assert.match(sums, /bolsa de ofertas/);
+  assert.equal(n, "No hay");
+  assert.match(sums, /No hay un total consolidado y actualizado publicado/);
+  assert.match(sums, /Propuestas multilaterales reportadas el 12 ago: USD 1.300 millones/);
   assert.match(sums, /no es giro/);
 });
 
@@ -48,7 +49,14 @@ test("créditos y donaciones no se mezclan con la bolsa", () => {
   assert.match(sums, /USD 200 millones/);
   assert.match(sums, /USD 300 millones/);
   assert.match(sums, /USD 46 millones/);
-  assert.doesNotMatch(sums, /USD 1.300/);
+  assert.match(sums, /USD 1.300 millones \(no es giro\)/);
+});
+
+test("el agregado privado aparece aparte y no se duplica", () => {
+  const { sums } = runTotals(flows);
+  assert.match(sums, /más de COP 2 billones/);
+  assert.match(sums, /incluye donantes nombrados; no sumarlos otra vez/);
+  assert.match(sums, /Son cortes separados; no se suman entre sí/);
 });
 
 test("toneladas recibidas, a los pueblos —", () => {

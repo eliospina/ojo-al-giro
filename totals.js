@@ -1,5 +1,6 @@
 const SKIP_MONEY = new Set([
   "ofertas-agregado",
+  "sector-privado-agregado",
   "santo-domingo",
   "ayuda-bilateral-recibida",
   "dian-ingreso-aduanero",
@@ -77,9 +78,11 @@ function paintTotals(flows) {
   const loc = isEn() ? "en-US" : "es-CO";
   const bag = flows.find((f) => f.id === "ofertas-agregado");
   const bagUsd = bag ? moneyBits(bag.amount).find((b) => b.cur === "USD") : null;
-  nEl.textContent = bagUsd
+  const bagLabel = bagUsd
     ? new Intl.NumberFormat(loc, { maximumFractionDigits: 0 }).format(bagUsd.value / 1e6)
     : "—";
+  const privateBag = flows.find((f) => f.id === "sector-privado-agregado");
+  nEl.textContent = isEn() ? "No" : "No hay";
 
   let usdAndi = 0;
   let usdGift = 0;
@@ -135,7 +138,12 @@ function paintTotals(flows) {
 
   const parts = isEn()
     ? [
-        "Apart from that offer bag:",
+        "No consolidated, current total has been published.",
+        `Multilateral proposals reported 12 Aug: USD ${bagLabel} million (not a transfer)`,
+        privateBag
+          ? `${privateBag.amount} from Colombia's private sector, reported 22 Aug (includes named donors; do not add them again)`
+          : null,
+        "Separate snapshots; they are not added together:",
         `ANDI announced ≈ ${formatMoney("USD", usdAndi)} (not a transfer)`,
         `International donations announced ${formatMoney("USD", usdGift)}`,
         `Credit disbursed to the Government ${formatMoney("USD", usdCreditOut)}`,
@@ -149,7 +157,12 @@ function paintTotals(flows) {
         canLabel ? `${canLabel} t Cancillería 25 Aug (another cut; not added to 222.5 or 640) · to the towns: —` : null,
       ]
     : [
-        "Aparte de esa bolsa de ofertas:",
+        "No hay un total consolidado y actualizado publicado.",
+        `Propuestas multilaterales reportadas el 12 ago: USD ${bagLabel} millones (no es giro)`,
+        privateBag
+          ? `${privateBag.amount} del sector privado, corte 22 ago (incluye donantes nombrados; no sumarlos otra vez)`
+          : null,
+        "Son cortes separados; no se suman entre sí:",
         `ANDI anunciado ≈ ${formatMoney("USD", usdAndi)} (no es giro)`,
         `Donaciones internacionales anunciadas ${formatMoney("USD", usdGift)}`,
         `Crédito desembolsado al Gobierno ${formatMoney("USD", usdCreditOut)}`,

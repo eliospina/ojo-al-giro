@@ -3,15 +3,28 @@
   "flows": [
     {
       "id": "ofertas-agregado",
-      "origin": "Agregado gubernamental de ofertas internacionales",
-      "amount": "USD 1.300 millones — ofertas, no un solo giro",
-      "status": "Bolsa reportada por el Gobierno: mezcla créditos, donaciones y asistencia técnica. No es dinero ya ejecutado en territorio.",
+      "origin": "Organismos multilaterales — propuestas reportadas por el Gobierno (corte 12 ago)",
+      "amount": "USD 1.300 millones — propuestas, no total actualizado ni un solo giro",
+      "status": "Foto del 12 ago 2026: mezcla créditos, donaciones y asistencia técnica. No es el total de toda la ayuda posterior ni dinero ya ejecutado en territorio.",
       "route": "Oferta → negociación / desembolso / especie — cada tramo debe verificarse aparte",
       "territory": "—",
       "executed": "—",
       "source": {
         "name": "Infobae, 12 ago 2026 (vicepresidencia)",
         "url": "https://www.infobae.com/colombia/2026/08/12/gobierno-nacional-anuncio-que-le-han-recibido-ofertas-de-ayuda-internacional-por-us1300-millones-tras-el-terremoto-en-colombia-en-que-consiste/"
+      }
+    },
+    {
+      "id": "sector-privado-agregado",
+      "origin": "Sector privado colombiano — agregado, no sumar otra vez las filas incluidas",
+      "amount": "más de COP 2 billones — aportes anunciados",
+      "status": "Agregado anunciado por el presidente el 22 ago 2026. Incluye ANDI, familias empresarias, compañías y gremios ya citados por separado; no es un giro único ni se suma a esas filas.",
+      "route": "Empresarios, compañías y gremios → distintos fondos y proyectos de atención y reconstrucción",
+      "territory": "—",
+      "executed": "Aportes anunciados; desembolso y entrega a hogares: —",
+      "source": {
+        "name": "EFE, 22 ago 2026",
+        "url": "https://efe.com/economia/2026-08-22/empresarios-donaciones-terremoto-colombia/"
       }
     },
     {
