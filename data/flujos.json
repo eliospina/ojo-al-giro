@@ -1,8 +1,51 @@
 {
   "updated": "2026-08-26",
+  "fx": {
+    "fecha": "2026-08-26",
+    "nota": "Pesos por unidad, al corte del 26 ago 2026. Convertir no es girar. Cada tasa lleva su fuente; sin fuente no se convierte.",
+    "cop_por": {
+      "USD": {
+        "valor": 3081.67,
+        "source": {
+          "name": "TRM certificada por la Superintendencia Financiera, 26 ago 2026",
+          "url": "https://dolar.wilkinsonpc.com.co/2026-08-26"
+        }
+      },
+      "EUR": {
+        "valor": 3604.27,
+        "source": {
+          "name": "El Cronista, cotización del euro en Colombia, 26 ago 2026",
+          "url": "https://www.cronista.com/colombia/mercados-dolar/euro-a-peso-colombiano-a-cuanto-cotiza-este-miercoles-26-de-agosto/"
+        }
+      },
+      "GBP": {
+        "valor": 4194.05,
+        "source": {
+          "name": "World Forex Rates, GBP/COP, 24 ago 2026",
+          "url": "https://www.worldforexrates.com/es/gbp/cop/1-exchange-rate/"
+        }
+      },
+      "CHF": {
+        "valor": 3850.38,
+        "source": {
+          "name": "Wise, CHF/COP, 25 ago 2026",
+          "url": "https://wise.com/es/currency-converter/chf-to-cop-rate/history"
+        }
+      },
+      "CNY": {
+        "valor": 456.87,
+        "source": {
+          "name": "World Forex Rates, CNY/COP, 24 ago 2026",
+          "url": "https://www.worldforexrates.com/es/cny/cop/1-exchange-rate/"
+        }
+      }
+    }
+  },
   "flows": [
     {
       "id": "ofertas-agregado",
+      "clase": "propuestas",
+      "agregado": true,
       "origin": "Organismos multilaterales — propuestas reportadas por el Gobierno (corte 12 ago)",
       "amount": "USD 1.300 millones — propuestas, no total actualizado ni un solo giro",
       "status": "Foto del 12 ago 2026: mezcla créditos, donaciones y asistencia técnica. No es el total de toda la ayuda posterior ni dinero ya ejecutado en territorio.",
@@ -16,6 +59,8 @@
     },
     {
       "id": "sector-privado-agregado",
+      "clase": "donacion",
+      "agregado": true,
       "origin": "Sector privado colombiano — agregado, no sumar otra vez las filas incluidas",
       "amount": "más de COP 2 billones — aportes anunciados",
       "status": "Agregado anunciado por el presidente el 22 ago 2026. Incluye ANDI, familias empresarias, compañías y gremios ya citados por separado; no es un giro único ni se suma a esas filas.",
@@ -29,6 +74,8 @@
     },
     {
       "id": "andi-empresas-unidas",
+      "clase": "donacion",
+      "dentro_de": "sector-privado-agregado",
       "origin": "ANDI — Empresas Unidas por Colombia",
       "amount": "COP 201.637 millones (≈ USD 64 millones) — donación anunciada",
       "status": "Anunciado · en fiducia",
@@ -42,6 +89,8 @@
     },
     {
       "id": "santo-domingo",
+      "clase": "donacion",
+      "dentro_de": "andi-empresas-unidas",
       "origin": "Familia Santo Domingo (parte de la campaña ANDI, no es un total aparte)",
       "amount": "COP 100.000 millones",
       "status": "Anunciado",
@@ -55,6 +104,7 @@
     },
     {
       "id": "banco-mundial-catddo",
+      "clase": "credito",
       "origin": "Banco Mundial — crédito Cat DDO",
       "amount": "USD 200 millones — crédito desembolsado (se paga; 20 años, gracia 5)",
       "status": "Desembolsado 13 ago 2026. Hay hasta 250 millones adicionales no solicitados aún (total posible 450).",
@@ -68,6 +118,7 @@
     },
     {
       "id": "bid-credito",
+      "clase": "linea",
       "origin": "Grupo BID — financiamiento contingente",
       "amount": "USD 300 millones — crédito / línea de emergencia, tope (no es donación)",
       "status": "Línea activada (11 ago 2026). No es un giro automático.",
@@ -81,6 +132,7 @@
     },
     {
       "id": "bid-donacion",
+      "clase": "donacion",
       "origin": "Grupo BID — asistencia humanitaria",
       "amount": "USD 500.000 — donación no reembolsable",
       "status": "Anunciado (listos para aportar)",
@@ -94,6 +146,7 @@
     },
     {
       "id": "caf",
+      "clase": "donacion",
       "origin": "CAF — Banco de Desarrollo de América Latina",
       "amount": "USD 500.000 — donación",
       "status": "Anunciado (11 ago 2026)",
@@ -107,6 +160,7 @@
     },
     {
       "id": "onu-cerf",
+      "clase": "donacion",
       "origin": "ONU — Fondo Central para la Acción en Casos de Emergencia (CERF)",
       "amount": "USD 5 millones — asignación de emergencia",
       "status": "Asignado; implementación en curso al 13 ago 2026",
@@ -120,6 +174,7 @@
     },
     {
       "id": "estados-unidos",
+      "clase": "donacion",
       "origin": "Estados Unidos",
       "amount": "USD 26,5 millones — donación humanitaria anunciada (15,5 + 11 adicionales)",
       "status": "Anunciado por el Departamento de Estado (total al 15 ago 2026)",
@@ -133,6 +188,7 @@
     },
     {
       "id": "emiratos",
+      "clase": "donacion",
       "origin": "Emiratos Árabes Unidos",
       "amount": "USD 10 millones — donación anunciada",
       "status": "Anunciado (13 ago 2026)",
@@ -146,6 +202,7 @@
     },
     {
       "id": "italia",
+      "clase": "donacion",
       "origin": "Italia — Ministerio de Asuntos Exteriores / AICS",
       "amount": "EUR 4,5 millones — donación anunciada",
       "status": "Autorizado (14 ago 2026)",
@@ -159,6 +216,7 @@
     },
     {
       "id": "union-europea",
+      "clase": "donacion",
       "origin": "Comisión Europea (ayuda humanitaria de emergencia)",
       "amount": "EUR 2,1 millones — donación anunciada",
       "status": "Anunciado (12 ago 2026)",
@@ -172,6 +230,7 @@
     },
     {
       "id": "espana",
+      "clase": "donacion",
       "origin": "España",
       "amount": "EUR 1 millón — donación anunciada",
       "status": "Movilizado (14 ago 2026)",
@@ -185,6 +244,7 @@
     },
     {
       "id": "reino-unido",
+      "clase": "donacion",
       "origin": "Reino Unido",
       "amount": "GBP 680.000 (≈ COP 3.000 millones) — donación anunciada",
       "status": "Anunciado (17 ago 2026)",
@@ -198,6 +258,7 @@
     },
     {
       "id": "japon",
+      "clase": "especie",
       "origin": "Japón — JICA",
       "amount": "200 carpas y 1.200 cobijas, más potabilizadores y recipientes — en especie (sin caja publicada)",
       "status": "Anunciado (17 ago 2026)",
@@ -211,6 +272,7 @@
     },
     {
       "id": "china",
+      "clase": "donacion",
       "origin": "China",
       "amount": "USD 1 millón + CNY 15 millones",
       "status": "Oferta financiera del 13 ago 2026. El avión de insumos se registra aparte.",
@@ -224,6 +286,7 @@
     },
     {
       "id": "china-dorado",
+      "clase": "especie",
       "origin": "China — cargamento con llegada al país verificada",
       "amount": "77,6 toneladas — 7.000 mantas, 1.900 carpas, 15 plantas de agua, 20 generadores, 200 lámparas solares — en especie",
       "status": "Recibido en El Dorado, Bogotá (18 ago 2026)",
@@ -237,6 +300,7 @@
     },
     {
       "id": "noruega",
+      "clase": "donacion",
       "origin": "Noruega",
       "amount": "NOK 10 millones (≈ USD 1 millón) — donación anunciada",
       "status": "Anunciado",
@@ -250,6 +314,7 @@
     },
     {
       "id": "cruz-roja-dref",
+      "clase": "donacion",
       "origin": "Cruz Roja — Fondo DREF",
       "amount": "CHF 1 millón — asignación de emergencia",
       "status": "Asignado (Norad, 17 ago 2026). Canal: Cruz Roja Colombiana, unas 5.000 familias.",
@@ -263,6 +328,7 @@
     },
     {
       "id": "suecia",
+      "clase": "donacion",
       "origin": "Suecia",
       "amount": "SEK 5 millones (≈ USD 522.000) + 150 tiendas y 360 mantas",
       "status": "Anunciado. La especie en toneladas se registra aparte.",
@@ -276,6 +342,7 @@
     },
     {
       "id": "alemania",
+      "clase": "especie",
       "origin": "Alemania",
       "amount": "3.000 kits de cocina y 2.500 filtros de agua — en especie (sin caja publicada)",
       "status": "Enviado / canalizado (17 ago 2026)",
@@ -289,6 +356,7 @@
     },
     {
       "id": "luxemburgo",
+      "clase": "especie",
       "origin": "Luxemburgo",
       "amount": "75 carpas familiares + 4 multipropósito — en especie",
       "status": "Sigue previsto (Cancillería, 25 ago 2026); no da por recibido",
@@ -302,6 +370,8 @@
     },
     {
       "id": "ayuda-bilateral-recibida",
+      "clase": "especie",
+      "agregado": true,
       "origin": "El Salvador · México · Chile · Perú — agregado, no sumar otra vez",
       "amount": "222,5 toneladas recibidas en Colombia",
       "status": "Recibido en el país al 17 ago 2026 (100 + 58,5 + 50 + 14 toneladas)",
@@ -315,6 +385,8 @@
     },
     {
       "id": "dian-ingreso-aduanero",
+      "clase": "especie",
+      "agregado": true,
       "origin": "DIAN — ingreso aduanero (otro corte; no se suma a las 222,5 t)",
       "amount": "640 toneladas ingresadas a Colombia",
       "status": "Ingreso por aeropuertos entre el 12 y el 18 ago 2026. Incluye envíos de varios países; no reemplaza ni se suma al agregado 222,5 t de El Salvador, México, Chile y Perú.",
@@ -328,6 +400,8 @@
     },
     {
       "id": "cancilleria-especie-25ago",
+      "clase": "especie",
+      "agregado": true,
       "origin": "Cancillería — corte de especie 25 ago (otro corte; no se suma a las 222,5 t ni a las 640 t)",
       "amount": "más de 80 toneladas recibidas en Colombia",
       "status": "Recibido al 25 ago 2026. Desglose: Türkiye 20 · Brasil 19 · Suecia 14 · Ecuador más de 12 · Argentina 9,7 · Japón 5,6 · Israel 3. Alemania entra en kits, no en este peso. No reemplaza ni se suma a 222,5 t ni a 640 t.",
@@ -341,6 +415,8 @@
     },
     {
       "id": "turkiye",
+      "clase": "especie",
+      "dentro_de": "cancilleria-especie-25ago",
       "origin": "Türkiye",
       "amount": "20 toneladas — en especie",
       "status": "Recibido en Colombia al 25 ago 2026",
@@ -354,6 +430,8 @@
     },
     {
       "id": "brasil",
+      "clase": "especie",
+      "dentro_de": "cancilleria-especie-25ago",
       "origin": "Brasil",
       "amount": "19 toneladas de arroz — en especie",
       "status": "Recibido en Colombia (Cancillería, 24-25 ago 2026)",
@@ -367,6 +445,8 @@
     },
     {
       "id": "argentina",
+      "clase": "especie",
+      "dentro_de": "cancilleria-especie-25ago",
       "origin": "Argentina",
       "amount": "9,7 toneladas — en especie",
       "status": "Recibido en Colombia al 25 ago 2026",
@@ -380,6 +460,8 @@
     },
     {
       "id": "el-salvador",
+      "clase": "especie",
+      "dentro_de": "ayuda-bilateral-recibida",
       "origin": "El Salvador",
       "amount": "100 toneladas en dos aviones (alimentos, kits, medicamentos) — en especie",
       "status": "Enviado; primer vuelo recibido en Cali (12 ago 2026)",
@@ -393,6 +475,7 @@
     },
     {
       "id": "india",
+      "clase": "especie",
       "origin": "India",
       "amount": "20 toneladas de insumos médicos — en especie (sin caja publicada)",
       "status": "Enviado / anunciado",
@@ -406,6 +489,8 @@
     },
     {
       "id": "peru",
+      "clase": "especie",
+      "dentro_de": "ayuda-bilateral-recibida",
       "origin": "Perú",
       "amount": "14 toneladas recibidas + personal especializado — en especie",
       "status": "Recibido en Colombia al 17 ago 2026",
@@ -419,6 +504,7 @@
     },
     {
       "id": "israel",
+      "clase": "personal",
       "origin": "Israel — misión de búsqueda y rescate",
       "amount": "82 rescatistas e ingenieros — en especie (sin caja publicada)",
       "status": "Llegó a Cali (14 ago 2026)",
@@ -432,6 +518,8 @@
     },
     {
       "id": "israel-insumos",
+      "clase": "especie",
+      "dentro_de": "cancilleria-especie-25ago",
       "origin": "Israel — insumos médicos (parte del corte Cancillería 25 ago)",
       "amount": "3 toneladas de insumos médicos — en especie",
       "status": "Recibido en Colombia al 25 ago 2026",
@@ -445,6 +533,7 @@
     },
     {
       "id": "israel-cali-2",
+      "clase": "especie",
       "origin": "Israel — segunda donación de insumos (MASHAV)",
       "amount": "casi 7 toneladas de equipos y productos médicos — en especie",
       "status": "Recibido en Cali (24 ago 2026). Otro desglose: no se suma a las 3 t del corte Cancillería ni a las 80 t.",
@@ -458,6 +547,7 @@
     },
     {
       "id": "ecuador",
+      "clase": "personal",
       "origin": "Ecuador",
       "amount": "47 rescatistas, perros y equipos del Cuerpo de Bomberos de Quito — en especie",
       "status": "Anunciado (vicepresidencia de Colombia). La especie en toneladas se registra aparte.",
@@ -471,6 +561,8 @@
     },
     {
       "id": "ecuador-especie",
+      "clase": "especie",
+      "dentro_de": "cancilleria-especie-25ago",
       "origin": "Ecuador — cargamento",
       "amount": "más de 12 toneladas — en especie",
       "status": "Recibido en Colombia al 25 ago 2026",
@@ -484,6 +576,8 @@
     },
     {
       "id": "suecia-especie",
+      "clase": "especie",
+      "dentro_de": "cancilleria-especie-25ago",
       "origin": "Suecia — cargamento",
       "amount": "14 toneladas — en especie",
       "status": "Recibido en Colombia al 25 ago 2026",
@@ -497,6 +591,8 @@
     },
     {
       "id": "japon-recibido",
+      "clase": "especie",
+      "dentro_de": "cancilleria-especie-25ago",
       "origin": "Japón — cargamento con llegada al país",
       "amount": "5,6 toneladas — en especie",
       "status": "Recibido en Colombia al 25 ago 2026",
@@ -510,6 +606,8 @@
     },
     {
       "id": "mexico",
+      "clase": "especie",
+      "dentro_de": "ayuda-bilateral-recibida",
       "origin": "México",
       "amount": "58,5 toneladas — alimentos, higiene, medicamentos y suministros médicos",
       "status": "Recibido en Colombia al 17 ago 2026",
@@ -523,6 +621,8 @@
     },
     {
       "id": "chile-recibido",
+      "clase": "especie",
+      "dentro_de": "ayuda-bilateral-recibida",
       "origin": "Chile",
       "amount": "50 toneladas — alimentos, higiene, medicamentos y suministros médicos",
       "status": "Recibido en Colombia al 17 ago 2026",
@@ -536,6 +636,7 @@
     },
     {
       "id": "chile-pereira",
+      "clase": "especie",
       "origin": "Chile — cargamento con llegada municipal verificada",
       "amount": "320 kits de alimentación · 200 de aseo · 346 de higiene · 27.000 unidades de medicamentos",
       "status": "Llegó a Pereira (15 ago 2026)",
@@ -549,6 +650,7 @@
     },
     {
       "id": "paraguay",
+      "clase": "especie",
       "origin": "Paraguay",
       "amount": "≈ 52 toneladas — agua, alimentos, higiene e insumos médicos",
       "status": "Anunciado (17 ago 2026)",
@@ -562,6 +664,7 @@
     },
     {
       "id": "guatemala",
+      "clase": "especie",
       "origin": "Guatemala",
       "amount": "≈ 30 toneladas — 1.600 kits de alimentos y 3.000 kits de aseo familiar",
       "status": "Anunciado (17 ago 2026)",
@@ -575,6 +678,7 @@
     },
     {
       "id": "santa-sede",
+      "clase": "donacion",
       "origin": "Santa Sede",
       "amount": "EUR 100.000 — donación anunciada",
       "status": "Anunciado (17 ago 2026)",
@@ -588,6 +692,7 @@
     },
     {
       "id": "suiza",
+      "clase": "donacion",
       "origin": "Suiza",
       "amount": "CHF 1 millón — donación anunciada",
       "status": "Anunciado (17 ago 2026)",
@@ -601,6 +706,7 @@
     },
     {
       "id": "corea",
+      "clase": "donacion",
       "origin": "Corea",
       "amount": "USD 1 millón + USD 20.000 de KOICA",
       "status": "Anunciado (17 ago 2026)",
@@ -614,6 +720,7 @@
     },
     {
       "id": "singapur",
+      "clase": "donacion",
       "origin": "Singapur",
       "amount": "USD 50.000 — donación anunciada",
       "status": "Anunciado (17 ago 2026)",

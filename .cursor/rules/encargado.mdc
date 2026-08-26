@@ -7,7 +7,7 @@ Proyecto voluntario, sin financiación. Cambios mínimos o ninguno.
 
 Este repo es Ojo al Giro (https://ojo-al-giro.vercel.app/). Solo el registro de ayuda: no traer material de otros proyectos. No es una veeduría institucional.
 
-Sin URL no entra cifra. No hay total consolidado actualizado. El 1.300 es el corte multilateral del 12 ago, no el total general ni un giro. Más de COP 2 billones es el agregado privado del 22 ago e incluye donantes ya nombrados: no duplicar. Crédito no es donación. En especie no es caja. Santo Domingo es parte de ANDI. 222,5 t es agregado. 640 t DIAN es otro corte, no se suma. 80 t Cancillería 25 ago es otro corte, no se suma. Pereira es llegada municipal, no a hogares.
+Sin URL no entra cifra. El titular es la suma de lo donado (privado colombiano + internacional) en dólares: esa cifra la publicamos nosotros. No es plata girada. Lo que entra o sale del total se decide en los datos, con `clase` y `dentro_de`, no en el código. El 1.300 es el corte de propuestas del 12 ago y no entra al titular. Más de COP 2 billones es el agregado privado del 22 ago e incluye donantes ya nombrados: por eso llevan `dentro_de`. Crédito no es donación. En especie no es caja. Tasas de cambio: en `fx`, con fecha y URL; sin tasa citada la cifra se queda en su moneda. Santo Domingo es parte de ANDI. 222,5 t es agregado. 640 t DIAN es otro corte, no se suma. 80 t Cancillería 25 ago es otro corte, no se suma. Pereira es llegada municipal, no a hogares.
 
 No pedir plata. No acusar. No inventar víctimas. No volver al negro, al afiche ni al manila. Papel claro, tinta, rojo de marca.
 

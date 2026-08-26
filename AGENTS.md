@@ -16,13 +16,15 @@ No administra fondos. No los pide. No acusa. No certifica que la ayuda haya lleg
 ## Cifras
 
 - Sin URL, no entra cifra. Poner —.
-- No hay un total consolidado y actualizado publicado. Los USD 1.300 millones son propuestas multilaterales del corte 12 ago, no el total de toda la ayuda ni un desembolso. No sumarlo con las líneas.
-- Más de COP 2 billones es el agregado privado del corte 22 ago. Incluye ANDI y donantes nombrados por separado: no volver a sumarlos.
+- El encabezado es la suma de lo donado: sector privado colombiano más donaciones internacionales, convertido a dólares. Esa cifra no la publica nadie más; aquí sí. No es plata girada ni entregada, y así se dice.
+- La calculadora suma sobre los datos, no sobre una lista escondida en el código. Cada fila lleva `clase` (donacion, credito, linea, especie, personal, propuestas) y, si ya va contada dentro de otra, `dentro_de`. Para que algo entre o salga del total se cambia el dato, no el JavaScript.
+- Los USD 1.300 millones son el corte de propuestas del 12 ago. No entran al titular: esa foto ya mezcla crédito y donación. Quien los quiera sumar los marca en la calculadora, y la página le avisa del traslape.
+- Más de COP 2 billones es el agregado privado del corte 22 ago. Incluye ANDI y donantes nombrados por separado: por eso esas filas llevan `dentro_de` y no se vuelven a sumar.
 - Crédito no es donación. Banco Mundial 200 (desembolsado al Gobierno) y BID 300 (tope de línea) no se mezclan con donaciones.
 - En especie no es caja. 222,5 t es el agregado El Salvador + México + Chile + Perú: no volver a sumar país por país. 640 t (DIAN, aduana 12-18 ago) es otro corte: no se suma a las 222,5. Más de 80 t (Cancillería, 25 ago) es otro corte: no se suma a las 222,5 ni a las 640.
 - Santo Domingo es parte de ANDI, no un total aparte.
 - Chile en Pereira: llegó el avión al municipio. No es entrega a hogares.
-- No inventar tasas de cambio. GBP y CHF se dejan en su moneda.
+- Las tasas de cambio viven en `fx` de `flujos.json`, en pesos por unidad, cada una con fecha y URL. No se inventan: sin tasa citada, la cifra se queda en su moneda y la calculadora lo dice. Las tasas envejecen; al mover el registro, revíselas.
 - No publicar «Lo anunciado no es lo ejecutado» como eslogan. En el fondo sigue siendo verdad.
 
 ## Pedir cuentas
