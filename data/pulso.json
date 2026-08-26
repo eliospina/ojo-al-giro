@@ -130,6 +130,19 @@
         "name": "teleSUR / Cancillería, 25 ago 2026",
         "url": "https://www.telesurtv.net/colombia-80-toneladas-ayuda-emergencia/"
       }
+    },
+    {
+      "id": "evt-2026-08-22-sector-privado",
+      "at": "2026-08-22",
+      "kind": "anuncio",
+      "origin": "Sector privado colombiano — agregado",
+      "amount": "más de COP 2 billones anunciados",
+      "territory": "—",
+      "note": "Incluye empresarios, compañías y gremios citados por separado. No es un giro único ni se suma otra vez con esas filas.",
+      "source": {
+        "name": "EFE, 22 ago 2026",
+        "url": "https://efe.com/economia/2026-08-22/empresarios-donaciones-terremoto-colombia/"
+      }
     }
   ]
 }

@@ -68,7 +68,7 @@ function renderFlowRow(flow, isNew) {
   const tr = document.createElement("tr");
   tr.id = `f-${flow.id}`;
   if (isNew) tr.classList.add("is-new");
-  if (["ofertas-agregado", "ayuda-bilateral-recibida", "dian-ingreso-aduanero", "cancilleria-especie-25ago", "santo-domingo"].includes(flow.id)) {
+  if (["ofertas-agregado", "sector-privado-agregado", "ayuda-bilateral-recibida", "dian-ingreso-aduanero", "cancilleria-especie-25ago", "santo-domingo"].includes(flow.id)) {
     tr.classList.add("is-note");
   }
   tr.dataset.id = flow.id;
