@@ -114,6 +114,41 @@ ok(
   "og:image debe apuntar al cartel",
 );
 
+const ISO = /^\d{4}-\d{2}-\d{2}$/;
+ok(ISO.test(data.updated || ""), "R11", "data/flujos.json", "«updated» debe ser una fecha AAAA-MM-DD: el lector tiene derecho a saber de cuándo es el registro");
+
+const pulso = JSON.parse(
+  readFileSync(new URL("../data/pulso.json", import.meta.url), "utf8"),
+);
+const eventos = pulso.events || [];
+ok(eventos.length > 0, "R12", "data/pulso.json", "la cronología no puede quedar vacía");
+ok(
+  pulso.ledgerUpdated === data.updated,
+  "R12",
+  "data/pulso.json",
+  `«ledgerUpdated» (${pulso.ledgerUpdated}) debe coincidir con «updated» de flujos.json (${data.updated})`,
+);
+const vistos = new Set();
+for (const e of eventos) {
+  const id = e.id || "(sin-id)";
+  ok(!!e.id && !vistos.has(e.id), "R12", id, "el evento necesita un id propio y sin repetir");
+  vistos.add(e.id);
+  ok(ISO.test(e.at || ""), "R12", id, "el evento necesita fecha AAAA-MM-DD");
+  ok(!!e.origin, "R12", id, "falta origen");
+  ok(e.source && /^https:\/\//.test(e.source.url || ""), "R12", id, "evento sin URL https");
+}
+
+const peticion = readFileSync(new URL("../peticion.js", import.meta.url), "utf8");
+for (const [cita, detalle] of [
+  ["artículo 23 de la Constitución", "el fundamento constitucional"],
+  ["Ley 1755 de 2015", "la ley que regula el derecho de petición"],
+  ["diez (10) días", "el plazo de respuesta para peticiones de información"],
+  ["artículo 21 de la Ley 1755 de 2015", "el traslado a la entidad competente"],
+  ["no formula acusación alguna y no solicita dinero", "la cláusula que evita acusar y evita pedir plata"],
+]) {
+  ok(peticion.includes(cita), "R13", "peticion.js", `la petición debe conservar ${detalle} («${cita}»)`);
+}
+
 if (errores.length) {
   for (const e of errores) console.error(` ${e}`);
   process.exit(1);

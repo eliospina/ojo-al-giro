@@ -24,11 +24,23 @@ No administra fondos. No los pide. No acusa. No certifica que la ayuda haya lleg
 - No inventar tasas de cambio. GBP y CHF se dejan en su moneda.
 - No publicar «Lo anunciado no es lo ejecutado» como eslogan. En el fondo sigue siendo verdad.
 
+## Pedir cuentas
+
+Donde el municipio queda en «—», la página arma un derecho de petición con esa fila y su fuente. La carta va en español siempre: es el idioma en que se radica.
+
+- El validador (R13) exige que la carta conserve el artículo 23 de la Constitución, la Ley 1755 de 2015, el plazo de diez días del art. 14, el traslado del art. 21 y la frase que aclara que no acusa y no pide dinero. No la quite.
+- La página no envía ni radica la petición. Lo dice, y se mantiene.
+- No inventar entidades, correos ni enlaces de PQRS. Si no hay fuente del canal, se deja `[entidad]`.
+
+## Cronología
+
+`data/pulso.json` alimenta la cronología. Su `ledgerUpdated` debe coincidir con el `updated` de `data/flujos.json`: si añade una fila, mueva las dos fechas. El registro dice en la página de cuándo es; no lo esconda.
+
 ## Voz y diseño
 
 Papel `#fbf7f0`, tinta `#1f1712`, marca `#c23018`. No volver al negro de tablero, al afiche en versalitas ni al manila sucio. Texto corto. Español primero. El chat pregunta ¿Llegó? y solo responde con el registro.
 
-Antes de abrir PR: `node scripts/validar-flujos.mjs` y `node --test scripts/totals.test.mjs scripts/rastrear.test.mjs`.
+Antes de abrir PR: `node scripts/validar-flujos.mjs` y `node --test scripts/*.test.mjs`.
 
 El job «Rastrear fuentes» mira un listado público cada día. Si hay una URL que el registro aún no cita, abre un issue. No escribe cifras ni toca `flujos.json`.
 

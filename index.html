@@ -51,7 +51,7 @@
           <span data-lang="es">Colombia · sismo 10 ago 2026</span>
           <span data-lang="en">Colombia · quake 10 Aug 2026</span>
         </p>
-        <p class="lang-switch" role="group" aria-label="Idioma">
+        <p class="lang-switch" role="group" aria-label="Idioma / Language">
           <button type="button" data-lang-set="es" aria-pressed="true">ES</button>
           <button type="button" data-lang-set="en" aria-pressed="false">EN</button>
         </p>
@@ -94,6 +94,7 @@
         </li>
       </ul>
 
+      <p class="ledger-date" id="estado-registro"></p>
       <p class="stat" id="hueco-linea"></p>
       <p class="plain">
         <span data-lang="es">Se sigue porque hay gente esperando. Sin fuente, no entra cifra.</span>
@@ -108,6 +109,10 @@
         </h2>
         <div id="chat-log" class="chat-log"></div>
         <form id="chat-form">
+          <label class="vh" for="chat-q">
+            <span data-lang="es">Municipio o país por el que pregunta</span>
+            <span data-lang="en">Municipality or country you are asking about</span>
+          </label>
           <input id="chat-q" name="q" required autocomplete="off" />
           <button type="submit">
             <span data-lang="es">Enviar</span>
@@ -154,6 +159,58 @@
         <span data-lang="en">— = the source does not yet name that fact. The table remains in Spanish.</span>
       </p>
 
+      <section class="cronologia" id="cronologia">
+        <h2>
+          <span data-lang="es">Qué pasó, día por día</span>
+          <span data-lang="en">What happened, day by day</span>
+        </h2>
+        <p class="form-help">
+          <span data-lang="es">Lo que la fuente sí dice, y lo que no dice.</span>
+          <span data-lang="en">What the source does say, and what it does not. The entries remain in Spanish.</span>
+        </p>
+        <ol id="cronologia-lista"></ol>
+      </section>
+
+      <section class="peticion" id="peticion">
+        <h2>
+          <span data-lang="es">Pedir cuentas</span>
+          <span data-lang="en">Ask for an answer</span>
+        </h2>
+        <p class="form-help">
+          <span data-lang="es">Donde el municipio quedó en «—», la pregunta la puede hacer cualquiera. Aquí se arma un derecho de petición con la fila que usted escoja y su fuente. Es gratuito y no necesita abogado (Ley 1755 de 2015, art. 13). Una petición de información debe resolverse en diez días (art. 14). Esta página no la envía: usted la firma y la radica en el canal de PQRS de la entidad.</span>
+          <span data-lang="en">Where the municipality was left as “—”, anyone may ask. This builds a formal information request from the row you choose and its source. It is free and needs no lawyer (Ley 1755 of 2015, art. 13). An information request must be answered within ten days (art. 14). This page does not send it: you sign it and file it through the authority’s own PQRS channel. The letter stays in Spanish, the language it must be filed in.</span>
+        </p>
+        <label>
+          <span class="vh" data-lang="es">Fila del registro</span>
+          <span class="vh" data-lang="en">Row of the record</span>
+          <select id="peticion-fila"></select>
+        </label>
+        <label>
+          <span class="vh" data-lang="es">Entidad a la que se le pregunta</span>
+          <span class="vh" data-lang="en">Authority you are asking</span>
+          <select id="peticion-entidad">
+            <option value="UNGRD — Unidad Nacional para la Gestión del Riesgo de Desastres">UNGRD — Unidad Nacional para la Gestión del Riesgo de Desastres</option>
+            <option value="Ministerio de Relaciones Exteriores — Cancillería">Ministerio de Relaciones Exteriores — Cancillería</option>
+            <option value="Contraloría General de la República">Contraloría General de la República</option>
+            <option value="Alcaldía municipal">Alcaldía municipal</option>
+            <option value="[entidad]">Otra entidad</option>
+          </select>
+        </label>
+        <label>
+          <span class="vh" data-lang="es">Municipio por el que pregunta</span>
+          <span class="vh" data-lang="en">Municipality you are asking about</span>
+          <input id="peticion-municipio" placeholder="Municipio por el que pregunta" />
+        </label>
+        <div class="actions">
+          <button type="button" id="peticion-copiar">
+            <span data-lang="es">Copiar el derecho de petición</span>
+            <span data-lang="en">Copy the information request</span>
+          </button>
+        </div>
+        <pre class="civic-out" id="peticion-out" hidden></pre>
+        <p class="copied" id="peticion-status" role="status"></p>
+      </section>
+
       <form class="civic-form" id="form-ayuda">
         <h2>
           <span data-lang="es">Si vive ahí</span>
@@ -164,6 +221,8 @@
           <span data-lang="en">This record belongs to those who wait and those who have a source. No permission needed. An announcement needs a link; testimony does not. Nobody here certifies that aid reached homes. This page does not collect funds.</span>
         </p>
         <label>
+          <span class="vh" data-lang="es">Qué vio</span>
+          <span class="vh" data-lang="en">What you saw</span>
           <select name="kind" required>
             <option value="testigo" data-es="Yo estaba ahí" data-en="I was there">Yo estaba ahí</option>
             <option value="anuncio" data-es="Vi un anuncio" data-en="I saw an announcement">Vi un anuncio</option>
@@ -174,18 +233,28 @@
           </select>
         </label>
         <label>
+          <span class="vh" data-lang="es">Quién anunció o de dónde vino</span>
+          <span class="vh" data-lang="en">Who announced it or where it came from</span>
           <input name="origin" required placeholder="Quién anunció o de dónde vino" />
         </label>
         <label>
+          <span class="vh" data-lang="es">Cuánto, o —</span>
+          <span class="vh" data-lang="en">How much, or —</span>
           <input name="amount" placeholder="Cuánto, o —" />
         </label>
         <label>
+          <span class="vh" data-lang="es">Municipio</span>
+          <span class="vh" data-lang="en">Municipality</span>
           <input name="territory" placeholder="Municipio" />
         </label>
         <label>
+          <span class="vh" data-lang="es">Enlace de la fuente, si hay</span>
+          <span class="vh" data-lang="en">Link to the source, if there is one</span>
           <input name="url" type="url" placeholder="Enlace de la fuente, si hay" />
         </label>
         <label>
+          <span class="vh" data-lang="es">Lo que vio</span>
+          <span class="vh" data-lang="en">What you saw</span>
           <textarea name="note" rows="2" placeholder="Lo que vio"></textarea>
         </label>
         <div class="actions">
@@ -217,5 +286,6 @@
     <script src="totals.js"></script>
     <script src="app.js"></script>
     <script src="chat.js"></script>
+    <script src="peticion.js"></script>
   </body>
 </html>

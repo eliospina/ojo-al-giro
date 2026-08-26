@@ -11,5 +11,7 @@ Sin URL no entra cifra. Oferta no es giro. Crédito no es donación. En especie 
 
 No pedir plata. No acusar. No inventar víctimas. No volver al negro, al afiche ni al manila. Papel claro, tinta, rojo de marca.
 
-Antes de PR: `node scripts/validar-flujos.mjs` y `node --test scripts/totals.test.mjs`.
+El derecho de petición no se toca sin razón: conserva la Ley 1755, el plazo de diez días y la frase de que no acusa ni pide dinero. La página no lo radica.
+
+Antes de PR: `node scripts/validar-flujos.mjs` y `node --test scripts/*.test.mjs`.
 Si corre solo: PR, nunca main. Si no hay fuente nueva, no hay commit.
