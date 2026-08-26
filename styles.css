@@ -46,6 +46,18 @@ a {
   left: -999px;
 }
 
+.vh {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
 .skip:focus {
   left: 1rem;
   top: 1rem;
@@ -414,6 +426,14 @@ a.ghost:hover {
   max-width: 42rem;
 }
 
+.ledger-date {
+  margin: 0 0 0.5rem;
+  font-family: system-ui, sans-serif;
+  font-size: 0.76rem;
+  letter-spacing: 0.04em;
+  color: var(--mute);
+}
+
 .source-map {
   list-style: none;
   margin: 0.8rem 0 1rem;
@@ -549,6 +569,71 @@ th {
   color: var(--mute);
 }
 
+#flujos-body tr:target td {
+  background: #fdece7;
+  box-shadow: inset 3px 0 0 var(--mark);
+}
+
+.cronologia,
+.peticion {
+  margin: 2.2rem 0 0;
+  max-width: 42rem;
+}
+
+.cronologia h2,
+.peticion h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.45rem;
+  color: var(--mark);
+}
+
+.cronologia ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, sans-serif;
+  font-size: 0.88rem;
+}
+
+.cronologia li {
+  border-top: 1px solid var(--line);
+  padding: 0.75rem 0;
+}
+
+.cron-fecha {
+  margin: 0;
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+.cron-que {
+  margin: 0.22rem 0 0;
+}
+
+.cron-donde {
+  margin: 0.22rem 0 0;
+  color: var(--mark);
+}
+
+.cron-nota,
+.cron-fuente {
+  margin: 0.28rem 0 0;
+  font-size: 0.82rem;
+  color: var(--mute);
+}
+
+.peticion label {
+  display: block;
+  margin: 0.6rem 0 0;
+}
+
+.peticion .actions {
+  margin: 0.9rem 0 0.4rem;
+}
+
 .table-legend,
 .disclaimer {
   font-family: system-ui, sans-serif;
@@ -580,7 +665,9 @@ th {
 
 .civic-form input,
 .civic-form select,
-.civic-form textarea {
+.civic-form textarea,
+.peticion input,
+.peticion select {
   display: block;
   width: 100%;
   margin: 0.28rem 0 0;
@@ -599,6 +686,13 @@ th {
   background: var(--field);
   border: 1px solid var(--line);
   padding: 0.7rem;
+}
+
+#peticion-out {
+  white-space: pre-wrap;
+  max-height: 24rem;
+  overflow: auto;
+  line-height: 1.5;
 }
 
 .copied {

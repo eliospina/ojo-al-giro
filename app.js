@@ -30,10 +30,24 @@ const pulsoStatusEl = document.getElementById("pulso-status");
 
 let lastFlowsStamp = "";
 let lastFlowIds = new Set();
-let pulsoTimer = null;
 
 function isEn() {
   return document.documentElement.lang === "en";
+}
+
+const MESES_ES = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
+const MESES_EN = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+function fechaCorta(iso) {
+  const m = String(iso || "").match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!m) return "";
+  const mes = (isEn() ? MESES_EN : MESES_ES)[Number(m[2]) - 1];
+  return `${Number(m[3])} ${mes} ${m[1]}`;
+}
+
+function isGap(value) {
+  const shown = displayValue(value);
+  return shown === "—" || shown.startsWith("— ");
 }
 
 function originCell(flow) {
@@ -52,6 +66,7 @@ function originCell(flow) {
 
 function renderFlowRow(flow, isNew) {
   const tr = document.createElement("tr");
+  tr.id = `f-${flow.id}`;
   if (isNew) tr.classList.add("is-new");
   if (["ofertas-agregado", "ayuda-bilateral-recibida", "dian-ingreso-aduanero", "cancilleria-especie-25ago", "santo-domingo"].includes(flow.id)) {
     tr.classList.add("is-note");
@@ -72,9 +87,24 @@ function paintHueco(flows) {
   const line = document.getElementById("hueco-linea");
   if (!line || !Array.isArray(flows)) return;
   const n = flows.length;
+  const conLugar = flows.filter((flow) => !isGap(flow.territory)).length;
+  const sinLugar = n - conLugar;
   line.textContent = isEn()
-    ? `Almost none of the ${n} sourced figures name the municipality where people are waiting. None certify delivery to homes. Pereira: an aircraft arrival is verified.`
-    : `Casi ninguna de las ${n} cifras con fuente nombra el municipio donde la gente espera. Ninguna certifica entrega a las casas. Pereira: sí se verificó la llegada de un avión.`;
+    ? `${n} figures with a source. ${conLugar} name a place; ${sinLugar} are left as “—”. No source certifies delivery to homes. Pereira: an aircraft arrival is verified.`
+    : `${n} cifras con fuente. ${conLugar} nombran un lugar; ${sinLugar} quedan en «—». Ninguna fuente certifica entrega a las casas. Pereira: sí se verificó la llegada de un avión.`;
+}
+
+function paintEstado(updated) {
+  const el = document.getElementById("estado-registro");
+  if (!el) return;
+  const fecha = fechaCorta(updated);
+  if (!fecha) {
+    el.textContent = "";
+    return;
+  }
+  el.textContent = isEn()
+    ? `Record as of ${fecha}. Updated by hand, when there is a new source.`
+    : `Registro al ${fecha}. Se actualiza a mano, cuando hay una fuente nueva.`;
 }
 
 async function loadFlows(options = {}) {
@@ -84,6 +114,7 @@ async function loadFlows(options = {}) {
   const data = await res.json();
   paintHueco(data.flows || []);
   paintTotals(data.flows || []);
+  paintEstado(data.updated);
   window.LEDGER_FLOWS = data.flows || [];
   const ids = new Set((data.flows || []).map((flow) => flow.id));
   const stamp = JSON.stringify(data.flows);
@@ -96,7 +127,45 @@ async function loadFlows(options = {}) {
   }
   lastFlowIds = ids;
   lastFlowsStamp = stamp;
+  document.dispatchEvent(new CustomEvent("veeduria:flujos"));
   return data;
+}
+
+function cronologiaLine(className, text) {
+  const p = document.createElement("p");
+  p.className = className;
+  p.textContent = text;
+  return p;
+}
+
+async function loadCronologia() {
+  const list = document.getElementById("cronologia-lista");
+  if (!list) return;
+  const res = await fetch("data/pulso.json", { cache: "no-cache" });
+  const data = await res.json();
+  const events = [...(data.events || [])].sort((a, b) => String(b.at).localeCompare(String(a.at)));
+  list.replaceChildren();
+  for (const evt of events) {
+    const li = document.createElement("li");
+    li.append(cronologiaLine("cron-fecha", fechaCorta(evt.at)));
+    li.append(cronologiaLine("cron-que", `${evt.origin} · ${evt.amount}`));
+    if (!isGap(evt.territory)) {
+      li.append(cronologiaLine("cron-donde", displayValue(evt.territory)));
+    }
+    if (evt.note) li.append(cronologiaLine("cron-nota", evt.note));
+    if (evt.source?.url) {
+      const p = document.createElement("p");
+      p.className = "cron-fuente";
+      const a = document.createElement("a");
+      a.href = evt.source.url;
+      a.target = "_blank";
+      a.rel = "noreferrer";
+      a.textContent = evt.source.name || evt.source.url;
+      p.append(a);
+      li.append(p);
+    }
+    list.append(li);
+  }
 }
 
 function setPulsoStatus(text) {
@@ -116,12 +185,15 @@ async function verifyAid() {
         : "No se pudo leer el registro. No se muestra ninguna cifra sin fuente.",
     );
   }
+  try {
+    await loadCronologia();
+  } catch {
+    // Si la cronología falla, el registro sigue en pie: no se borra la tabla por eso.
+  }
 }
 
 function startPulso() {
   verifyAid();
-  if (pulsoTimer) clearInterval(pulsoTimer);
-  pulsoTimer = setInterval(verifyAid, 60 * 1000);
   document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === "visible") verifyAid();
   });
