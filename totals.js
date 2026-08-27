@@ -1,24 +1,12 @@
-const SKIP_MONEY = new Set([
-  "ofertas-agregado",
-  "sector-privado-agregado",
-  "santo-domingo",
-  "ayuda-bilateral-recibida",
-  "dian-ingreso-aduanero",
-  "el-salvador",
-  "mexico",
-  "chile-recibido",
-  "peru",
-  "chile-pereira",
-  "cancilleria-especie-25ago",
-  "turkiye",
-  "brasil",
-  "argentina",
-  "ecuador-especie",
-  "suecia-especie",
-  "japon-recibido",
-  "israel-insumos",
-  "israel-cali-2",
-]);
+const BLOQUES = ["privado", "internacional", "credito", "linea", "propuestas"];
+const POR_DEFECTO = ["privado", "internacional"];
+const ESCALAS = [
+  { re: /billones?|bill[oó]n/i, factor: 1e12 },
+  { re: /millones?|mill[oó]n/i, factor: 1e6 },
+];
+
+let ultimo = null;
+let cableada = false;
 
 function parseEsNum(raw) {
   const t = String(raw).trim();
@@ -30,157 +18,237 @@ function parseEsNum(raw) {
 }
 
 function scale(num, unit) {
-  if (/millones?|mill[oó]n/i.test(unit || "")) return num * 1e6;
+  for (const { re, factor } of ESCALAS) {
+    if (re.test(unit || "")) return num * factor;
+  }
   return num;
 }
 
 function moneyBits(text) {
-  const bits = [];
   const re =
-    /(USD|EUR|GBP|CHF|COP|NOK|SEK|CNY)\s*([0-9][0-9.]*(?:,[0-9]+)?)\s*(millones?|mill[oó]n)?/gi;
+    /(USD|EUR|GBP|CHF|COP|NOK|SEK|CNY)\s*([0-9][0-9.]*(?:,[0-9]+)?)\s*(billones?|bill[oó]n|millones?|mill[oó]n)?/gi;
+  const bits = [];
   let m;
   while ((m = re.exec(text))) {
     bits.push({ cur: m[1].toUpperCase(), value: scale(parseEsNum(m[2]), m[3] || "") });
   }
-  const approx = /(?:≈|~)\s*USD\s*([0-9][0-9.]*(?:,[0-9]+)?)\s*(millones?|mill[oó]n)?/gi;
-  while ((m = approx.exec(text))) {
-    bits.push({ cur: "USD", value: scale(parseEsNum(m[1]), m[2] || ""), approx: true });
-  }
   return bits.filter((b) => Number.isFinite(b.value));
+}
+
+// El paréntesis casi siempre repite la misma plata en otra moneda. Se separa
+// para no contar dos veces «GBP 680.000 (≈ COP 3.000 millones)».
+function partirParentesis(text) {
+  const dentro = [];
+  const fuera = String(text || "").replace(/\(([^)]*)\)/g, (_, x) => {
+    dentro.push(x);
+    return " ";
+  });
+  return { fuera, dentro: dentro.join(" ") };
+}
+
+function copPorUnidad(fx, cur) {
+  if (cur === "COP") return 1;
+  const tasa = fx && fx.cop_por && fx.cop_por[cur];
+  return tasa && Number.isFinite(tasa.valor) ? tasa.valor : null;
+}
+
+function bitsAUsd(bits, fx) {
+  const trm = copPorUnidad(fx, "USD");
+  let usd = 0;
+  const sinTasa = [];
+  for (const b of bits) {
+    if (b.cur === "USD") {
+      usd += b.value;
+      continue;
+    }
+    const cop = copPorUnidad(fx, b.cur);
+    if (cop && trm) usd += (b.value * cop) / trm;
+    else sinTasa.push(b);
+  }
+  return { usd, sinTasa };
+}
+
+function usdDeFila(flow, fx) {
+  const { fuera, dentro } = partirParentesis(flow.amount);
+  const principal = bitsAUsd(moneyBits(fuera), fx);
+  if (principal.usd > 0 && !principal.sinTasa.length) return principal;
+  // Si la moneda de origen no tiene tasa citada, vale la equivalencia que dio la propia fuente.
+  const equivalencia = moneyBits(dentro).filter((b) => b.cur === "USD");
+  if (equivalencia.length) {
+    return { usd: equivalencia.reduce((a, b) => a + b.value, 0), sinTasa: [] };
+  }
+  return principal;
+}
+
+function bloqueDe(flow) {
+  if (flow.dentro_de) return null;
+  if (flow.clase === "donacion") return flow.id === "sector-privado-agregado" ? "privado" : "internacional";
+  if (flow.clase === "credito") return "credito";
+  if (flow.clase === "linea") return "linea";
+  if (flow.clase === "propuestas") return "propuestas";
+  return null;
+}
+
+function toneladas(text) {
+  const m = String(text || "").match(/([0-9][0-9.,]*)\s*toneladas/);
+  return m ? parseEsNum(m[1]) : NaN;
+}
+
+function calcularTotales(flows, fx) {
+  const usd = {};
+  for (const b of BLOQUES) usd[b] = 0;
+  const sinTasa = new Map();
+  const cortesEspecie = [];
+
+  for (const flow of Array.isArray(flows) ? flows : []) {
+    if (flow.clase === "especie" && flow.agregado) {
+      const t = toneladas(flow.amount);
+      if (Number.isFinite(t)) cortesEspecie.push({ id: flow.id, t });
+    }
+    const bloque = bloqueDe(flow);
+    if (!bloque) continue;
+    const { usd: monto, sinTasa: pendientes } = usdDeFila(flow, fx);
+    usd[bloque] += monto;
+    for (const b of pendientes) sinTasa.set(b.cur, (sinTasa.get(b.cur) || 0) + b.value);
+  }
+
+  return { usd, sinTasa, cortesEspecie };
+}
+
+function fechaLegible(iso) {
+  const m = String(iso || "").match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!m) return String(iso || "");
+  const meses = isEn()
+    ? ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+    : ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
+  return `${Number(m[3])} ${meses[Number(m[2]) - 1]} ${m[1]}`;
 }
 
 function formatMoney(cur, value) {
   const mill = value / 1e6;
   const loc = isEn() ? "en-US" : "es-CO";
   if (Math.abs(mill) >= 1) {
-    const n = new Intl.NumberFormat(loc, {
-      maximumFractionDigits: mill >= 10 ? 0 : 1,
-    }).format(mill);
+    const n = new Intl.NumberFormat(loc, { maximumFractionDigits: mill >= 10 ? 0 : 1 }).format(mill);
     if (isEn()) return `${cur} ${n} million`;
     return Math.abs(mill - 1) < 0.05 ? `${cur} ${n} millón` : `${cur} ${n} millones`;
   }
   return `${cur} ${new Intl.NumberFormat(loc, { maximumFractionDigits: 0 }).format(value)}`;
 }
 
-function usdFromDonation(flow, bits) {
-  const usdApprox = bits.find((b) => b.cur === "USD" && b.approx);
-  const usdPlain = bits.filter((b) => b.cur === "USD" && !b.approx);
-  if (usdApprox && flow.id === "andi-empresas-unidas") return usdApprox.value;
-  if (usdApprox && !usdPlain.length) return usdApprox.value;
-  return usdPlain.reduce((a, b) => a + b.value, 0);
+function seleccion() {
+  const caja = typeof document !== "undefined" && document.getElementById("calc");
+  if (!caja || !caja.querySelectorAll) return [...POR_DEFECTO];
+  const marcadas = [...caja.querySelectorAll("[data-calc]")].filter((el) => el.checked).map((el) => el.dataset.calc);
+  return marcadas;
 }
 
-function paintTotals(flows) {
-  const nEl = document.getElementById("total-n");
-  const sumsEl = document.getElementById("sums");
-  if (!nEl || !Array.isArray(flows)) return;
+function avisoDe(elegidos) {
+  const avisos = [];
+  if (elegidos.includes("credito") || elegidos.includes("linea")) {
+    avisos.push(
+      isEn()
+        ? "You added credit: that is debt Colombia repays, not a gift."
+        : "Metió crédito: eso es deuda que Colombia paga, no es un regalo.",
+    );
+  }
+  if (elegidos.includes("propuestas")) {
+    avisos.push(
+      isEn()
+        ? "You added the 12 Aug proposals: that snapshot already mixes credit and donations counted above."
+        : "Metió las propuestas del 12 ago: esa foto ya mezcla crédito y donaciones que están arriba.",
+    );
+  }
+  if (!elegidos.length) {
+    avisos.push(isEn() ? "Nothing selected." : "No hay nada marcado.");
+  }
+  return avisos.join(" ");
+}
 
+function lineasDe(t, fx) {
   const loc = isEn() ? "en-US" : "es-CO";
-  const bag = flows.find((f) => f.id === "ofertas-agregado");
-  const bagUsd = bag ? moneyBits(bag.amount).find((b) => b.cur === "USD") : null;
-  const bagLabel = bagUsd
-    ? new Intl.NumberFormat(loc, { maximumFractionDigits: 0 }).format(bagUsd.value / 1e6)
-    : "—";
-  const privateBag = flows.find((f) => f.id === "sector-privado-agregado");
-  nEl.textContent = isEn() ? "No" : "No hay";
+  const num = (v, d = 2) => new Intl.NumberFormat(loc, { maximumFractionDigits: d }).format(v);
+  const corte = (id) => t.cortesEspecie.find((c) => c.id === id);
+  const bilateral = corte("ayuda-bilateral-recibida");
+  const dian = corte("dian-ingreso-aduanero");
+  const cancilleria = corte("cancilleria-especie-25ago");
+  const tons = [bilateral, dian, cancilleria]
+    .filter(Boolean)
+    .map((c) => `${new Intl.NumberFormat(loc, { maximumFractionDigits: 1 }).format(c.t)} t`)
+    .join(" · ");
 
-  let usdAndi = 0;
-  let usdGift = 0;
-  let usdCreditOut = 0;
-  let usdCreditLine = 0;
-  let eurGift = 0;
-  let gbpGift = 0;
-  let chfGift = 0;
-  let cnyGift = 0;
-  for (const flow of flows) {
-    if (SKIP_MONEY.has(flow.id)) continue;
-    const bits = moneyBits(flow.amount);
-    if (flow.id === "andi-empresas-unidas") {
-      usdAndi = usdFromDonation(flow, bits);
-      continue;
-    }
-    if (flow.id === "banco-mundial-catddo") {
-      usdCreditOut += bits.filter((b) => b.cur === "USD" && !b.approx).reduce((a, b) => a + b.value, 0);
-      continue;
-    }
-    if (flow.id === "bid-credito") {
-      usdCreditLine += bits.filter((b) => b.cur === "USD" && !b.approx).reduce((a, b) => a + b.value, 0);
-      continue;
-    }
-    const blob = `${flow.origin} ${flow.amount} ${flow.status} ${flow.route}`.toLowerCase();
-    if (/cr[eé]dito|cat ddo|l[ií]nea de emergencia|contingente/.test(blob)) {
-      usdCreditLine += bits.filter((b) => b.cur === "USD" && !b.approx).reduce((a, b) => a + b.value, 0);
-      continue;
-    }
-    if (/tonelada|en especie|kits |rescatistas/.test(blob)) continue;
-    usdGift += usdFromDonation(flow, bits);
-    eurGift += bits.filter((b) => b.cur === "EUR").reduce((a, b) => a + b.value, 0);
-    gbpGift += bits.filter((b) => b.cur === "GBP").reduce((a, b) => a + b.value, 0);
-    chfGift += bits.filter((b) => b.cur === "CHF").reduce((a, b) => a + b.value, 0);
-    cnyGift += bits.filter((b) => b.cur === "CNY").reduce((a, b) => a + b.value, 0);
+  const tasas = fx && fx.cop_por
+    ? Object.entries(fx.cop_por)
+        .map(([cur, tasa]) => `${cur} ${num(tasa.valor)}`)
+        .join(" · ")
+    : "";
+
+  const pendientes = [...t.sinTasa.entries()].map(([cur, v]) => formatMoney(cur, v)).join(" · ");
+
+  if (isEn()) {
+    return [
+      "This record's calculator: it adds like with like and says what it leaves out.",
+      `Colombia's private sector: ${formatMoney("USD", t.usd.privado)} (22 Aug cut, "more than COP 2 trillion"; ANDI and the named donors are already inside)`,
+      `International donations: ${formatMoney("USD", t.usd.internacional)}`,
+      `Credit disbursed to the Government: ${formatMoney("USD", t.usd.credito)} — repaid, not a donation`,
+      `IDB emergency line: ${formatMoney("USD", t.usd.linea)} — a ceiling, not a transfer`,
+      `Proposals reported 12 Aug: ${formatMoney("USD", t.usd.propuestas)} — an old snapshot that already mixes credit and donations`,
+      tons ? `In kind, three cuts that are not added together: ${tons}. To the towns: —` : null,
+      tasas ? `Converted at rates of ${fechaLegible(fx.fecha)}, pesos per unit: ${tasas}` : null,
+      pendientes ? `No cited rate, left in its own currency: ${pendientes}` : null,
+      "No source says this money reached the homes.",
+    ];
   }
 
-  const tons = flows.find((f) => f.id === "ayuda-bilateral-recibida");
-  const tonN = tons ? parseEsNum((tons.amount.match(/([0-9][0-9.,]*)\s*toneladas/) || [])[1]) : NaN;
-  const tonLabel = Number.isFinite(tonN)
-    ? new Intl.NumberFormat(loc, { maximumFractionDigits: 1 }).format(tonN)
-    : "";
-  const dian = flows.find((f) => f.id === "dian-ingreso-aduanero");
-  const dianN = dian ? parseEsNum((dian.amount.match(/([0-9][0-9.,]*)\s*toneladas/) || [])[1]) : NaN;
-  const dianLabel = Number.isFinite(dianN)
-    ? new Intl.NumberFormat(loc, { maximumFractionDigits: 0 }).format(dianN)
-    : "";
-  const can = flows.find((f) => f.id === "cancilleria-especie-25ago");
-  const canN = can ? parseEsNum((can.amount.match(/([0-9][0-9.,]*)\s*toneladas/) || [])[1]) : NaN;
-  const canLabel = Number.isFinite(canN)
-    ? new Intl.NumberFormat(loc, { maximumFractionDigits: 0 }).format(canN)
-    : "";
+  return [
+    "Calculadora de este registro: suma lo comparable y dice qué deja por fuera.",
+    `Sector privado colombiano: ${formatMoney("USD", t.usd.privado)} (corte 22 ago, «más de COP 2 billones»; ANDI y los donantes nombrados ya van adentro)`,
+    `Donaciones internacionales: ${formatMoney("USD", t.usd.internacional)}`,
+    `Crédito desembolsado al Gobierno: ${formatMoney("USD", t.usd.credito)} — se paga, no es donación`,
+    `Línea de emergencia del BID: ${formatMoney("USD", t.usd.linea)} — es un tope, no un giro`,
+    `Propuestas reportadas el 12 ago: ${formatMoney("USD", t.usd.propuestas)} — foto vieja que ya mezcla crédito y donación`,
+    tons ? `En especie, tres cortes que no se suman entre sí: ${tons}. A los pueblos: —` : null,
+    tasas ? `Convertido con tasas del ${fechaLegible(fx.fecha)}, pesos por unidad: ${tasas}` : null,
+    pendientes ? `Sin tasa citada, se queda en su moneda: ${pendientes}` : null,
+    "Ninguna fuente dice que esta plata haya llegado a las casas.",
+  ];
+}
 
-  const parts = isEn()
-    ? [
-        "No consolidated, current total has been published.",
-        `Multilateral proposals reported 12 Aug: USD ${bagLabel} million (not a transfer)`,
-        privateBag
-          ? `${privateBag.amount} from Colombia's private sector, reported 22 Aug (includes named donors; do not add them again)`
-          : null,
-        "Separate snapshots; they are not added together:",
-        `ANDI announced ≈ ${formatMoney("USD", usdAndi)} (not a transfer)`,
-        `International donations announced ${formatMoney("USD", usdGift)}`,
-        `Credit disbursed to the Government ${formatMoney("USD", usdCreditOut)}`,
-        `IDB emergency line (ceiling, not a transfer) ${formatMoney("USD", usdCreditLine)}`,
-        [formatMoney("EUR", eurGift), gbpGift ? formatMoney("GBP", gbpGift) : null, chfGift ? formatMoney("CHF", chfGift) : null]
-          .filter(Boolean)
-          .join(" · "),
-        cnyGift ? `${formatMoney("CNY", cnyGift)} (China, not converted)` : null,
-        tonLabel ? `${tonLabel} t received in the country · to the towns: —` : null,
-        dianLabel ? `${dianLabel} t entered customs 12–18 Aug (DIAN; not added to the 222.5) · to the towns: —` : null,
-        canLabel ? `${canLabel} t Cancillería 25 Aug (another cut; not added to 222.5 or 640) · to the towns: —` : null,
-      ]
-    : [
-        "No hay un total consolidado y actualizado publicado.",
-        `Propuestas multilaterales reportadas el 12 ago: USD ${bagLabel} millones (no es giro)`,
-        privateBag
-          ? `${privateBag.amount} del sector privado, corte 22 ago (incluye donantes nombrados; no sumarlos otra vez)`
-          : null,
-        "Son cortes separados; no se suman entre sí:",
-        `ANDI anunciado ≈ ${formatMoney("USD", usdAndi)} (no es giro)`,
-        `Donaciones internacionales anunciadas ${formatMoney("USD", usdGift)}`,
-        `Crédito desembolsado al Gobierno ${formatMoney("USD", usdCreditOut)}`,
-        `Línea BID (tope, no giro) ${formatMoney("USD", usdCreditLine)}`,
-        [formatMoney("EUR", eurGift), gbpGift ? formatMoney("GBP", gbpGift) : null, chfGift ? formatMoney("CHF", chfGift) : null]
-          .filter(Boolean)
-          .join(" · "),
-        cnyGift ? `${formatMoney("CNY", cnyGift)} (China, sin convertir)` : null,
-        tonLabel ? `${tonLabel} t recibidas en el país · a los pueblos: —` : null,
-        dianLabel ? `${dianLabel} t ingresadas por aduana 12-18 ago (DIAN; no se suma a las 222,5) · a los pueblos: —` : null,
-        canLabel ? `${canLabel} t Cancillería 25 ago (otro corte; no se suma a 222,5 ni a 640) · a los pueblos: —` : null,
-      ];
+function pintar() {
+  if (!ultimo) return;
+  const { t, fx } = ultimo;
+  const loc = isEn() ? "en-US" : "es-CO";
+  const elegidos = seleccion();
+  const suma = elegidos.reduce((acc, b) => acc + (t.usd[b] || 0), 0);
 
+  const nEl = document.getElementById("total-n");
+  if (nEl) {
+    nEl.textContent = new Intl.NumberFormat(loc, { maximumFractionDigits: 0 }).format(suma / 1e6);
+  }
+
+  const avisoEl = document.getElementById("calc-aviso");
+  if (avisoEl) avisoEl.textContent = avisoDe(elegidos);
+
+  const sumsEl = document.getElementById("sums");
   if (!sumsEl) return;
   sumsEl.replaceChildren();
-  for (const text of parts.filter(Boolean)) {
+  for (const text of lineasDe(t, fx).filter(Boolean)) {
     const li = document.createElement("li");
     li.textContent = text;
     sumsEl.append(li);
   }
+}
+
+function cablear() {
+  if (cableada || typeof document === "undefined") return;
+  const caja = document.getElementById("calc");
+  if (!caja || !caja.addEventListener) return;
+  caja.addEventListener("change", pintar);
+  cableada = true;
+}
+
+function paintTotals(flows, fx) {
+  if (!Array.isArray(flows)) return;
+  ultimo = { t: calcularTotales(flows, fx), fx };
+  cablear();
+  pintar();
 }

@@ -68,13 +68,45 @@
           </p>
         </div>
         <p class="total">
-          <span class="total-n" id="total-n">No hay</span>
+          <span class="total-n" id="total-n">—</span>
           <span class="total-cap">
-            <span data-lang="es">un total consolidado y actualizado publicado. Abajo van los cortes separados.</span>
-            <span data-lang="en">consolidated, current total published. Separate snapshots follow below.</span>
+            <span data-lang="es">millones de dólares en dinero donado y anunciado. Nadie más publica esta suma. No es plata girada ni entregada.</span>
+            <span data-lang="en">million dollars in money donated and announced. Nobody else publishes this sum. It is not money transferred or delivered.</span>
           </span>
         </p>
       </div>
+      <fieldset class="calc" id="calc">
+        <legend>
+          <span data-lang="es">Qué estoy sumando</span>
+          <span data-lang="en">What I am adding</span>
+        </legend>
+        <label>
+          <input type="checkbox" data-calc="privado" checked />
+          <span data-lang="es">Sector privado colombiano</span>
+          <span data-lang="en">Colombia’s private sector</span>
+        </label>
+        <label>
+          <input type="checkbox" data-calc="internacional" checked />
+          <span data-lang="es">Donaciones internacionales</span>
+          <span data-lang="en">International donations</span>
+        </label>
+        <label>
+          <input type="checkbox" data-calc="credito" />
+          <span data-lang="es">Crédito desembolsado</span>
+          <span data-lang="en">Credit disbursed</span>
+        </label>
+        <label>
+          <input type="checkbox" data-calc="linea" />
+          <span data-lang="es">Línea de crédito (tope)</span>
+          <span data-lang="en">Credit line (ceiling)</span>
+        </label>
+        <label>
+          <input type="checkbox" data-calc="propuestas" />
+          <span data-lang="es">Propuestas del 12 ago</span>
+          <span data-lang="en">Proposals from 12 Aug</span>
+        </label>
+        <p class="calc-aviso" id="calc-aviso" role="status"></p>
+      </fieldset>
       <ul class="sums" id="sums"></ul>
     </header>
 

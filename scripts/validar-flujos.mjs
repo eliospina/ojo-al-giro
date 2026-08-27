@@ -147,6 +147,67 @@ for (const e of eventos) {
   ok(e.source && /^https:\/\//.test(e.source.url || ""), "R12", id, "evento sin URL https");
 }
 
+const CLASES = new Set(["donacion", "credito", "linea", "especie", "personal", "propuestas"]);
+for (const f of flows) {
+  const id = f.id || "(sin-id)";
+  ok(CLASES.has(f.clase), "R14", id, `«clase» debe ser una de: ${[...CLASES].join(", ")}`);
+  if (f.dentro_de) {
+    ok(f.dentro_de !== f.id, "R15", id, "una fila no puede ir dentro de sí misma");
+    ok(!!porId(f.dentro_de), "R15", id, `«dentro_de» apunta a «${f.dentro_de}», que no existe en el registro`);
+    let cursor = porId(f.dentro_de);
+    const camino = new Set([f.id]);
+    while (cursor && cursor.dentro_de) {
+      if (camino.has(cursor.id)) break;
+      camino.add(cursor.id);
+      cursor = porId(cursor.dentro_de);
+    }
+    ok(!cursor || !camino.has(cursor.id), "R15", id, "«dentro_de» forma un círculo: la calculadora no sabría qué sumar");
+  }
+}
+
+// Lo que ya va dentro de un agregado no se vuelve a sumar: eso se declara en los datos, no en el código.
+for (const [hijo, padre] of [
+  ["santo-domingo", "andi-empresas-unidas"],
+  ["andi-empresas-unidas", "sector-privado-agregado"],
+  ["el-salvador", "ayuda-bilateral-recibida"],
+  ["mexico", "ayuda-bilateral-recibida"],
+  ["chile-recibido", "ayuda-bilateral-recibida"],
+  ["peru", "ayuda-bilateral-recibida"],
+]) {
+  const f = porId(hijo);
+  ok(f && f.dentro_de === padre, "R15", hijo, `debe declarar «dentro_de»: ${padre}, para no contarse dos veces`);
+}
+
+ok(!!data.fx, "R16", "data/flujos.json", "falta el bloque «fx»: sin tasa citada no se puede convertir");
+if (data.fx) {
+  ok(ISO.test(data.fx.fecha || ""), "R16", "fx", "«fecha» de las tasas debe ser AAAA-MM-DD");
+  const tasas = data.fx.cop_por || {};
+  ok(Object.keys(tasas).length > 0, "R16", "fx", "no hay ninguna tasa");
+  ok(Number(tasas.USD?.valor) > 0, "R16", "fx.USD", "falta la TRM: es el ancla de toda conversión");
+  for (const [cur, tasa] of Object.entries(tasas)) {
+    ok(Number(tasa?.valor) > 0, "R16", `fx.${cur}`, "la tasa debe ser un número de pesos por unidad");
+    ok(
+      tasa?.source && /^https:\/\//.test(tasa.source.url || ""),
+      "R16",
+      `fx.${cur}`,
+      "toda tasa lleva fuente con URL https: no se inventan tasas de cambio",
+    );
+  }
+}
+
+ok(
+  /data-calc="credito"(?![^>]*checked)/.test(html),
+  "R17",
+  "index.html",
+  "el crédito no puede venir marcado por defecto en la calculadora: deuda no es donación",
+);
+ok(
+  /data-calc="propuestas"(?![^>]*checked)/.test(html),
+  "R17",
+  "index.html",
+  "las propuestas del 12 ago no pueden venir marcadas por defecto: se traslapan con las líneas ya contadas",
+);
+
 const peticion = readFileSync(new URL("../peticion.js", import.meta.url), "utf8");
 for (const [cita, detalle] of [
   ["artículo 23 de la Constitución", "el fundamento constitucional"],

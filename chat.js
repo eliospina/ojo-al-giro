@@ -59,12 +59,13 @@ function chatReply(question) {
     .sort((a, b) => b.hits - a.hits);
 
   const specific = scored.filter(({ flow, hits }) => !AGGREGATE_IDS.has(flow.id) && hits >= 3);
-  const wantsTotal = /(total|suma|\bcuanto\b|how much|aggregate|1\.?300|ofertas?)/.test(q);
+  const wantsTotal = /(total|suma|\bcuanto\b|how much|aggregate|1\.?300|ofertas?|calculadora)/.test(q);
   if (wantsTotal && !specific.length) {
+    const n = document.getElementById("total-n")?.textContent || "—";
     const s = sumsText();
     return isEn()
-      ? `No consolidated, current total has been published.\n${s}`
-      : `No hay un total consolidado y actualizado publicado.\n${s}`;
+      ? `USD ${n} million in money donated and announced. Not transferred, not delivered.\n${s}`
+      : `USD ${n} millones en dinero donado y anunciado. No es plata girada ni entregada.\n${s}`;
   }
 
   const pick = (specific.length ? specific : scored).slice(0, 3);
