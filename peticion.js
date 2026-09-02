@@ -62,8 +62,8 @@ function armarPeticion() {
   const flow = filaActual();
   if (!flow) {
     return isEn()
-      ? "The record is not loaded yet."
-      : "Aún no se ha podido leer el registro.";
+      ? "The record has not loaded yet."
+      : "El registro aún no se ha cargado.";
   }
   const entidad = entidadSel?.value || "[entidad]";
   const municipio = String(municipioInput?.value || "").trim();
@@ -81,7 +81,7 @@ function armarPeticion() {
     "",
     "Yo, [su nombre completo], identificado(a) con cédula de ciudadanía [su número], con correo electrónico [su correo] para recibir notificaciones, en ejercicio del derecho de petición del artículo 23 de la Constitución Política, regulado por la Ley 1755 de 2015, solicito la siguiente información pública.",
     "",
-    "Anuncio por el que pregunto",
+    "Anuncio objeto de la solicitud",
     `Origen: ${dato(flow.origin)}`,
     `Monto o ayuda en especie anunciada: ${dato(flow.amount)}`,
     `Estado según la fuente: ${dato(flow.status)}`,
@@ -98,7 +98,7 @@ function armarPeticion() {
     "4. Fechas de entrega y soporte documental de la misma (actas, planillas o registros), sin datos personales de los beneficiarios.",
     "5. Si esta entidad no es la competente, solicito el traslado a la que lo sea y que se me informe, conforme al artículo 21 de la Ley 1755 de 2015.",
     municipio ? "" : null,
-    municipio ? `Pregunto en particular por el municipio de ${municipio}.` : null,
+    municipio ? `Solicito en particular la información correspondiente al municipio de ${municipio}.` : null,
     "",
     "Esta petición no formula acusación alguna y no solicita dinero: pide información pública. Conforme al artículo 14, numeral 1, de la Ley 1755 de 2015, las peticiones de información y de documentos deben resolverse dentro de los diez (10) días siguientes a su recepción.",
     "",
@@ -128,12 +128,12 @@ if (peticionBtn) {
     try {
       await navigator.clipboard.writeText(texto);
       peticionStatus.textContent = isEn()
-        ? "Request copied. Fill in your name, ID and email, then file it with the authority. This page does not send it."
-        : "Petición copiada. Complete su nombre, cédula y correo, y radíquela en la entidad. Esta página no la envía.";
+        ? "Request copied. Complete your name, ID number and email address, then file it with the authority. This page does not file it."
+        : "Derecho de petición copiado. Complete su nombre, número de cédula y correo electrónico, y radíquelo ante la entidad. Esta página no lo radica.";
     } catch {
       peticionStatus.textContent = isEn()
-        ? "Copy the text below. Fill in your name, ID and email before filing it."
-        : "Copie el texto de abajo. Complete su nombre, cédula y correo antes de radicarla.";
+        ? "Copy the text below. Complete your name, ID number and email address before filing it."
+        : "Copie el texto que aparece abajo. Complete su nombre, número de cédula y correo electrónico antes de radicarlo.";
     }
   });
   filaSel?.addEventListener("change", pintarPeticion);

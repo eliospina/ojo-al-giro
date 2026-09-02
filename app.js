@@ -90,8 +90,8 @@ function paintHueco(flows) {
   const conLugar = flows.filter((flow) => !isGap(flow.territory)).length;
   const sinLugar = n - conLugar;
   line.textContent = isEn()
-    ? `${n} figures with a source. ${conLugar} name a place; ${sinLugar} are left as “—”. No source certifies delivery to homes. Pereira: an aircraft arrival is verified.`
-    : `${n} cifras con fuente. ${conLugar} nombran un lugar; ${sinLugar} quedan en «—». Ninguna fuente certifica entrega a las casas. Pereira: sí se verificó la llegada de un avión.`;
+    ? `${n} figures with a source. ${conLugar} name a location; ${sinLugar} remain as “—”. No source certifies delivery to households. In Pereira, the arrival of an air shipment is documented.`
+    : `${n} cifras con fuente. ${conLugar} identifican un lugar; ${sinLugar} quedan en «—». Ninguna fuente acredita la entrega en los hogares. En Pereira consta la llegada de un cargamento aéreo.`;
 }
 
 function paintEstado(updated) {
@@ -103,8 +103,8 @@ function paintEstado(updated) {
     return;
   }
   el.textContent = isEn()
-    ? `Record as of ${fecha}. Updated by hand, when there is a new source.`
-    : `Registro al ${fecha}. Se actualiza a mano, cuando hay una fuente nueva.`;
+    ? `Record updated as of ${fecha}. Updates are made manually and only when a new source is verified.`
+    : `Registro actualizado al ${fecha}. La actualización es manual y solo procede cuando se verifica una fuente nueva.`;
 }
 
 async function loadFlows(options = {}) {
@@ -181,8 +181,8 @@ async function verifyAid() {
   } catch {
     setPulsoStatus(
       isEn()
-        ? "The record could not be read. No figure is shown without a source."
-        : "No se pudo leer el registro. No se muestra ninguna cifra sin fuente.",
+        ? "The record could not be loaded. No figure is displayed without a source."
+        : "No fue posible cargar el registro. Ninguna cifra se muestra sin fuente.",
     );
   }
   try {
@@ -216,8 +216,8 @@ if (ayudaForm) {
     const needsUrl = kind !== "testigo" && kind !== "disputa";
     if (needsUrl && !url) {
       ayudaStatus.textContent = isEn()
-        ? "Without a URL, no figure is entered. Testimony may go without a URL; an announcement may not."
-        : "Sin URL no entra cifra. Un testimonio puede ir sin URL; un anuncio, no.";
+        ? "Without a verifiable link, the figure is not recorded. Testimony may go without a link; an announcement may not."
+        : "Sin enlace verificable no se registra la cifra. Un testimonio puede ir sin enlace; un anuncio, no.";
       return;
     }
     const kindLabel = ayudaForm.querySelector("[name=kind]")?.selectedOptions?.[0]?.textContent || kind;
@@ -226,14 +226,14 @@ if (ayudaForm) {
     const territory = String(data.get("territory") || "").trim() || "—";
     const note = String(data.get("note") || "").trim();
     const text = isEn()
-      ? `Did it arrive?\n${kindLabel}\nFrom: ${origin}\nAmount: ${amount}\nMunicipality: ${territory}${note ? `\nNote: ${note}` : ""}\nSource: ${url || "—"}\nThis note does not certify that the aid arrived.\n`
-      : `¿Llegó?\n${kindLabel}\nOrigen: ${origin}\nMonto: ${amount}\nMunicipio: ${territory}${note ? `\nNota: ${note}` : ""}\nFuente: ${url || "—"}\nEsta nota no certifica que la ayuda haya llegado.\n`;
+      ? `Report for the record\n${kindLabel}\nOrigin: ${origin}\nAmount: ${amount}\nMunicipality: ${territory}${note ? `\nDescription: ${note}` : ""}\nSource: ${url || "—"}\nThis report does not certify that the aid arrived.\n`
+      : `Reporte para el registro\n${kindLabel}\nOrigen: ${origin}\nMonto: ${amount}\nMunicipio: ${territory}${note ? `\nDescripción: ${note}` : ""}\nFuente: ${url || "—"}\nEste reporte no certifica que la ayuda haya llegado.\n`;
     ayudaOut.hidden = false;
     ayudaOut.textContent = text;
     const aviso = document.getElementById("aviso-publico");
     if (aviso) {
       const issue = new URL("https://github.com/eliospina/ojo-al-giro/issues/new");
-      issue.searchParams.set("title", `${origin || "Aviso"} · ${territory}`);
+      issue.searchParams.set("title", `${origin || "Reporte"} · ${territory}`);
       issue.searchParams.set("body", text);
       aviso.href = issue.href;
       aviso.hidden = false;
@@ -241,12 +241,12 @@ if (ayudaForm) {
     try {
       await navigator.clipboard.writeText(text);
       ayudaStatus.textContent = isEn()
-        ? "Notice copied. You can paste it anywhere, or post it in public view. It does not certify that aid arrived."
-        : "Aviso copiado. Puede pegarlo donde quiera, o dejarlo a la vista de todos. No certifica que la ayuda haya llegado.";
+        ? "Report copied. You may paste it wherever you need, or publish it in the repository. It does not certify that aid arrived."
+        : "Reporte copiado. Puede pegarlo donde lo requiera o publicarlo en el repositorio. No certifica que la ayuda haya llegado.";
     } catch {
       ayudaStatus.textContent = isEn()
-        ? "Copy the notice below, or post it in public view."
-        : "Copie el aviso de abajo, o déjelo a la vista de todos.";
+        ? "Copy the report below, or publish it in the repository."
+        : "Copie el reporte que aparece abajo o publíquelo en el repositorio.";
     }
   });
 }

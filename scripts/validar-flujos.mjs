@@ -68,7 +68,7 @@ if (agg) {
   const total = parseTon(agg.amount);
   const parts = ["el-salvador", "mexico", "chile-recibido", "peru"].map((id) => parseTon(porId(id)?.amount || ""));
   const suma = parts.reduce((a, b) => a + (Number.isFinite(b) ? b : 0), 0);
-  ok(Number.isFinite(total) && Math.abs(suma - total) < 0.05, "R4", "ayuda-bilateral-recibida", "las toneladas del agregado no cuadran con sus partes —100 + 58,5 + 50 + 14 = 222,5—");
+  ok(Number.isFinite(total) && Math.abs(suma - total) < 0.05, "R4", "ayuda-bilateral-recibida", "las toneladas del agregado no coinciden con la suma de sus partes —100 + 58,5 + 50 + 14 = 222,5—");
 }
 
 const sd = porId("santo-domingo");
@@ -214,7 +214,7 @@ for (const [cita, detalle] of [
   ["Ley 1755 de 2015", "la ley que regula el derecho de petición"],
   ["diez (10) días", "el plazo de respuesta para peticiones de información"],
   ["artículo 21 de la Ley 1755 de 2015", "el traslado a la entidad competente"],
-  ["no formula acusación alguna y no solicita dinero", "la cláusula que evita acusar y evita pedir plata"],
+  ["no formula acusación alguna y no solicita dinero", "la cláusula que evita acusar y evita solicitar dinero"],
 ]) {
   ok(peticion.includes(cita), "R13", "peticion.js", `la petición debe conservar ${detalle} («${cita}»)`);
 }

@@ -35,7 +35,7 @@ function moneyBits(text) {
   return bits.filter((b) => Number.isFinite(b.value));
 }
 
-// El paréntesis casi siempre repite la misma plata en otra moneda. Se separa
+// El paréntesis casi siempre repite el mismo monto en otra moneda. Se separa
 // para no contar dos veces «GBP 680.000 (≈ COP 3.000 millones)».
 function partirParentesis(text) {
   const dentro = [];
@@ -147,19 +147,19 @@ function avisoDe(elegidos) {
   if (elegidos.includes("credito") || elegidos.includes("linea")) {
     avisos.push(
       isEn()
-        ? "You added credit: that is debt Colombia repays, not a gift."
-        : "Metió crédito: eso es deuda que Colombia paga, no es un regalo.",
+        ? "You have included credit: it is debt Colombia repays, not a donation."
+        : "Ha incluido crédito: es deuda que Colombia paga, no una donación.",
     );
   }
   if (elegidos.includes("propuestas")) {
     avisos.push(
       isEn()
-        ? "You added the 12 Aug proposals: that snapshot already mixes credit and donations counted above."
-        : "Metió las propuestas del 12 ago: esa foto ya mezcla crédito y donaciones que están arriba.",
+        ? "You have included the 12 Aug proposals: that cut already mixes credit and donations counted above."
+        : "Ha incluido las propuestas del 12 ago: ese corte ya mezcla crédito y donaciones contabilizadas arriba.",
     );
   }
   if (!elegidos.length) {
-    avisos.push(isEn() ? "Nothing selected." : "No hay nada marcado.");
+    avisos.push(isEn() ? "No component selected." : "No hay ningún componente seleccionado.");
   }
   return avisos.join(" ");
 }
@@ -186,30 +186,30 @@ function lineasDe(t, fx) {
 
   if (isEn()) {
     return [
-      "This record's calculator: it adds like with like and says what it leaves out.",
-      `Colombia's private sector: ${formatMoney("USD", t.usd.privado)} (22 Aug cut, "more than COP 2 trillion"; ANDI and the named donors are already inside)`,
+      "Calculator for this record: it aggregates only comparable items and states what it excludes.",
+      `Colombia's private sector: ${formatMoney("USD", t.usd.privado)} (22 Aug cut, "more than COP 2 trillion"; ANDI and the donors named separately are already included)`,
       `International donations: ${formatMoney("USD", t.usd.internacional)}`,
-      `Credit disbursed to the Government: ${formatMoney("USD", t.usd.credito)} — repaid, not a donation`,
-      `IDB emergency line: ${formatMoney("USD", t.usd.linea)} — a ceiling, not a transfer`,
-      `Proposals reported 12 Aug: ${formatMoney("USD", t.usd.propuestas)} — an old snapshot that already mixes credit and donations`,
-      tons ? `In kind, three cuts that are not added together: ${tons}. To the towns: —` : null,
+      `Credit disbursed to the Government: ${formatMoney("USD", t.usd.credito)} — repayable debt, not a donation`,
+      `IDB emergency line: ${formatMoney("USD", t.usd.linea)} — a maximum available amount, not a disbursement`,
+      `Proposals reported on 12 Aug: ${formatMoney("USD", t.usd.propuestas)} — an earlier cut that already mixes credit and donations`,
+      tons ? `In-kind aid, three cuts that are not added together: ${tons}. Municipal delivery: —` : null,
       tasas ? `Converted at rates of ${fechaLegible(fx.fecha)}, pesos per unit: ${tasas}` : null,
-      pendientes ? `No cited rate, left in its own currency: ${pendientes}` : null,
-      "No source says this money reached the homes.",
+      pendientes ? `No exchange rate cited; the figure remains in its own currency: ${pendientes}` : null,
+      "No source certifies that these funds reached households.",
     ];
   }
 
   return [
-    "Calculadora de este registro: suma lo comparable y dice qué deja por fuera.",
-    `Sector privado colombiano: ${formatMoney("USD", t.usd.privado)} (corte 22 ago, «más de COP 2 billones»; ANDI y los donantes nombrados ya van adentro)`,
+    "Calculadora del registro: agrega únicamente partidas comparables y declara lo que excluye.",
+    `Sector privado colombiano: ${formatMoney("USD", t.usd.privado)} (corte 22 ago, «más de COP 2 billones»; ANDI y los donantes citados por separado ya están incluidos)`,
     `Donaciones internacionales: ${formatMoney("USD", t.usd.internacional)}`,
-    `Crédito desembolsado al Gobierno: ${formatMoney("USD", t.usd.credito)} — se paga, no es donación`,
-    `Línea de emergencia del BID: ${formatMoney("USD", t.usd.linea)} — es un tope, no un giro`,
-    `Propuestas reportadas el 12 ago: ${formatMoney("USD", t.usd.propuestas)} — foto vieja que ya mezcla crédito y donación`,
-    tons ? `En especie, tres cortes que no se suman entre sí: ${tons}. A los pueblos: —` : null,
+    `Crédito desembolsado al Gobierno: ${formatMoney("USD", t.usd.credito)} — deuda reembolsable, no una donación`,
+    `Línea de emergencia del BID: ${formatMoney("USD", t.usd.linea)} — es un cupo máximo, no un giro`,
+    `Propuestas reportadas el 12 ago: ${formatMoney("USD", t.usd.propuestas)} — corte anterior que ya mezcla crédito y donación`,
+    tons ? `Ayuda en especie, tres cortes que no se suman entre sí: ${tons}. Entrega municipal: —` : null,
     tasas ? `Convertido con tasas del ${fechaLegible(fx.fecha)}, pesos por unidad: ${tasas}` : null,
-    pendientes ? `Sin tasa citada, se queda en su moneda: ${pendientes}` : null,
-    "Ninguna fuente dice que esta plata haya llegado a las casas.",
+    pendientes ? `Sin tasa de cambio citada, la cifra se mantiene en su moneda: ${pendientes}` : null,
+    "Ninguna fuente acredita que estos recursos hayan llegado a los hogares.",
   ];
 }
 

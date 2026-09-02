@@ -49,8 +49,11 @@ function scoreFlow(flow, q, words) {
 function chatReply(question) {
   const q = fold(question).trim();
   const flows = window.LEDGER_FLOWS || [];
-  if (!q) return isEn() ? "Which town? Which country?" : "¿A qué municipio? ¿De qué país?";
-  if (!flows.length) return isEn() ? "The record is not loaded yet." : "Aún no se ha podido leer.";
+  if (!q)
+    return isEn()
+      ? "Please indicate the municipality or country you wish to consult."
+      : "Indique el municipio o el país que desea consultar.";
+  if (!flows.length) return isEn() ? "The record has not loaded yet." : "El registro aún no se ha cargado.";
 
   const words = q.split(/\s+/).filter((w) => w.length > 2 && !STOP_WORD.test(w));
   const scored = flows
@@ -64,13 +67,13 @@ function chatReply(question) {
     const n = document.getElementById("total-n")?.textContent || "—";
     const s = sumsText();
     return isEn()
-      ? `USD ${n} million in money donated and announced. Not transferred, not delivered.\n${s}`
-      : `USD ${n} millones en dinero donado y anunciado. No es plata girada ni entregada.\n${s}`;
+      ? `USD ${n} million in announced donations. Not disbursed, not delivered.\n${s}`
+      : `USD ${n} millones en donaciones anunciadas. No corresponde a recursos girados ni entregados.\n${s}`;
   }
 
   const pick = (specific.length ? specific : scored).slice(0, 3);
   if (!pick.length) {
-    return isEn() ? "It is not in this record. —" : "Aquí no aparece. —";
+    return isEn() ? "It does not appear in this record. —" : "No figura en este registro. —";
   }
 
   return pick
@@ -79,11 +82,11 @@ function chatReply(question) {
       const src = flow.source?.name || "";
       if (isEn()) {
         return src
-          ? `${flow.origin}\n${flow.amount}\nDid it arrive? ${arrived}\n${src}`
+          ? `${flow.origin}\n${flow.amount}\nDid it arrive? ${arrived}\nSource: ${src}`
           : `${flow.origin}\n${flow.amount}\nDid it arrive? ${arrived}`;
       }
       return src
-        ? `${flow.origin}\n${flow.amount}\n¿Llegó? ${arrived}\n${src}`
+        ? `${flow.origin}\n${flow.amount}\n¿Llegó? ${arrived}\nFuente: ${src}`
         : `${flow.origin}\n${flow.amount}\n¿Llegó? ${arrived}`;
     })
     .join("\n\n");
@@ -101,8 +104,8 @@ function addChat(role, text) {
 
 function welcomeChat() {
   return isEn()
-    ? "Did it reach Pereira? Did Chile’s aid arrive? If it is not written here, —."
-    : "¿Llegó a Pereira? ¿Llegó lo de Chile? Si no está escrito aquí, —.";
+    ? "Search by municipality or by country: Pereira, Chile. If the record does not document it, the answer is “—”."
+    : "Consulte por municipio o por país: Pereira, Chile. Si el registro no lo documenta, la respuesta es «—».";
 }
 
 function setChatPlaceholder() {

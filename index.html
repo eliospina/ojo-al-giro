@@ -6,12 +6,12 @@
     <title>Ojo al Giro</title>
     <meta
       name="description"
-      content="Hay gente esperando hospital, agua, comida y techo. Registro de la ayuda anunciada tras el sismo. Oferta no es giro."
+      content="Registro público y documentado de la ayuda anunciada a Colombia tras el sismo del 10 de agosto de 2026. Una oferta anunciada no equivale a un giro."
     />
     <meta property="og:title" content="Ojo al Giro" />
     <meta
       property="og:description"
-      content="Hay gente esperando. Oferta no es giro. Registro con fuente."
+      content="Registro documentado de la ayuda anunciada tras el sismo. Una oferta anunciada no equivale a un giro."
     />
     <meta property="og:locale" content="es_CO" />
     <meta property="og:locale:alternate" content="en_US" />
@@ -25,7 +25,7 @@
     <meta name="twitter:title" content="Ojo al Giro" />
     <meta
       name="twitter:description"
-      content="Hay gente esperando. Oferta no es giro. Registro con fuente."
+      content="Registro documentado de la ayuda anunciada tras el sismo. Una oferta anunciada no equivale a un giro."
     />
     <meta
       name="twitter:image"
@@ -63,22 +63,22 @@
             <span data-lang="en">Ojo al Giro</span>
           </h1>
           <p class="lead">
-            <span data-lang="es">Hay gente esperando hospital, agua, comida y techo. Aquí se sigue la ayuda que se anunció. Con fuente.</span>
-            <span data-lang="en">People are waiting for hospitals, water, food and shelter. This page follows the aid that was announced. With a source.</span>
+            <span data-lang="es">La población afectada espera atención hospitalaria, agua potable, alimentos y vivienda. Este registro hace seguimiento a la ayuda anunciada, con la fuente de cada cifra a la vista.</span>
+            <span data-lang="en">The affected population is waiting for hospital care, drinking water, food and housing. This record tracks the aid that was announced, with the source of every figure in plain view.</span>
           </p>
         </div>
         <p class="total">
           <span class="total-n" id="total-n">—</span>
           <span class="total-cap">
-            <span data-lang="es">millones de dólares en dinero donado y anunciado. Nadie más publica esta suma. No es plata girada ni entregada.</span>
-            <span data-lang="en">million dollars in money donated and announced. Nobody else publishes this sum. It is not money transferred or delivered.</span>
+            <span data-lang="es">millones de dólares en donaciones anunciadas. Es una consolidación propia, que ninguna otra fuente publica agregada. No corresponde a recursos girados ni entregados.</span>
+            <span data-lang="en">million dollars in announced donations. This is our own consolidation, which no other source publishes in aggregate. It does not correspond to funds disbursed or delivered.</span>
           </span>
         </p>
       </div>
       <fieldset class="calc" id="calc">
         <legend>
-          <span data-lang="es">Qué estoy sumando</span>
-          <span data-lang="en">What I am adding</span>
+          <span data-lang="es">Componentes incluidos en el total</span>
+          <span data-lang="en">Components included in the total</span>
         </legend>
         <label>
           <input type="checkbox" data-calc="privado" checked />
@@ -97,13 +97,13 @@
         </label>
         <label>
           <input type="checkbox" data-calc="linea" />
-          <span data-lang="es">Línea de crédito (tope)</span>
-          <span data-lang="en">Credit line (ceiling)</span>
+          <span data-lang="es">Línea de crédito (cupo máximo)</span>
+          <span data-lang="en">Credit line (maximum available)</span>
         </label>
         <label>
           <input type="checkbox" data-calc="propuestas" />
-          <span data-lang="es">Propuestas del 12 ago</span>
-          <span data-lang="en">Proposals from 12 Aug</span>
+          <span data-lang="es">Propuestas reportadas el 12 ago</span>
+          <span data-lang="en">Proposals reported on 12 Aug</span>
         </label>
         <p class="calc-aviso" id="calc-aviso" role="status"></p>
       </fieldset>
@@ -113,24 +113,24 @@
     <main id="contenido">
       <ul class="keys">
         <li>
-          <span data-lang="es">Crédito no es donación.</span>
+          <span data-lang="es">El crédito no es una donación.</span>
           <span data-lang="en">Credit is not a donation.</span>
         </li>
         <li>
-          <span data-lang="es">Oferta no es giro.</span>
-          <span data-lang="en">An offer is not a transfer.</span>
+          <span data-lang="es">Una oferta anunciada no es un giro.</span>
+          <span data-lang="en">An announced offer is not a disbursement.</span>
         </li>
         <li>
-          <span data-lang="es">En especie no es caja.</span>
-          <span data-lang="en">In-kind is not cash.</span>
+          <span data-lang="es">La ayuda en especie no es efectivo.</span>
+          <span data-lang="en">In-kind aid is not cash.</span>
         </li>
       </ul>
 
       <p class="ledger-date" id="estado-registro"></p>
       <p class="stat" id="hueco-linea"></p>
       <p class="plain">
-        <span data-lang="es">El rastreador busca URLs cada día. El registro cambia solo después de verificar una fuente. Sin fuente, no entra cifra.</span>
-        <span data-lang="en">The tracker looks for URLs daily. The record changes only after a source is verified. No source, no figure.</span>
+        <span data-lang="es">El rastreador revisa fuentes públicas a diario. El registro se modifica únicamente después de verificar una fuente: sin fuente, no se publica cifra.</span>
+        <span data-lang="en">The tracker reviews public sources daily. The record is modified only after a source has been verified: without a source, no figure is published.</span>
       </p>
       <p id="pulso-status" class="plain" hidden></p>
 
@@ -142,13 +142,13 @@
         <div id="chat-log" class="chat-log"></div>
         <form id="chat-form">
           <label class="vh" for="chat-q">
-            <span data-lang="es">Municipio o país por el que pregunta</span>
-            <span data-lang="en">Municipality or country you are asking about</span>
+            <span data-lang="es">Municipio o país que desea consultar</span>
+            <span data-lang="en">Municipality or country you wish to consult</span>
           </label>
           <input id="chat-q" name="q" required autocomplete="off" />
           <button type="submit">
-            <span data-lang="es">Enviar</span>
-            <span data-lang="en">Send</span>
+            <span data-lang="es">Consultar</span>
+            <span data-lang="en">Search</span>
           </button>
         </form>
       </section>
@@ -187,18 +187,18 @@
         </table>
       </div>
       <p class="table-legend">
-        <span data-lang="es">— = la fuente aún no dice ese dato</span>
-        <span data-lang="en">— = the source does not yet name that fact. The table remains in Spanish.</span>
+        <span data-lang="es">— indica que la fuente aún no reporta ese dato.</span>
+        <span data-lang="en">— indicates that the source does not yet report that fact. The table remains in Spanish.</span>
       </p>
 
       <section class="cronologia" id="cronologia">
         <h2>
-          <span data-lang="es">Qué pasó, día por día</span>
-          <span data-lang="en">What happened, day by day</span>
+          <span data-lang="es">Cronología de la ayuda anunciada</span>
+          <span data-lang="en">Timeline of the announced aid</span>
         </h2>
         <p class="form-help">
-          <span data-lang="es">Lo que la fuente sí dice, y lo que no dice.</span>
-          <span data-lang="en">What the source does say, and what it does not. The entries remain in Spanish.</span>
+          <span data-lang="es">Cada entrada distingue lo que la fuente afirma de lo que no afirma.</span>
+          <span data-lang="en">Each entry distinguishes what the source states from what it does not. The entries remain in Spanish.</span>
         </p>
         <ol id="cronologia-lista"></ol>
       </section>
@@ -209,8 +209,8 @@
           <span data-lang="en">Ask for an answer</span>
         </h2>
         <p class="form-help">
-          <span data-lang="es">Donde el municipio quedó en «—», la pregunta la puede hacer cualquiera. Aquí se arma un derecho de petición con la fila que usted escoja y su fuente. Es gratuito y no necesita abogado (Ley 1755 de 2015, art. 13). Una petición de información debe resolverse en diez días (art. 14). Esta página no la envía: usted la firma y la radica en el canal de PQRS de la entidad.</span>
-          <span data-lang="en">Where the municipality was left as “—”, anyone may ask. This builds a formal information request from the row you choose and its source. It is free and needs no lawyer (Ley 1755 of 2015, art. 13). An information request must be answered within ten days (art. 14). This page does not send it: you sign it and file it through the authority’s own PQRS channel. The letter stays in Spanish, the language it must be filed in.</span>
+          <span data-lang="es">Cuando el municipio queda en «—», cualquier persona puede solicitar esa información. Esta sección redacta un derecho de petición a partir de la fila que usted seleccione y de su fuente. El trámite es gratuito y no requiere abogado (Ley 1755 de 2015, art. 13), y una petición de información debe resolverse en diez días (art. 14). Esta página no la radica: usted la firma y la presenta ante el canal de PQRS de la entidad.</span>
+          <span data-lang="en">Where the municipality is left as “—”, any person may request that information. This section drafts a formal information request from the row you select and its source. The procedure is free and requires no lawyer (Ley 1755 of 2015, art. 13), and an information request must be answered within ten days (art. 14). This page does not file it: you sign it and submit it through the authority’s own PQRS channel. The letter stays in Spanish, the language in which it must be filed.</span>
         </p>
         <label>
           <span class="vh" data-lang="es">Fila del registro</span>
@@ -229,9 +229,9 @@
           </select>
         </label>
         <label>
-          <span class="vh" data-lang="es">Municipio por el que pregunta</span>
+          <span class="vh" data-lang="es">Municipio sobre el que consulta</span>
           <span class="vh" data-lang="en">Municipality you are asking about</span>
-          <input id="peticion-municipio" placeholder="Municipio por el que pregunta" />
+          <input id="peticion-municipio" placeholder="Municipio sobre el que consulta" />
         </label>
         <div class="actions">
           <button type="button" id="peticion-copiar">
@@ -245,34 +245,34 @@
 
       <form class="civic-form" id="form-ayuda">
         <h2>
-          <span data-lang="es">Si vive ahí</span>
-          <span data-lang="en">If you live there</span>
+          <span data-lang="es">Si usted está en la zona afectada</span>
+          <span data-lang="en">If you are in the affected area</span>
         </h2>
         <p class="form-help">
-          <span data-lang="es">Este registro es de quien espera y de quien tiene fuente. No hay que pedir permiso. Un anuncio pide enlace; un testimonio, no. Nadie certifica aquí que la ayuda haya llegado a las casas. Esta página no recauda.</span>
-          <span data-lang="en">This record belongs to those who wait and those who have a source. No permission needed. An announcement needs a link; testimony does not. Nobody here certifies that aid reached homes. This page does not collect funds.</span>
+          <span data-lang="es">Este registro está abierto a quien espera la ayuda y a quien aporte una fuente; no se requiere autorización previa. Un anuncio exige un enlace verificable; un testimonio, no. Esta página no certifica que la ayuda haya llegado a los hogares y no recauda fondos.</span>
+          <span data-lang="en">This record is open to those waiting for aid and to anyone who contributes a source; no prior authorisation is required. An announcement requires a verifiable link; testimony does not. This page does not certify that aid reached households, and it does not collect funds.</span>
         </p>
         <label>
-          <span class="vh" data-lang="es">Qué vio</span>
-          <span class="vh" data-lang="en">What you saw</span>
+          <span class="vh" data-lang="es">Naturaleza del reporte</span>
+          <span class="vh" data-lang="en">Nature of the report</span>
           <select name="kind" required>
-            <option value="testigo" data-es="Yo estaba ahí" data-en="I was there">Yo estaba ahí</option>
-            <option value="anuncio" data-es="Vi un anuncio" data-en="I saw an announcement">Vi un anuncio</option>
-            <option value="desembolso" data-es="Vi que giraron" data-en="I saw a transfer">Vi que giraron</option>
-            <option value="especie" data-es="Vi comida, carpas u otra especie" data-en="I saw food, tents or other in-kind aid">Vi comida, carpas u otra especie</option>
-            <option value="disputa" data-es="No cuadra con lo que vi" data-en="It does not match what I saw">No cuadra con lo que vi</option>
-            <option value="credito" data-es="Es un crédito, no un regalo" data-en="It is credit, not a gift">Es un crédito, no un regalo</option>
+            <option value="testigo" data-es="Fui testigo presencial" data-en="I witnessed it in person">Fui testigo presencial</option>
+            <option value="anuncio" data-es="Vi un anuncio público" data-en="I saw a public announcement">Vi un anuncio público</option>
+            <option value="desembolso" data-es="Constaté un giro o desembolso" data-en="I observed a disbursement">Constaté un giro o desembolso</option>
+            <option value="especie" data-es="Vi ayuda en especie: alimentos, carpas u otros insumos" data-en="I saw in-kind aid: food, tents or other supplies">Vi ayuda en especie: alimentos, carpas u otros insumos</option>
+            <option value="disputa" data-es="No coincide con lo que observé" data-en="It does not match what I observed">No coincide con lo que observé</option>
+            <option value="credito" data-es="Es un crédito, no una donación" data-en="It is credit, not a donation">Es un crédito, no una donación</option>
           </select>
         </label>
         <label>
-          <span class="vh" data-lang="es">Quién anunció o de dónde vino</span>
-          <span class="vh" data-lang="en">Who announced it or where it came from</span>
-          <input name="origin" required placeholder="Quién anunció o de dónde vino" />
+          <span class="vh" data-lang="es">Entidad que anunció o procedencia</span>
+          <span class="vh" data-lang="en">Entity that announced it, or origin</span>
+          <input name="origin" required placeholder="Entidad que anunció o procedencia" />
         </label>
         <label>
-          <span class="vh" data-lang="es">Cuánto, o —</span>
-          <span class="vh" data-lang="en">How much, or —</span>
-          <input name="amount" placeholder="Cuánto, o —" />
+          <span class="vh" data-lang="es">Monto, o —</span>
+          <span class="vh" data-lang="en">Amount, or —</span>
+          <input name="amount" placeholder="Monto, o —" />
         </label>
         <label>
           <span class="vh" data-lang="es">Municipio</span>
@@ -280,23 +280,23 @@
           <input name="territory" placeholder="Municipio" />
         </label>
         <label>
-          <span class="vh" data-lang="es">Enlace de la fuente, si hay</span>
-          <span class="vh" data-lang="en">Link to the source, if there is one</span>
-          <input name="url" type="url" placeholder="Enlace de la fuente, si hay" />
+          <span class="vh" data-lang="es">Enlace de la fuente, si existe</span>
+          <span class="vh" data-lang="en">Link to the source, if one exists</span>
+          <input name="url" type="url" placeholder="Enlace de la fuente, si existe" />
         </label>
         <label>
-          <span class="vh" data-lang="es">Lo que vio</span>
-          <span class="vh" data-lang="en">What you saw</span>
-          <textarea name="note" rows="2" placeholder="Lo que vio"></textarea>
+          <span class="vh" data-lang="es">Descripción de lo observado</span>
+          <span class="vh" data-lang="en">Description of what you observed</span>
+          <textarea name="note" rows="2" placeholder="Descripción de lo observado"></textarea>
         </label>
         <div class="actions">
           <button type="submit">
-            <span data-lang="es">Copiar aviso</span>
-            <span data-lang="en">Copy notice</span>
+            <span data-lang="es">Copiar el reporte</span>
+            <span data-lang="en">Copy the report</span>
           </button>
           <a class="ghost" id="aviso-publico" hidden href="https://github.com/eliospina/ojo-al-giro/issues/new">
-            <span data-lang="es">Dejarlo a la vista de todos</span>
-            <span data-lang="en">Post it in public view</span>
+            <span data-lang="es">Publicarlo en el repositorio</span>
+            <span data-lang="en">Publish it in the repository</span>
           </a>
         </div>
         <pre class="civic-out" id="ayuda-out" hidden></pre>
@@ -308,10 +308,10 @@
       <p>
         <a href="https://github.com/eliospina/ojo-al-giro">Código abierto</a>
         ·
-        <a href="https://github.com/eliospina/ojo-al-giro/issues/new">Avisar una cifra</a>
+        <a href="https://github.com/eliospina/ojo-al-giro/issues/new">Reportar una cifra</a>
         ·
-        <span data-lang="es">Cualquiera lee las fuentes. Sin fuente, no entra. No administra fondos ni los pide.</span>
-        <span data-lang="en">Anyone can read the sources. No source, it does not go in. It does not administer or ask for funds.</span>
+        <span data-lang="es">Las fuentes son públicas y verificables. Sin fuente, no se publica cifra. Este registro no administra fondos ni los solicita.</span>
+        <span data-lang="en">The sources are public and verifiable. Without a source, no figure is published. This record neither administers nor solicits funds.</span>
       </p>
     </footer>
     <script src="lang.js"></script>
