@@ -52,7 +52,7 @@ test("la petición lleva la fila escogida, con su fuente y su ficha", () => {
   assert.match(carta, /municipio de Pereira/);
 });
 
-test("la petición se para en la ley y no acusa ni pide plata", () => {
+test("la petición se funda en la ley y no acusa ni solicita dinero", () => {
   const carta = armar({ fila: "china-dorado", entidad: "[entidad]", municipio: "" });
   assert.match(carta, /artículo 23 de la Constitución/);
   assert.match(carta, /Ley 1755 de 2015/);

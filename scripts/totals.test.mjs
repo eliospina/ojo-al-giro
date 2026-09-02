@@ -112,14 +112,14 @@ test("sin tasa citada, la moneda se queda en su moneda", () => {
   assert.equal(totales.sinTasa.get("GBP"), 680000);
 });
 
-test("las toneladas no entran en la plata", () => {
+test("las toneladas no entran en el total monetario", () => {
   const { sums, totales } = runTotals();
   const especie = flows.filter((f) => f.clase === "especie");
   assert.ok(especie.length > 10);
   for (const f of especie) assert.equal(bloqueContado(f), false);
   assert.match(sums, /222,5 t · 640 t · 80 t/);
   assert.match(sums, /no se suman entre sí/);
-  assert.match(sums, /A los pueblos: —/);
+  assert.match(sums, /Entrega municipal: —/);
   assert.equal(totales.cortesEspecie.length, 3);
 });
 
@@ -136,8 +136,8 @@ test("la calculadora dice de cuándo son las tasas y con qué fuente", () => {
   }
 });
 
-test("no promete que la plata haya llegado", () => {
+test("no afirma que los recursos hayan llegado", () => {
   const { sums } = runTotals();
-  assert.match(sums, /Ninguna fuente dice que esta plata haya llegado a las casas/);
+  assert.match(sums, /Ninguna fuente acredita que estos recursos hayan llegado a los hogares/);
   assert.doesNotMatch(sums, /entregad[oa] a los hogares/);
 });
