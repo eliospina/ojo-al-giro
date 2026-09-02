@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-26",
+  "updated": "2026-09-02",
   "fx": {
     "fecha": "2026-08-26",
     "nota": "Pesos por unidad, al corte del 26 ago 2026. Convertir no es girar. Cada tasa lleva su fuente; sin fuente no se convierte.",
@@ -730,6 +730,34 @@
       "source": {
         "name": "El Tiempo / Cancillería, 17 ago 2026",
         "url": "https://www.eltiempo.com/politica/gobierno/colombia-ha-recibido-mas-de-220-toneladas-de-ayuda-humanitaria-y-144-integrantes-de-equipos-internacionales-tras-el-terremoto-informo-la-cancilleria-3578924"
+      }
+    },
+    {
+      "id": "canada",
+      "clase": "donacion",
+      "origin": "Canadá — Global Affairs Canada",
+      "amount": "más de CAD 2 millones — donación anunciada",
+      "status": "Anunciado el 26 ago 2026. Desglose de la fuente: 1,4 millones al PMA · 350.000 a Canadian Lutheran World Relief · 250.000 vía Cruz Roja canadiense a la Cruz Roja Colombiana · 50.000 al fondo canadiense de iniciativas locales. El registro no cita tasa del dólar canadiense: la cifra se queda en su moneda y no entra al total en dólares.",
+      "route": "Global Affairs Canada → PMA, Cruz Roja y socios humanitarios → comunidades afectadas",
+      "territory": "—",
+      "executed": "—",
+      "source": {
+        "name": "Global Affairs Canada, 26 ago 2026",
+        "url": "https://www.canada.ca/en/global-affairs/news/2026/08/canada-provides-humanitarian-assistance-in-response-to-earthquake-in-colombia.html"
+      }
+    },
+    {
+      "id": "francia",
+      "clase": "especie",
+      "origin": "Francia — tres vuelos con llegada al país",
+      "amount": "156 tiendas de campaña · 156 kits de cocina · 192 kits de higiene familiar · 150 kits de alojamiento de emergencia · 400 bidones · 675 esterillas · 180 lonas — en especie (sin tonelaje ni valoración monetaria publicados)",
+      "status": "Llegada reportada por la Cancillería el 1 sep 2026. La fuente no publica peso: no se suma a los cortes de 222,5 t, 640 t ni más de 80 t.",
+      "route": "Francia → tres vuelos → ingreso a Colombia → destino municipal: —",
+      "territory": "—",
+      "executed": "Llegada al país reportada por Cancillería; entrega a hogares: —",
+      "source": {
+        "name": "Semana / Cancillería, 1 sep 2026",
+        "url": "https://www.semana.com/confidenciales/articulo/cancilleria-informo-que-llegaron-al-pais-tres-vuelos-de-ayuda-humanitaria-enviados-desde-francia/202647/"
       }
     }
   ]

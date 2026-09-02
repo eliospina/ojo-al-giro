@@ -136,6 +136,15 @@ test("la calculadora dice de cuándo son las tasas y con qué fuente", () => {
   }
 });
 
+// Canadá anuncia en dólares canadienses y el registro no cita esa tasa. La fila
+// tiene que verse y decirse, no desaparecer del cálculo sin avisar.
+test("la donación de Canadá se declara en su moneda y no entra al titular", () => {
+  const { n, sums, totales } = runTotals();
+  assert.equal(totales.sinTasa.get("CAD"), 2e6);
+  assert.match(sums, /CAD 2 millones/);
+  assert.equal(n, "710");
+});
+
 test("no afirma que los recursos hayan llegado", () => {
   const { sums } = runTotals();
   assert.match(sums, /Ninguna fuente acredita que estos recursos hayan llegado a los hogares/);

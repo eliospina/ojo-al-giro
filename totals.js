@@ -26,7 +26,7 @@ function scale(num, unit) {
 
 function moneyBits(text) {
   const re =
-    /(USD|EUR|GBP|CHF|COP|NOK|SEK|CNY)\s*([0-9][0-9.]*(?:,[0-9]+)?)\s*(billones?|bill[oó]n|millones?|mill[oó]n)?/gi;
+    /(USD|EUR|GBP|CHF|COP|NOK|SEK|CNY|CAD)\s*([0-9][0-9.]*(?:,[0-9]+)?)\s*(billones?|bill[oó]n|millones?|mill[oó]n)?/gi;
   const bits = [];
   let m;
   while ((m = re.exec(text))) {
