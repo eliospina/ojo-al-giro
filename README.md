@@ -5,6 +5,8 @@ Código: [github.com/eliospina/ojo-al-giro](https://github.com/eliospina/ojo-al-
 
 Registro público y documentado de la ayuda anunciada a Colombia tras el sismo del 10 de agosto de 2026. Cada cifra se publica con su fuente verificable, y el registro distingue de forma explícita entre lo anunciado, lo desembolsado y lo entregado. Una oferta anunciada no equivale a un giro.
 
+El objeto de este registro es la trazabilidad, no la necesidad. No estima cuántas personas siguen sin agua, alimentos, atención médica o vivienda, porque no levanta información en campo y ninguna de sus fuentes lo acredita. Documenta lo que sí es verificable: qué se anunció, quién lo anunció, por qué ruta, con qué fuente y si consta que haya llegado a algún municipio.
+
 **¿Por qué «Ojo al Giro»?** Porque el objeto de seguimiento es precisamente ese: si la oferta se convierte en giro.
 
 El titular consolida las donaciones anunciadas —sector privado colombiano y donaciones internacionales— en dólares. El crédito, las líneas contingentes y la ayuda en especie se muestran por separado, en tanto no son partidas comparables. La calculadora opera sobre los datos, no sobre valores fijados en el código: cada fila declara su `clase` y, si ya está contabilizada dentro de un agregado, su `dentro_de`. Las conversiones usan las tasas de cambio del bloque `fx`, cada una con fecha y fuente; sin tasa citada, la cifra se mantiene en su moneda de origen.
