@@ -9,9 +9,11 @@ Este repo cubre solo el registro de ayuda. **No traer material, cifras ni vocabu
 
 ## Qué es
 
-Gaceta cívica. Gente esperando hospital, agua, comida y techo. Se sigue la ayuda anunciada tras el sismo del 10 ago 2026. Con fuente. El nombre recuerda que oferta no es giro.
+Gaceta cívica. Se sigue la ayuda anunciada tras el sismo del 10 ago 2026. Con fuente. El nombre recuerda que oferta no es giro.
 
-No administra fondos. No los pide. No acusa. No certifica que la ayuda haya llegado a las casas. No inventa víctimas, municipios ni cifras. No es una veeduría institucional.
+El objeto es la trazabilidad, no la necesidad. **No escribir en presente el estado de quien espera**: el registro no levanta información en campo y ninguna de sus fuentes acredita cuántas personas siguen sin agua, alimentos, atención médica o vivienda. Lo que sí documenta: qué se anunció, quién lo anunció, por qué ruta, con qué fuente y si consta que llegó a un municipio. Al principio el sitio decía «gente esperando hospital, agua, comida y techo»; a tres semanas del sismo eso era una inferencia sin fuente y se quitó. No devolverla.
+
+No administra fondos. No los pide. No acusa. No certifica que la ayuda haya llegado a los hogares. No inventa víctimas, municipios ni cifras. No es una veeduría institucional.
 
 ## Cifras
 
