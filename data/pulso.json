@@ -1,6 +1,45 @@
 {
-  "ledgerUpdated": "2026-08-26",
+  "ledgerUpdated": "2026-09-02",
   "events": [
+    {
+      "id": "evt-2026-09-01-francia",
+      "at": "2026-09-01",
+      "kind": "especie",
+      "origin": "Francia",
+      "amount": "156 tiendas de campaña, 156 kits de cocina, 192 kits de higiene y 150 kits de alojamiento, entre otros insumos",
+      "territory": "—",
+      "note": "Cancillería reporta la llegada de tres vuelos. No publica peso ni valoración monetaria, no identifica municipio y no acredita entrega a hogares.",
+      "source": {
+        "name": "Semana / Cancillería, 1 sep 2026",
+        "url": "https://www.semana.com/confidenciales/articulo/cancilleria-informo-que-llegaron-al-pais-tres-vuelos-de-ayuda-humanitaria-enviados-desde-francia/202647/"
+      }
+    },
+    {
+      "id": "evt-2026-08-27-ocha-financiacion",
+      "at": "2026-08-27",
+      "kind": "anuncio",
+      "origin": "OCHA — corte de financiación humanitaria",
+      "amount": "más de USD 40 millones movilizados por donantes",
+      "territory": "—",
+      "note": "Corte de OCHA al 27 ago: 25 organizaciones asistieron a cerca de 72.000 personas en 36 municipios. Es un corte de financiación humanitaria, no una fila del registro: no se suma a los montos anunciados. El propio informe advierte que el plan de respuesta sigue sin financiación suficiente para lo que resta del año.",
+      "source": {
+        "name": "OCHA, Flash Update 010, 27 ago 2026",
+        "url": "https://reliefweb.int/report/colombia/colombia-flash-update-010-update-impact-earthquake-colombia-august-27-2026"
+      }
+    },
+    {
+      "id": "evt-2026-08-26-canada",
+      "at": "2026-08-26",
+      "kind": "anuncio",
+      "origin": "Canadá — Global Affairs Canada",
+      "amount": "más de CAD 2 millones anunciados",
+      "territory": "—",
+      "note": "Canalizado vía PMA, Canadian Lutheran World Relief, Cruz Roja y el fondo canadiense de iniciativas locales. La fuente no identifica municipio ni acredita desembolso. El registro no cita tasa del dólar canadiense, así que la cifra se queda en su moneda.",
+      "source": {
+        "name": "Global Affairs Canada, 26 ago 2026",
+        "url": "https://www.canada.ca/en/global-affairs/news/2026/08/canada-provides-humanitarian-assistance-in-response-to-earthquake-in-colombia.html"
+      }
+    },
     {
       "id": "evt-2026-08-13-cerf",
       "at": "2026-08-13",
