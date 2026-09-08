@@ -1,6 +1,45 @@
 {
-  "ledgerUpdated": "2026-09-02",
+  "ledgerUpdated": "2026-09-08",
   "events": [
+    {
+      "id": "evt-2026-09-07-eeuu-oim-pereira",
+      "at": "2026-09-07",
+      "kind": "especie",
+      "origin": "Estados Unidos — vía OIM",
+      "amount": "techos de emergencia, baldes, frazadas y kits de cocina, más USD 5 millones para la operación",
+      "territory": "Pereira",
+      "note": "La OIM declara que la entrega empezó en Pereira y que durante septiembre llegará a los demás municipios. Es la primera vez que una fuente del registro habla de entrega iniciada a familias y no solo de llegada al país. Los 5 millones son parte de los 26,5 que Estados Unidos ya había anunciado: no se suman otra vez.",
+      "source": {
+        "name": "OIM Colombia, 8 sep 2026",
+        "url": "https://colombia.iom.int/es/news/oim-lleva-ayuda-humanitaria-de-estados-unidos-30-municipios-afectados-por-el-terremoto-en-colombia"
+      }
+    },
+    {
+      "id": "evt-2026-09-04-japon-donacion",
+      "at": "2026-09-04",
+      "kind": "anuncio",
+      "origin": "Japón — Ministerio de Asuntos Exteriores",
+      "amount": "USD 2 millones anunciados",
+      "territory": "—",
+      "note": "Un millón a alimentación vía PMA, medio millón a salud vía FICR y medio millón a refugios vía OIM. Es dinero nuevo, distinto de las carpas de JICA y de las 5,6 t del corte Cancillería. No identifica municipio ni acredita giro.",
+      "source": {
+        "name": "EFE / Infobae, 4 sep 2026",
+        "url": "https://www.infobae.com/america/agencias/2026/09/04/japon-donara-2-millones-de-dolares-en-ayuda-a-colombia-por-el-terremoto/"
+      }
+    },
+    {
+      "id": "evt-2026-09-01-corea-oim",
+      "at": "2026-09-01",
+      "kind": "anuncio",
+      "origin": "Corea — proyecto con la OIM",
+      "amount": "USD 1 millón, ya contado en el registro",
+      "territory": "Cali · Buenaventura · Pereira",
+      "note": "El mismo millón coreano del 17 ago, ahora con canal y municipios. No es plata nueva y no se suma otra vez. Proyecto a seis meses; la fuente no acredita entrega a hogares.",
+      "source": {
+        "name": "OIM Colombia, 1 sep 2026",
+        "url": "https://colombia.iom.int/es/news/corea-y-la-oim-lanzan-proyecto-de-respuesta-de-emergencia-y-recuperacion-temprana-para-afectados-por-el-sismo-en-colombia"
+      }
+    },
     {
       "id": "evt-2026-09-01-francia",
       "at": "2026-09-01",

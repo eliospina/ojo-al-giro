@@ -1,41 +1,41 @@
 {
-  "updated": "2026-09-02",
+  "updated": "2026-09-08",
   "fx": {
-    "fecha": "2026-08-26",
-    "nota": "Pesos por unidad, al corte del 26 ago 2026. Convertir no es girar. Cada tasa lleva su fuente; sin fuente no se convierte.",
+    "fecha": "2026-09-08",
+    "nota": "Pesos por unidad, al corte del 8 sep 2026. Convertir no es girar. Cada tasa lleva su fuente; sin fuente no se convierte. Los cuatro cruces salen del mismo proveedor y del mismo día para que el titular no mezcle fechas.",
     "cop_por": {
       "USD": {
-        "valor": 3081.67,
+        "valor": 3126.08,
         "source": {
-          "name": "TRM certificada por la Superintendencia Financiera, 26 ago 2026",
-          "url": "https://dolar.wilkinsonpc.com.co/2026-08-26"
+          "name": "TRM certificada por la Superintendencia Financiera, 8 sep 2026",
+          "url": "https://dolar.wilkinsonpc.com.co/2026-09-08"
         }
       },
       "EUR": {
-        "valor": 3604.27,
+        "valor": 3646.76,
         "source": {
-          "name": "El Cronista, cotización del euro en Colombia, 26 ago 2026",
-          "url": "https://www.cronista.com/colombia/mercados-dolar/euro-a-peso-colombiano-a-cuanto-cotiza-este-miercoles-26-de-agosto/"
+          "name": "World Forex Rates, EUR/COP, 8 sep 2026",
+          "url": "https://www.worldforexrates.com/es/eur/cop/1-exchange-rate/"
         }
       },
       "GBP": {
-        "valor": 4194.05,
+        "valor": 4243.96,
         "source": {
-          "name": "World Forex Rates, GBP/COP, 24 ago 2026",
+          "name": "World Forex Rates, GBP/COP, 8 sep 2026",
           "url": "https://www.worldforexrates.com/es/gbp/cop/1-exchange-rate/"
         }
       },
       "CHF": {
-        "valor": 3850.38,
+        "valor": 3868.42,
         "source": {
-          "name": "Wise, CHF/COP, 25 ago 2026",
-          "url": "https://wise.com/es/currency-converter/chf-to-cop-rate/history"
+          "name": "World Forex Rates, CHF/COP, 8 sep 2026",
+          "url": "https://www.worldforexrates.com/es/chf/cop/1-exchange-rate/"
         }
       },
       "CNY": {
-        "valor": 456.87,
+        "valor": 468.12,
         "source": {
-          "name": "World Forex Rates, CNY/COP, 24 ago 2026",
+          "name": "World Forex Rates, CNY/COP, 8 sep 2026",
           "url": "https://www.worldforexrates.com/es/cny/cop/1-exchange-rate/"
         }
       }
@@ -187,6 +187,35 @@
       }
     },
     {
+      "id": "eeuu-oim-5m",
+      "clase": "donacion",
+      "dentro_de": "estados-unidos",
+      "origin": "Estados Unidos — Bureau of Disaster and Humanitarian Response, vía OIM",
+      "amount": "USD 5 millones — donación a la OIM",
+      "status": "Otorgado el 7 sep 2026. La fuente dice que estos 5 millones son parte de los 26,5 millones que Estados Unidos ya movilizó: por eso no se suman otra vez. Financian a 30.000 personas hasta febrero de 2027, con subsidios de arriendo para 1.100 familias, 20 alojamientos colectivos y brigadas médicas.",
+      "route": "Gobierno de EE. UU. (DHR) → OIM → 30 municipios de Chocó, Risaralda, Quindío, Caldas y Valle del Cauca",
+      "territory": "Pereira · Belén de Umbría · Pueblo Rico · Mistrató · Apía · Quinchía · Santuario · Balboa · Guática · Santa Rosa de Cabal · Manizales · Riosucio · Anserma · Belalcázar · Chinchiná · Aguadas · Armenia · Quimbaya · Filandia · La Tebaida · Calarcá · Montenegro · Buenaventura · Cali · Vijes · El Dovio · Calima-Darién · Quibdó · Litoral del San Juan · Bajo Baudó · Alto Baudó",
+      "executed": "Recursos otorgados a la OIM; ejecución anunciada hasta feb 2027. Entrega a hogares con estos recursos: —",
+      "source": {
+        "name": "OIM Colombia, 8 sep 2026",
+        "url": "https://colombia.iom.int/es/news/oim-lleva-ayuda-humanitaria-de-estados-unidos-30-municipios-afectados-por-el-terremoto-en-colombia"
+      }
+    },
+    {
+      "id": "eeuu-especie-oim",
+      "clase": "especie",
+      "origin": "Estados Unidos — materiales en especie distribuidos por la OIM",
+      "amount": "techos de emergencia, baldes para agua, frazadas y kits de cocina — en especie (sin tonelaje ni valoración monetaria publicados)",
+      "status": "La OIM informa que la entrega empezó en Pereira el 7 sep 2026 y que durante septiembre llegará a los demás municipios. Es el primer caso en que una fuente declara entrega iniciada a familias, no solo llegada al país. La fuente titula 30 municipios y enumera 31. Sin peso publicado: no se suma a los cortes de 222,5 t, 640 t ni más de 80 t.",
+      "route": "Estados Unidos → OIM, con Cruz Roja Colombiana, World Vision y alcaldías → familias afectadas",
+      "territory": "Pereira (entrega iniciada) · los demás municipios del proyecto quedan anunciados para septiembre",
+      "executed": "Entrega iniciada en Pereira el 7 sep 2026, según la OIM",
+      "source": {
+        "name": "OIM Colombia, 8 sep 2026",
+        "url": "https://colombia.iom.int/es/news/oim-lleva-ayuda-humanitaria-de-estados-unidos-30-municipios-afectados-por-el-terremoto-en-colombia"
+      }
+    },
+    {
       "id": "emiratos",
       "clase": "donacion",
       "origin": "Emiratos Árabes Unidos",
@@ -268,6 +297,20 @@
       "source": {
         "name": "Kyodo / Mainichi, 17 ago 2026",
         "url": "https://mainichi.jp/english/articles/20260817/p2g/00m/0na/032000c"
+      }
+    },
+    {
+      "id": "japon-donacion",
+      "clase": "donacion",
+      "origin": "Japón — Ministerio de Asuntos Exteriores",
+      "amount": "USD 2 millones — donación anunciada",
+      "status": "Anunciado el 4 sep 2026. Desglose de la fuente: 1 millón a alimentación vía PMA · 500.000 a servicios sanitarios vía FICR · 500.000 a refugios vía OIM. Es dinero, distinto de las carpas y cobijas de JICA y de las 5,6 t del corte Cancillería, que se registran aparte.",
+      "route": "Ministerio de Asuntos Exteriores de Japón → PMA, FICR y OIM → comunidades afectadas",
+      "territory": "—",
+      "executed": "—",
+      "source": {
+        "name": "EFE / Infobae, 4 sep 2026",
+        "url": "https://www.infobae.com/america/agencias/2026/09/04/japon-donara-2-millones-de-dolares-en-ayuda-a-colombia-por-el-terremoto/"
       }
     },
     {
@@ -719,6 +762,21 @@
       }
     },
     {
+      "id": "corea-oim",
+      "clase": "donacion",
+      "dentro_de": "corea",
+      "origin": "Corea — proyecto con la OIM (parte del millón ya anunciado)",
+      "amount": "USD 1 millón — aporte del Gobierno coreano al proyecto",
+      "status": "Anunciado el 1 sep 2026. Es el mismo millón coreano que ya figura arriba, ahora con canal y municipios: no se suma otra vez. Ejecución prevista a seis meses, con transferencias en efectivo a más de 460 familias, tres espacios comunitarios y formación laboral para 350 personas.",
+      "route": "Gobierno de Corea → Embajada en Colombia → OIM → Cali, Buenaventura y Pereira",
+      "territory": "Cali · Buenaventura · Pereira",
+      "executed": "Proyecto anunciado; ejecución a seis meses. Entrega a hogares: —",
+      "source": {
+        "name": "OIM Colombia, 1 sep 2026",
+        "url": "https://colombia.iom.int/es/news/corea-y-la-oim-lanzan-proyecto-de-respuesta-de-emergencia-y-recuperacion-temprana-para-afectados-por-el-sismo-en-colombia"
+      }
+    },
+    {
       "id": "singapur",
       "clase": "donacion",
       "origin": "Singapur",
@@ -758,6 +816,20 @@
       "source": {
         "name": "Semana / Cancillería, 1 sep 2026",
         "url": "https://www.semana.com/confidenciales/articulo/cancilleria-informo-que-llegaron-al-pais-tres-vuelos-de-ayuda-humanitaria-enviados-desde-francia/202647/"
+      }
+    },
+    {
+      "id": "catar",
+      "clase": "especie",
+      "origin": "Catar",
+      "amount": "dos hospitales móviles — en especie (sin tonelaje ni valoración monetaria publicados)",
+      "status": "Reportado en el balance de donantes del 19 ago 2026. La fuente no publica peso ni monto: no entra al total en dólares ni se suma a los cortes de 222,5 t, 640 t ni más de 80 t.",
+      "route": "Catar → hospitales móviles → destino municipal: —",
+      "territory": "—",
+      "executed": "—",
+      "source": {
+        "name": "La República, 19 ago 2026",
+        "url": "https://www.larepublica.co/especiales/catastrofe-nacional/ya-se-completaron-mas-de-us-47-96-millones-en-donaciones-por-parte-de-25-paises-4461803"
       }
     }
   ]

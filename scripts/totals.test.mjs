@@ -53,12 +53,17 @@ function runTotals(list = flows, tasas = fx, marcadas = ["privado", "internacion
 }
 
 const mill = (v) => v / 1e6;
+const cifra = (texto) => Number(String(texto).replace(/\./g, ""));
+
+// El titular se fija aquí y en ningún otro lado. Moverlo tiene que ser una
+// decisión consciente, porque es la cifra que publica la portada.
+const TITULAR = "702";
 
 test("el titular publica la suma de lo donado: privado más internacional", () => {
   const { n, totales } = runTotals();
-  assert.equal(n, "710");
-  assert.ok(Math.abs(mill(totales.usd.privado) - 649) < 1);
-  assert.ok(Math.abs(mill(totales.usd.internacional) - 60.8) < 1);
+  assert.equal(n, TITULAR);
+  assert.ok(Math.abs(mill(totales.usd.privado) - 639.8) < 1);
+  assert.ok(Math.abs(mill(totales.usd.internacional) - 62.7) < 1);
 });
 
 test("lo que ya va dentro de un agregado no se suma otra vez", () => {
@@ -66,20 +71,26 @@ test("lo que ya va dentro de un agregado no se suma otra vez", () => {
   const dentro = flows.filter((f) => f.dentro_de).map((f) => f.id);
   assert.ok(dentro.includes("andi-empresas-unidas"));
   assert.ok(dentro.includes("santo-domingo"));
-  // ANDI son unos USD 65 millones: si se colara, el privado pasaría de 700.
+  // ANDI son unos USD 64 millones: si se colara, el privado pasaría de 700.
   assert.ok(mill(totales.usd.privado) < 700);
+  // Los 5 millones de EE. UU. a la OIM y el millón coreano del proyecto ya
+  // están contados en sus filas madre. Si se colaran, internacional pasaría de 68.
+  assert.ok(dentro.includes("eeuu-oim-5m"));
+  assert.ok(dentro.includes("corea-oim"));
+  assert.ok(mill(totales.usd.internacional) < 65);
 });
 
 test("crédito y línea quedan por fuera del titular", () => {
   const { n, totales } = runTotals();
   assert.equal(mill(totales.usd.credito), 200);
   assert.equal(mill(totales.usd.linea), 300);
-  assert.equal(n, "710");
+  assert.equal(n, TITULAR);
 });
 
 test("si alguien marca el crédito, la suma sube y la página avisa que es deuda", () => {
+  const base = runTotals();
   const { n, aviso } = runTotals(flows, fx, ["privado", "internacional", "credito"]);
-  assert.equal(n, "910");
+  assert.equal(cifra(n) - cifra(base.n), 200);
   assert.match(aviso, /deuda que Colombia paga/);
 });
 
@@ -127,12 +138,17 @@ function bloqueContado(flow) {
   return flow.clase === "donacion" || flow.clase === "credito" || flow.clase === "linea";
 }
 
+// La fecha y los valores salen del dato: refrescar tasas no debe romper la
+// prueba, pero la página sigue obligada a decir de cuándo son y de dónde salen.
 test("la calculadora dice de cuándo son las tasas y con qué fuente", () => {
   const { sums } = runTotals();
-  assert.match(sums, /Convertido con tasas del 26 ago 2026/);
-  assert.match(sums, /USD 3\.081,67/);
-  for (const tasa of Object.values(fx.cop_por)) {
+  const dia = Number(fx.fecha.slice(8, 10));
+  const num = (v) => new Intl.NumberFormat("es-CO", { maximumFractionDigits: 2 }).format(v);
+  assert.ok(sums.includes(`Convertido con tasas del ${dia} `));
+  for (const [cur, tasa] of Object.entries(fx.cop_por)) {
+    assert.ok(sums.includes(`${cur} ${num(tasa.valor)}`));
     assert.match(tasa.source.url, /^https:\/\//);
+    assert.match(tasa.source.name, /20\d\d/);
   }
 });
 
@@ -142,7 +158,7 @@ test("la donación de Canadá se declara en su moneda y no entra al titular", ()
   const { n, sums, totales } = runTotals();
   assert.equal(totales.sinTasa.get("CAD"), 2e6);
   assert.match(sums, /CAD 2 millones/);
-  assert.equal(n, "710");
+  assert.equal(n, TITULAR);
 });
 
 test("no afirma que los recursos hayan llegado", () => {
