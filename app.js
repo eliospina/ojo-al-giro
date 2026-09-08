@@ -90,8 +90,8 @@ function paintHueco(flows) {
   const conLugar = flows.filter((flow) => !isGap(flow.territory)).length;
   const sinLugar = n - conLugar;
   line.textContent = isEn()
-    ? `${n} figures with a source. ${conLugar} name a location; ${sinLugar} remain as “—”. No source certifies delivery to households. In Pereira, the arrival of an air shipment is documented.`
-    : `${n} cifras con fuente. ${conLugar} identifican un lugar; ${sinLugar} quedan en «—». Ninguna fuente acredita la entrega en los hogares. En Pereira consta la llegada de un cargamento aéreo.`;
+    ? `${n} figures with a source. ${conLugar} name a location; ${sinLugar} remain as “—”. This record does not certify delivery to households: where a source states it, the row says so.`
+    : `${n} cifras con fuente. ${conLugar} identifican un lugar; ${sinLugar} quedan en «—». El registro no certifica entrega en los hogares: donde una fuente la declara, lo dice la fila.`;
 }
 
 function paintEstado(updated) {
