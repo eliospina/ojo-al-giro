@@ -1,6 +1,84 @@
 {
-  "ledgerUpdated": "2026-09-08",
+  "ledgerUpdated": "2026-09-22",
   "events": [
+    {
+      "id": "evt-2026-09-20-emiratos-envio",
+      "at": "2026-09-20",
+      "kind": "especie",
+      "origin": "Emiratos Árabes Unidos",
+      "amount": "un cargamento de ayuda humanitaria, sin peso publicado",
+      "territory": "—",
+      "note": "Los dos Gobiernos anuncian la llegada del envío y dicen que se hace en el marco de los USD 10 millones comprometidos en agosto. No es dinero nuevo: no se suma otra vez. La fuente no publica tonelaje, no identifica municipio y no acredita entrega a hogares.",
+      "source": {
+        "name": "Cancillería de Colombia, 20 sep 2026",
+        "url": "https://www.cancilleria.gov.co/sala-de-prensa/noticias/los-emiratos-arabes-unidos-continuan-sus-esfuerzos-humanitarios-y-envian-ayuda-humanitaria-colombia"
+      }
+    },
+    {
+      "id": "evt-2026-09-10-agregado-96m",
+      "at": "2026-09-10",
+      "kind": "anuncio",
+      "origin": "Cancillería y DIAN — corte de ayuda internacional, citado por RTVC",
+      "amount": "cerca de USD 96 millones de 20 países, y 640 toneladas de 22 países",
+      "territory": "—",
+      "note": "El registro no adopta esta cifra y la deja anotada para que se pueda contrastar. El mismo corte atribuye USD 30 millones a la Unión Europea, cuando la Comisión Europea publicó EUR 2,1 millones para el sismo, y unos USD 10 millones a Hungría, país del que no encontramos ninguna otra fuente sobre Colombia. Mientras esas dos atribuciones no cuadren con sus fuentes primarias, el registro mantiene los montos de cada donante y no el agregado. Las 640 toneladas ya figuran como el corte aduanero del 12-18 ago.",
+      "source": {
+        "name": "RTVC Noticias / Cancillería y DIAN, 10 sep 2026",
+        "url": "https://www.rtvcnoticias.com/actualidad/colombia-recibio-640-toneladas-de-ayuda-humanitaria-internacional-para-atender-el"
+      }
+    },
+    {
+      "id": "evt-2026-09-09-catar-hospital",
+      "at": "2026-09-09",
+      "kind": "especie",
+      "origin": "Catar",
+      "amount": "≈ 23 toneladas — hospital de campaña, camas de cuidados intensivos, generadores y climatización",
+      "territory": "Bogotá (punto de ingreso)",
+      "note": "Un avión militar catarí entrega el cargamento a las autoridades colombianas. Es la primera vez que el aporte catarí del registro tiene peso y contenido: hasta ahora solo constaban dos hospitales móviles reportados en el balance del 19 ago, sin peso. La fuente no publica valoración monetaria y no acredita entrega a hogares.",
+      "source": {
+        "name": "Infobae / Cancillería, 9 sep 2026",
+        "url": "https://www.infobae.com/colombia/2026/09/09/gobierno-de-catar-envio-23-toneladas-de-ayuda-humanitaria-a-colombia-para-apoyar-con-reconstruccion-tras-terremoto/"
+      }
+    },
+    {
+      "id": "evt-2026-09-09-jeronimo-martins",
+      "at": "2026-09-09",
+      "kind": "anuncio",
+      "origin": "Vicepresidencia — donación de la Fundación Jerónimo Martins",
+      "amount": "EUR 12 millones, ya contados en el registro",
+      "territory": "Pereira · Eje Cafetero · Valle del Cauca · Chocó",
+      "note": "La Vicepresidencia presenta la donación al vincularse al plan de reconstrucción, pero el monto es el mismo que el grupo dueño de Tiendas Ara anunció el 20 ago: no es plata nueva. Como se anunció antes del corte privado del 22 ago, el registro la trata como incluida en el agregado de más de COP 2 billones y no la suma otra vez. El 60 % se destinaría a hogares infantiles, colegios y hospitales; la fuente no acredita desembolso.",
+      "source": {
+        "name": "Semana / Vicepresidencia, 9 sep 2026",
+        "url": "https://www.semana.com/confidenciales/articulo/vicepresidencia-de-colombia-anuncio-apoyo-por-12-millones-de-euros-de-la-fundacion-jeronimo-martins-para-reconstruir-zonas-afectadas-tras-el-terremoto/202657/"
+      }
+    },
+    {
+      "id": "evt-2026-09-02-republica-dominicana",
+      "at": "2026-09-02",
+      "kind": "especie",
+      "origin": "República Dominicana",
+      "amount": "50 toneladas — alimentos, herramientas, medicamentos y aseo",
+      "territory": "Cartagena (punto de ingreso) · destino anunciado: Quibdó y Chocó",
+      "note": "Llega por mar, en el buque Almirante Didiez Burgos, y sigue por río hacia Quibdó y las comunidades del Atrato. Donante nuevo en el registro. Es posterior al corte aduanero de 640 t y no está incluido en él. La fuente no acredita entrega a hogares.",
+      "source": {
+        "name": "EFE / ABC Color, 2 sep 2026",
+        "url": "https://www.abc.com.py/internacionales/2026/09/02/colombia-recibe-50-toneladas-de-ayuda-dominicana-para-los-damnificados-del-terremoto/"
+      }
+    },
+    {
+      "id": "evt-2026-08-31-guatemala-valle",
+      "at": "2026-08-31",
+      "kind": "especie",
+      "origin": "Guatemala — vía Embajada de Colombia",
+      "amount": "23,77 toneladas — kits de alimentos e higiene",
+      "territory": "Valle del Cauca",
+      "note": "La Embajada reporta la entrega a la Gobernación del Valle del Cauca. El registro ya tenía ≈ 30 toneladas guatemaltecas en el corte del 17 ago y las fuentes no permiten saber si es el mismo cargamento: no se abre una fila nueva ni se suman las dos cifras. Entrega a una gobernación, no a hogares.",
+      "source": {
+        "name": "Embajada de Colombia en Guatemala, 4 sep 2026",
+        "url": "https://guatemala.embajada.gov.co/sala-de-prensa/noticias/la-embajada-de-colombia-gestiono-el-envio-de-2377-toneladas-de-ayuda-humanitaria-donadas-por-el-gobierno-de-guatemala"
+      }
+    },
     {
       "id": "evt-2026-09-07-eeuu-oim-pereira",
       "at": "2026-09-07",
