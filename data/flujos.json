@@ -1,41 +1,41 @@
 {
-  "updated": "2026-09-08",
+  "updated": "2026-09-22",
   "fx": {
-    "fecha": "2026-09-08",
-    "nota": "Pesos por unidad, al corte del 8 sep 2026. Convertir no es girar. Cada tasa lleva su fuente; sin fuente no se convierte. Los cuatro cruces salen del mismo proveedor y del mismo día para que el titular no mezcle fechas.",
+    "fecha": "2026-09-22",
+    "nota": "Pesos por unidad, al corte del 22 sep 2026. Convertir no es girar. Cada tasa lleva su fuente; sin fuente no se convierte. Los cuatro cruces salen del mismo proveedor y del mismo día para que el titular no mezcle fechas. El peso se depreció frente al corte del 8 sep: el mismo agregado en pesos vale hoy menos dólares, y por eso el titular baja sin que ninguna donación se haya retirado.",
     "cop_por": {
       "USD": {
-        "valor": 3126.08,
+        "valor": 3192.53,
         "source": {
-          "name": "TRM certificada por la Superintendencia Financiera, 8 sep 2026",
-          "url": "https://dolar.wilkinsonpc.com.co/2026-09-08"
+          "name": "TRM certificada por la Superintendencia Financiera, 22 sep 2026",
+          "url": "https://dolar.wilkinsonpc.com.co/2026-09-22"
         }
       },
       "EUR": {
-        "valor": 3646.76,
+        "valor": 3627.97,
         "source": {
-          "name": "World Forex Rates, EUR/COP, 8 sep 2026",
+          "name": "World Forex Rates, EUR/COP, 22 sep 2026",
           "url": "https://www.worldforexrates.com/es/eur/cop/1-exchange-rate/"
         }
       },
       "GBP": {
-        "valor": 4243.96,
+        "valor": 4231.49,
         "source": {
-          "name": "World Forex Rates, GBP/COP, 8 sep 2026",
+          "name": "World Forex Rates, GBP/COP, 22 sep 2026",
           "url": "https://www.worldforexrates.com/es/gbp/cop/1-exchange-rate/"
         }
       },
       "CHF": {
-        "valor": 3868.42,
+        "valor": 3853.18,
         "source": {
-          "name": "World Forex Rates, CHF/COP, 8 sep 2026",
+          "name": "World Forex Rates, CHF/COP, 22 sep 2026",
           "url": "https://www.worldforexrates.com/es/chf/cop/1-exchange-rate/"
         }
       },
       "CNY": {
-        "valor": 468.12,
+        "valor": 472.46,
         "source": {
-          "name": "World Forex Rates, CNY/COP, 8 sep 2026",
+          "name": "World Forex Rates, CNY/COP, 22 sep 2026",
           "url": "https://www.worldforexrates.com/es/cny/cop/1-exchange-rate/"
         }
       }
@@ -100,6 +100,21 @@
       "source": {
         "name": "EFE, 15 ago 2026",
         "url": "https://efe.com/mundo/2026-08-15/empresarios-donacion-terremoto-colombia/"
+      }
+    },
+    {
+      "id": "jeronimo-martins",
+      "clase": "donacion",
+      "dentro_de": "sector-privado-agregado",
+      "origin": "Grupo y Fundación Jerónimo Martins — dueños de Tiendas Ara",
+      "amount": "EUR 12 millones (≈ COP 43.138 millones) — donación anunciada",
+      "status": "Anunciada el 20 ago 2026, dos días antes del corte del agregado privado, y reanunciada por la Vicepresidencia el 9 sep al vincularse al plan de reconstrucción: es la misma cifra las dos veces, no dos donaciones. El Tiempo la sitúa entre los aportes empresariales de esos días; Semana la presenta como apoyo privado internacional. Ante esa duda el registro la trata como incluida en el agregado de más de COP 2 billones y no la suma otra vez, para no inflar el titular. Si una fuente desglosa el agregado y esta donación queda por fuera, hay que revisar la fila. El grupo anuncia además un programa para sus trabajadores sin monto publicado y unas 200 toneladas ya entregadas por Tiendas Ara: nada de eso se suma aquí.",
+      "route": "Grupo Jerónimo Martins → asistencia alimentaria, albergues y reconstrucción de hogares comunitarios, jardines infantiles y hospitales",
+      "territory": "Pereira · Eje Cafetero · Valle del Cauca · Chocó (destino anunciado)",
+      "executed": "Donación anunciada; desembolso y entrega a hogares: —",
+      "source": {
+        "name": "El Tiempo, 20 ago 2026",
+        "url": "https://www.eltiempo.com/economia/empresas/nueva-millonaria-donacion-empresarial-para-la-reconstruccion-jeronimo-martins-aportara-43-138-millones-3579859"
       }
     },
     {
@@ -227,6 +242,20 @@
       "source": {
         "name": "The National / WAM, 13 ago 2026",
         "url": "https://www.thenationalnews.com/news/uae/2026/08/13/president-sheikh-mohamed-directs-10-million-in-humanitarian-aid-to-colombian-earthquake-relief-efforts/"
+      }
+    },
+    {
+      "id": "emiratos-envio-20sep",
+      "clase": "especie",
+      "origin": "Emiratos Árabes Unidos — envío dentro de los USD 10 millones ya anunciados",
+      "amount": "un cargamento de ayuda humanitaria — en especie (sin tonelaje ni valoración monetaria publicados)",
+      "status": "Llegada anunciada por los dos Gobiernos el 20 sep 2026. La fuente dice expresamente que se hace en el marco de los USD 10 millones comprometidos en agosto: no es dinero nuevo y no se suma otra vez. Sin peso publicado: no se suma a los cortes de 222,5 t, 640 t ni más de 80 t.",
+      "route": "Agencia de Ayuda de EAU → llegada al país → comunidades afectadas (destino municipal: —)",
+      "territory": "—",
+      "executed": "Llegada al país anunciada por ambos Gobiernos; entrega a hogares: —",
+      "source": {
+        "name": "Cancillería de Colombia, 20 sep 2026",
+        "url": "https://www.cancilleria.gov.co/sala-de-prensa/noticias/los-emiratos-arabes-unidos-continuan-sus-esfuerzos-humanitarios-y-envian-ayuda-humanitaria-colombia"
       }
     },
     {
@@ -710,13 +739,27 @@
       "clase": "especie",
       "origin": "Guatemala",
       "amount": "≈ 30 toneladas — 1.600 kits de alimentos y 3.000 kits de aseo familiar",
-      "status": "Anunciado (17 ago 2026)",
+      "status": "Anunciado (17 ago 2026). La Embajada de Colombia en Guatemala reportó el 4 sep la entrega de 23,77 toneladas a la Gobernación del Valle del Cauca el 31 ago: las fuentes no permiten saber si es este mismo cargamento medido al pesarlo o uno distinto, así que el registro no abre una segunda fila ni suma las dos cifras.",
       "route": "Ayuda bilateral → ingreso al país → distribución",
       "territory": "—",
       "executed": "—",
       "source": {
         "name": "El Tiempo / Cancillería, 17 ago 2026",
         "url": "https://www.eltiempo.com/politica/gobierno/colombia-ha-recibido-mas-de-220-toneladas-de-ayuda-humanitaria-y-144-integrantes-de-equipos-internacionales-tras-el-terremoto-informo-la-cancilleria-3578924"
+      }
+    },
+    {
+      "id": "republica-dominicana",
+      "clase": "especie",
+      "origin": "República Dominicana",
+      "amount": "50 toneladas — alimentos no perecederos, herramientas, medicamentos y productos de aseo e higiene — en especie (sin valoración monetaria publicada)",
+      "status": "Recibido en el puerto de Cartagena el 2 sep 2026, a bordo del buque Almirante Didiez Burgos. Es posterior al corte aduanero de 640 t (12-18 ago) y no está incluido en él; el registro tampoco crea un total nuevo juntando los dos. Sin valoración monetaria: no entra al total en dólares.",
+      "route": "República Dominicana → puerto de Cartagena → Fuerza Naval del Caribe hasta Turbo → unidades fluviales por el río Atrato → Quibdó y comunidades ribereñas",
+      "territory": "Cartagena (punto de ingreso) · destino anunciado: Quibdó y Chocó",
+      "executed": "Llegada al puerto reportada por la Armada; entrega a hogares: —",
+      "source": {
+        "name": "EFE / ABC Color, 2 sep 2026",
+        "url": "https://www.abc.com.py/internacionales/2026/09/02/colombia-recibe-50-toneladas-de-ayuda-dominicana-para-los-damnificados-del-terremoto/"
       }
     },
     {
@@ -822,14 +865,14 @@
       "id": "catar",
       "clase": "especie",
       "origin": "Catar",
-      "amount": "dos hospitales móviles — en especie (sin tonelaje ni valoración monetaria publicados)",
-      "status": "Reportado en el balance de donantes del 19 ago 2026. La fuente no publica peso ni monto: no entra al total en dólares ni se suma a los cortes de 222,5 t, 640 t ni más de 80 t.",
-      "route": "Catar → hospitales móviles → destino municipal: —",
-      "territory": "—",
-      "executed": "—",
+      "amount": "≈ 23 toneladas — hospital de campaña, camas de hospitalización y de cuidados intensivos, generadores y equipos de climatización — en especie (sin valoración monetaria publicada)",
+      "status": "Trasladado en un avión de las Fuerzas Armadas cataríes y entregado a las autoridades colombianas, según la Cancillería (9 sep 2026). El balance de donantes del 19 ago ya reportaba dos hospitales móviles cataríes sin peso ni monto; las fuentes no permiten establecer si es el mismo compromiso, y el registro no abre dos filas por él. Sin valoración monetaria: no entra al total en dólares. Es posterior a los cortes de 222,5 t, 640 t y más de 80 t, y no se suma a ninguno.",
+      "route": "Catar → avión de las Fuerzas Armadas → Bogotá → autoridades sanitarias y centros médicos de las zonas más afectadas",
+      "territory": "Bogotá (punto de ingreso) · destino municipal: —",
+      "executed": "Entregado a las autoridades colombianas; entrega a hogares: —",
       "source": {
-        "name": "La República, 19 ago 2026",
-        "url": "https://www.larepublica.co/especiales/catastrofe-nacional/ya-se-completaron-mas-de-us-47-96-millones-en-donaciones-por-parte-de-25-paises-4461803"
+        "name": "Infobae / Cancillería, 9 sep 2026",
+        "url": "https://www.infobae.com/colombia/2026/09/09/gobierno-de-catar-envio-23-toneladas-de-ayuda-humanitaria-a-colombia-para-apoyar-con-reconstruccion-tras-terremoto/"
       }
     }
   ]

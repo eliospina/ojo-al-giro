@@ -57,13 +57,13 @@ const cifra = (texto) => Number(String(texto).replace(/\./g, ""));
 
 // El titular se fija aquí y en ningún otro lado. Moverlo tiene que ser una
 // decisión consciente, porque es la cifra que publica la portada.
-const TITULAR = "702";
+const TITULAR = "689";
 
 test("el titular publica la suma de lo donado: privado más internacional", () => {
   const { n, totales } = runTotals();
   assert.equal(n, TITULAR);
-  assert.ok(Math.abs(mill(totales.usd.privado) - 639.8) < 1);
-  assert.ok(Math.abs(mill(totales.usd.internacional) - 62.7) < 1);
+  assert.ok(Math.abs(mill(totales.usd.privado) - 626.5) < 1);
+  assert.ok(Math.abs(mill(totales.usd.internacional) - 62.4) < 1);
 });
 
 test("lo que ya va dentro de un agregado no se suma otra vez", () => {
@@ -73,6 +73,10 @@ test("lo que ya va dentro de un agregado no se suma otra vez", () => {
   assert.ok(dentro.includes("santo-domingo"));
   // ANDI son unos USD 64 millones: si se colara, el privado pasaría de 700.
   assert.ok(mill(totales.usd.privado) < 700);
+  // Jerónimo Martins son EUR 12 millones anunciados antes del corte privado del
+  // 22 ago: si se colaran, el privado pasaría de 635.
+  assert.ok(dentro.includes("jeronimo-martins"));
+  assert.ok(mill(totales.usd.privado) < 635);
   // Los 5 millones de EE. UU. a la OIM y el millón coreano del proyecto ya
   // están contados en sus filas madre. Si se colaran, internacional pasaría de 68.
   assert.ok(dentro.includes("eeuu-oim-5m"));
